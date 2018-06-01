@@ -1,0 +1,23 @@
+{
+  "name": "happybirthday",
+  "version": "1.0.0",
+  "description": "node project for sending birthday cards from A and D.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "arnold",
+    "dusty",
+    "arnold",
+    "and",
+    "dusty",
+    "happy",
+    "birthday"
+  ],
+  "author": "Tim Pinkerton",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
