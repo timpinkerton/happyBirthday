@@ -1,5 +1,5 @@
 
 module.exports = {
-    appName: 'HB from A and D !',
+    appName: 'Happy Birthday',
     port: 3030
   }
