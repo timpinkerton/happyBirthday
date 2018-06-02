@@ -1,11 +1,80 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HB from A and D</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
+
 <body>
-    <h1>Happy Birthday !!!! </h1>
+    <h1>Happy Birthday everyone !!!! </h1>
+
+    <div id="list-container"></div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+    <script>
+        // our jQuery template string
+        function getList(data) {
+            var compiled = '';
+            data.forEach(item => {
+                compiled +=
+                    `
+                    <div class="row">
+                        <div class="col-xs-6"><strong>${item.name}</strong></div>
+                        <div class="col-xs-6">${item.birthday}</div>
+                    </div>
+                    `;
+            });
+            return compiled;
+        }
+
+
+
+        $(document).ready(function () {
+            // setup the title of the page and greeting
+            const welcome = {
+                name: "YOU"
+            }
+            // jquery template string
+            const greetingTemplate = `<p>Hello ${welcome.name}! This is my template!<p>`;
+            // put the template data into the actual page
+            $('body h1').first().after(greetingTemplate);
+
+            // Sample data
+            const data = {
+                list: [{
+                        name: 'Sam',
+                        birthday: '1984-07-11T18:25:43.511Z'
+                    },
+                    {
+                        name: 'KG',
+                        birthday: '2012-06-11T18:25:43.511Z'
+                    },
+                    {
+                        name: 'Brody',
+                        birthday: '2011-09-23T18:25:43.511Z'
+                    },
+                    {
+                        name: 'Beckett',
+                        birthday: '2016-11-23T18:25:43.511Z'
+                    },
+                ],
+            };
+
+            // pass out data.list and then insert the generated string of html
+            $('#list-container').html(getList(data.list));
+
+
+        });
+    </script>
+
+
 </body>
+
 </html>

@@ -8,18 +8,18 @@ const path = require('path');
 // creating the application object
 const app = express(); 
 
+// creating the router object to allow the server to get to the other routes
+const router = require('./routes');
+
 
 // path.resolve() resolves path segments into an absolute path
 const publicPath = path.resolve(__dirname, '../public');
 
-// express.status()
+// express.static()  This will serve our static files (currently index.html in the public folder)
 app.use(express.static(publicPath));
 
-// This function tells the app what to do
-app.use(function(req, res, next){
-    res.send('This text will no longer appear');
-});
-
+// this will be for all the other routes in the routes folder
+app.use('/api', router);
 
 // Starting the server
 app.listen(config.port, function() {
