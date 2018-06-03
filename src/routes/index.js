@@ -11,12 +11,26 @@ router.get('/reservation', function (req, res, next) {
 
 // route for creating a new reservation. CREATE
 router.post('/reservation', function (req, res, next) {
-    res.end('Creates a new reservation');
+    const newID = '' + RESERVATIONS.length; 
+    const data = req.body;
+    data.id = newID; 
+
+    RESERVATIONS.push(data);
+    res.status(201).json(data);
 });
 
 // route to update a single reservation UPDATE
 router.put('/reservation/:reservationId', function (req, res, next) {
-    res.end(`Updating a reservation '${req.params.reservationId}'`);
+    const {reservationId} = req.params;
+    const reservation = RESERVATIONS.find(entry => entry.id === reservationId);
+
+    if (!reservation) {
+        return res.status(404).end(`Could not find the reservation for '${reservationId}'`);
+    }
+
+    reservation.name = req.body.name;
+    reservation.birthday = req.body.birthday;
+    res.json(reservation); 
 });
 
 // route to delete a single reservation.  DELETE
@@ -40,30 +54,32 @@ router.get('/reservation/:reservationId', function (req, res, next) {
 
 
 // test data
+// an array object assigned to the constant variable RESERVATIONS
 const RESERVATIONS = [{
         id: 'a',
         name: 'Sam',
-        description: 'July',
-        price: 20.0
+        birthday: 'July',
     },
     {
         id: 'b',
         name: 'KG',
-        description: 'June',
-        price: 10.0
+        birthday: 'June',
     },
     {
         id: 'c',
         name: 'Brody',
-        description: 'September',
-        price: 12.50
+        birthday: 'September',
     },
     {
         id: 'd',
         name: 'Beckett',
-        description: 'November',
-        price: 15.0
-    }
+        birthday: 'November',
+    },
+    {
+        id: 'e',
+        name: 'Mom',
+        birthday: 'May',
+    },
 ];
 
 module.exports = router;
