@@ -1,8 +1,5 @@
 const router = require('express').Router();
 
-router.use('/doc', function (req, res, next) {
-    res.end(`test page....... 1......2....3`);
-});
 
 // route to get a list of all the reservations. READ
 router.get('/reservation', function (req, res, next) {
@@ -41,6 +38,7 @@ router.delete('/reservation/:reservationId', function (req, res, next) {
 // route to view a single reservation by id. READ
 router.get('/reservation/:reservationId', function (req, res, next) {
     // same as 'const reservationId = req.params.reservationId'
+    // able to get multiple req.params at once ex: {reservationId, name}
     const {reservationId} = req.params;
 
     const reservation = RESERVATIONS.find(entry => entry.id === reservationId);
