@@ -54,27 +54,27 @@ router.get('/reservation/:reservationId', function (req, res, next) {
 // test data
 // an array object assigned to the constant variable RESERVATIONS
 const RESERVATIONS = [{
-        id: 'a',
+        id: '0',
         name: 'Sam',
         birthday: 'July',
     },
     {
-        id: 'b',
+        id: '1',
         name: 'KG',
         birthday: 'June',
     },
     {
-        id: 'c',
+        id: '2',
         name: 'Brody',
         birthday: 'September',
     },
     {
-        id: 'd',
+        id: '3',
         name: 'Beckett',
         birthday: 'November',
     },
     {
-        id: 'e',
+        id: '4',
         name: 'Mom',
         birthday: 'May',
     },

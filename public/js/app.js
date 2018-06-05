@@ -40,16 +40,16 @@ function submitNewReservation() {
 
   //getting the values from the input form and creating an object literal
   const newReservationData = {
-    _id: $('#postId').val(),
+    id: $('#postId').val(),
     name: $('#name').val(),
     birthday: $('#birthday').val()
   };
 
-  //If _id (a post) already exist, method will be PUT and _id is appended to the url. If not, it's a new POST
+  //If id (a post) already exist, method will be PUT and id is appended to the url. If not, it's a new POST
   let method, url;
-  if (newReservationData._id) {
+  if (newReservationData.id) {
     method = 'PUT',
-      url = '/api/reservation/' + newReservationData._id;
+      url = '/api/reservation/' + newReservationData.id;
   } else {
     method = 'POST',
       url = '/api/reservation'
