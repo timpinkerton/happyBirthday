@@ -6,16 +6,64 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HB from A and D</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="myStyles.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
 </head>
 
 <body>
 
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">HB from A and D</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="#">Home
+                    <span class="sr-only">(current)</span>
+                </a>
+                <a class="nav-item nav-link" href="#">What's this all about??</a>
+                <a class="nav-item nav-link" href="#">Send a card!</a>
+            </div>
+        </div>
+    </nav>
+
+
+
     <div class="container">
+
         <h1>Happy Birthday </h1>
+
+        <div>
+            <img src="images/bubble.png" alt="Happy Birthday bubble">
+        </div>
+
+        <div class="faces">
+            <img src="images/arnold.png" alt="Arnold's face">
+            <img src="images/dusty.png" alt="Dusty's face">
+        </div>
+
+        <div>
+            <img src="images/sampleCard.png" alt="Sample birthday card">
+        </div>
+
+
         <form>
 
-            <input type="hidden" id="postId" value=""/>
+            <input type="hidden" id="postId" value="" />
 
             <div class="form-group">
                 <label for="name">Name</label>
@@ -36,14 +84,13 @@
     <script src="/js/app.js"></script>
 
     <script>
-
         $(document).ready(function () {
-            // setup the title of the page and greeting
+            // Home page greeting
             const welcome = {
                 name: "YOU"
             }
             // jquery template string
-            const greetingTemplate = `<p>Hello ${welcome.name}! This is my template!<p>`;
+            const greetingTemplate = `<p>Happy Birthday ${welcome.name}!<p>`;
             // put the template data into the actual page
             $('body h1').first().after(greetingTemplate);
 
@@ -51,6 +98,8 @@
 
         });
     </script>
+
+
 
 
 </body>

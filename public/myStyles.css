@@ -1,0 +1,15 @@
+body {
+    background-color: #d2e6fa;
+}
+
+.navbar {
+    background-color: #c7b29a;
+}
+
+img {
+    max-width: 100%;
+}
+
+.faces {
+    display: inline; 
+}
