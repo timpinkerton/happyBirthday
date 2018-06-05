@@ -35,8 +35,9 @@
                 <a class="nav-item nav-link active" href="#">Home
                     <span class="sr-only">(current)</span>
                 </a>
-                <a class="nav-item nav-link" href="#">What's this all about??</a>
-                <a class="nav-item nav-link" href="#">Send a card!</a>
+                <a class="nav-item nav-link" href="#">What's This All About?</a>
+                <a class="nav-item nav-link" href="#">See the Current List</a>
+                <a class="nav-item nav-link" href="#">Send a Card!</a>
             </div>
         </div>
     </nav>
@@ -45,20 +46,34 @@
 
     <div class="container">
 
-        <h1>Happy Birthday </h1>
+        <div class="row">
+            <div class="col">
 
-        <div>
-            <img src="images/bubble.png" alt="Happy Birthday bubble">
+            </div>
         </div>
 
-        <div class="faces">
-            <img src="images/arnold.png" alt="Arnold's face">
-            <img src="images/dusty.png" alt="Dusty's face">
+        <div class="row justify-content-center">
+            <div class="col-10 greeting-img bubble">
+                <h1></h1>
+                <img src="images/bubble.png" class="img-fluid bubble-img" alt="Happy Birthday bubble">
+            </div>
         </div>
 
-        <div>
-            <img src="images/sampleCard.png" alt="Sample birthday card">
+        <div class="row justify-content-center">
+            <div class="col-4 greeting-img">
+                <img src="images/arnold.png" class="img-fluid" alt="Arnold's face">
+            </div>
+            <div class="col-4 greeting-img">
+                <img src="images/dusty.png" class="img-fluid" alt="Dusty's face">
+            </div>
         </div>
+
+        <div class="row justify-content-center">
+            <div class="col-12 greeting-img">
+                <img src="images/sampleCard.png" class="img-fluid" alt="Sample birthday card">
+            </div>
+        </div>
+
 
 
         <form>
@@ -90,9 +105,9 @@
                 name: "YOU"
             }
             // jquery template string
-            const greetingTemplate = `<p>Happy Birthday ${welcome.name}!<p>`;
+            const greetingTemplate = `<p class="greeting">Happy Birthday ${welcome.name}!<p>`;
             // put the template data into the actual page
-            $('body h1').first().after(greetingTemplate);
+            $('body .bubble-img').first().after(greetingTemplate);
 
             refreshReservationList();
 

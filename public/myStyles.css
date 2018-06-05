@@ -2,14 +2,18 @@ body {
     background-color: #d2e6fa;
 }
 
-.navbar {
+nav {
     background-color: #c7b29a;
 }
 
-img {
-    max-width: 100%;
+.greeting-img {
+    text-align: center;
 }
 
-.faces {
-    display: inline; 
+.greeting {
+    color: red; 
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
