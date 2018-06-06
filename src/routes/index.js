@@ -1,9 +1,16 @@
 const router = require('express').Router();
+const mongoose = require('mongoose');
 
 
 // route to get a list of all the reservations. READ
 router.get('/reservation', function (req, res, next) {
-    res.json(RESERVATIONS);
+    mongoose.model('Reservation').find({}, function(err, reservations) {
+        if (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+        res.json(reservations); 
+    });
 });
 
 // route for creating a new reservation. CREATE
@@ -53,6 +60,7 @@ router.get('/reservation/:reservationId', function (req, res, next) {
 
 // test data
 // an array object assigned to the constant variable RESERVATIONS
+
 const RESERVATIONS = [{
         id: '0',
         name: 'Sam',
