@@ -6,6 +6,10 @@ nav {
     background-color: #c7b29a;
 }
 
+.homePage {
+    margin-bottom: 20px; 
+}
+
 .greeting-img {
     text-align: center;
 }
@@ -16,4 +20,14 @@ nav {
     top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.about-wrapper {
+    background-color: moccasin;
+    padding: 40px; 
+}
+
+.currentList {
+    background-color: tomato;
+    padding: 40px;
 }
