@@ -4,20 +4,20 @@ const mongoose = require('mongoose');
 
 // route to get a list of all the reservations. READ
 router.get('/reservation', function (req, res, next) {
-    mongoose.model('Reservation').find({}, function(err, reservations) {
+    mongoose.model('Reservation').find({}, function(err, happyBirthday) {
         if (err) {
             console.log(err);
             return res.status(500).json(err);
         }
-        res.json(reservations); 
+        res.json(happyBirthday);
     });
 });
 
 // route for creating a new reservation. CREATE
 router.post('/reservation', function (req, res, next) {
-    const newID = '' + RESERVATIONS.length; 
+    const newID = '' + RESERVATIONS.length;
     const data = req.body;
-    data.id = newID; 
+    data.id = newID;
 
     RESERVATIONS.push(data);
     res.status(201).json(data);
@@ -34,7 +34,7 @@ router.put('/reservation/:reservationId', function (req, res, next) {
 
     reservation.name = req.body.name;
     reservation.birthday = req.body.birthday;
-    res.json(reservation); 
+    res.json(reservation);
 });
 
 // route to delete a single reservation.  DELETE

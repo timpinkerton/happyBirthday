@@ -11,6 +11,7 @@ const ReservationSchema = new mongoose.Schema({
 });
 
 //turning the schema created above into a mongoose model
+// an instance of a model is a document
 const Reservation = mongoose.model('Reservation', ReservationSchema);
 module.exports = Reservation;
 
