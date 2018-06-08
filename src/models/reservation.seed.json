@@ -1,5 +1,6 @@
 [
     {"name":"Arnold", "birthday": "March 17" },
     {"name":"Dusty", "birthday": "July 31" },
+    {"name": "Tim", "birthday": "January 22"},
     {"name":"Sam", "birthday": "July 11" }
   ]
