@@ -10,19 +10,22 @@ const ReservationSchema = new mongoose.Schema({
     },
 });
 
-//turning the schema created above into a mongoose model
+// turning the schema created above into a mongoose model
 // an instance of a model is a document
-const Dbtest = mongoose.model('Dbtest', ReservationSchema);
-module.exports = Dbtest;
+// dbReservations is the collection in mLab
+const Reservation = mongoose.model('dbreservations', ReservationSchema);
+module.exports = Reservation;
 
-Dbtest.count({}, function(err, count) {
+
+// if there are no documents in dbreservations, the seed data will populate the db
+Reservation.count({}, function(err, count) {
     if (err) {
       throw err;
     }
     if (count > 0) return ;
 
     const reservations = require('./reservation.seed.json');
-    Dbtest.create(reservations, function(err, newReservations) {
+    Reservation.create(reservations, function(err, newReservations) {
       if (err) {
         throw err;
       }

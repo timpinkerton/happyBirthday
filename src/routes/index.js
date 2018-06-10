@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 // route to get a list of all the reservations. READ
 router.get('/reservation', function (req, res, next) {
-    mongoose.model('Dbtest').find({}, function(err, reservation) {
+    mongoose.model('dbreservations').find({}, function(err, reservation) {
         if (err) {
             console.log(err);
             return res.status(500).json(err);

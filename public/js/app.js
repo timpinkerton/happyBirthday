@@ -4,7 +4,7 @@ function listItemTemplate(data) {
   data.forEach(item => {
     compiled += `
       <li class="list-group-item">
-        <strong>${item.name}</strong> - ${item.birthday}
+        ${item.name} - ${item.birthday}
       </li>
     `;
   });
@@ -64,7 +64,7 @@ function submitNewReservation() {
       contentType: 'application/json',
     })
     .done(function (response) {
-      console.log("new post!");
+      console.log("new reservation!");
       refreshReservationList();
     })
     .fail(function (error) {
