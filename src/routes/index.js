@@ -15,12 +15,20 @@ router.get('/reservation', function (req, res, next) {
 
 // route for creating a new reservation. CREATE
 router.post('/reservation', function (req, res, next) {
-    const newID = '' + RESERVATIONS.length;
-    const data = req.body;
-    data.id = newID;
+    const reservation = mongoose.model('reservation');
+    const data = {
+       name: req.body.name, 
+       birthday: req.body.birthday, 
+    };
 
-    RESERVATIONS.push(data);
-    res.status(201).json(data);
+    Reservation.create(data, function(err, newReservation) {
+        if (err) {
+        console.log(err);
+        return res.status(500).json(err);
+        }
+
+        res.json(newReservation);
+    });
 });
 
 // route to update a single reservation UPDATE
