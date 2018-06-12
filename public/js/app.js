@@ -2,16 +2,16 @@
 function listItemTemplate(data) {
   var compiled = '';
   data.forEach(item => {
-    compiled += `
-      <li class="list-group-item">
-        ${item.name} - ${item.birthday}
-      </li>
-    `;
+    compiled += `<li class="list-group-item">
+      ${item.name} - ${item.birthday}
+      <button type="button" class="btn btn-warning" onclick="updateReservation('${item._id}')">Update</button>
+      <button type="button" class="btn btn-danger" onclick="deleteReservation('${item._id}')">Delete</button>
+    </li> `;
   });
   return compiled;
 }
 
-// getReservations function will get the file list. 
+// getReservations function will get the full list. 
 function getReservations() {
   return $.ajax('/reservations')
     .then(res => {
@@ -40,12 +40,12 @@ function submitNewReservation() {
 
   //getting the values from the input form and creating an object literal
   const newReservationData = {
-    _id: $('#postId').val(),
+    // _id: $('#postId').val(),
     name: $('#name').val(),
     birthday: $('#birthday').val()
   };
 
-  //If id (a post) already exist, method will be PUT and id is appended to the url. If not, it's a new POST
+  //If id (a reservation) already exist, method will be PUT and id is appended to the url. If not, it's a new POST
   let method, url;
   if (newReservationData._id) {
     method = 'PUT',
@@ -73,4 +73,27 @@ function submitNewReservation() {
 
   console.log('post data for the new post', newReservationData);
 
+}
+
+function updateReservation(_id) {
+  console.log("the Update button was clicked " + _id);
+}
+
+//to delete an existing post
+function deleteReservation(_id) {
+  console.log(_id + " is being deleted");
+      //creates a DELETE method 
+     return $.ajax({
+      type: 'DELETE',
+      url: '/reservations/' + _id,
+      dataType: 'json',
+      contentType : 'application/json',
+      })
+      .done(function(response) {
+          console.log(_id, " has been deleted.");
+          refreshReservationList();
+      })
+      .fail(function(error) {
+          console.log("This delete did not work.", error);
+      })
 }
