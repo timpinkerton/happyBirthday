@@ -1,99 +1,24 @@
-const router = require('express').Router();
-const mongoose = require('mongoose');
+// const router = require('express').Router();
+// const mongoose = require('mongoose');
 
 
-// route to get a list of all the reservations. READ
-router.get('/reservation', function (req, res, next) {
-    mongoose.model('dbreservations').find({}, function(err, reservation) {
-        if (err) {
-            console.log(err);
-            return res.status(500).json(err);
-        }
-        res.json(reservation);
-    });
-});
+module.exports = (app) => {
+    const reservations = require('../controllers/reservation.controller.js');
 
-// route for creating a new reservation. CREATE
-router.post('/reservation', function (req, res, next) {
-    const reservation = mongoose.model('reservation');
-    const data = {
-       name: req.body.name, 
-       birthday: req.body.birthday, 
-    };
+    //CREATE a new reservation
+    app.post('/reservations', reservations.create);
 
-    Reservation.create(data, function(err, newReservation) {
-        if (err) {
-        console.log(err);
-        return res.status(500).json(err);
-        }
+    //READ all reservations
+    app.get('/reservations', reservations.findAll);
 
-        res.json(newReservation);
-    });
-});
+    //READ a single reservation w/ the reservationId
+    app.get('/reservations/:reservationId', reservations.findOne);
 
-// route to update a single reservation UPDATE
-router.put('/reservation/:reservationId', function (req, res, next) {
-    const {reservationId} = req.params;
-    const reservation = RESERVATIONS.find(entry => entry.id === reservationId);
+    //UPDATE a reservation w/ the reservationID
+    app.put('/reservations/:reservationId', reservations.update);
 
-    if (!reservation) {
-        return res.status(404).end(`Could not find the reservation for '${reservationId}'`);
-    }
+    //DELETE a reservation w/ the reservationID
+    app.delete('/reservations/:reservationId', reservations.delete);
+}
 
-    reservation.name = req.body.name;
-    reservation.birthday = req.body.birthday;
-    res.json(reservation);
-});
-
-// route to delete a single reservation.  DELETE
-router.delete('/reservation/:reservationId', function (req, res, next) {
-    res.end(`Deleting a reservation '${req.params.reservationId}'`);
-});
-
-// route to view a single reservation by id. READ
-router.get('/reservation/:reservationId', function (req, res, next) {
-    // same as 'const reservationId = req.params.reservationId'
-    // able to get multiple req.params at once ex: {reservationId, name}
-    const {reservationId} = req.params;
-
-    const reservation = RESERVATIONS.find(entry => entry.id === reservationId);
-    // if there is no reservation with the requested id, an error message will display
-    if (!reservation) {
-      return res.status(404).end(`Could not find reservation '${reservationId}'`);
-    }
-
-    res.json(reservation);
-  });
-
-
-// test data
-// an array object assigned to the constant variable RESERVATIONS
-
-const RESERVATIONS = [{
-        id: '0',
-        name: 'Sam',
-        birthday: 'July',
-    },
-    {
-        id: '1',
-        name: 'KG',
-        birthday: 'June',
-    },
-    {
-        id: '2',
-        name: 'Brody',
-        birthday: 'September',
-    },
-    {
-        id: '3',
-        name: 'Beckett',
-        birthday: 'November',
-    },
-    {
-        id: '4',
-        name: 'Mom',
-        birthday: 'May',
-    },
-];
-
-module.exports = router;
+// module.exports = router;

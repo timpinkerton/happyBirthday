@@ -13,7 +13,7 @@ function listItemTemplate(data) {
 
 // getReservations function will get the file list. 
 function getReservations() {
-  return $.ajax('/api/reservation')
+  return $.ajax('/reservations')
     .then(res => {
       console.log("Results from getReservations()", res);
       return res;
@@ -40,7 +40,7 @@ function submitNewReservation() {
 
   //getting the values from the input form and creating an object literal
   const newReservationData = {
-    id: $('#postId').val(),
+    // id: $('#postId').val(),
     name: $('#name').val(),
     birthday: $('#birthday').val()
   };
@@ -49,10 +49,10 @@ function submitNewReservation() {
   let method, url;
   if (newReservationData.id) {
     method = 'PUT',
-      url = '/api/reservation/' + newReservationData.id;
+      url = '/reservation/' + newReservationData.id;
   } else {
     method = 'POST',
-      url = '/api/reservation'
+      url = '/reservation'
   }
 
   //.ajax() based on the method decided above (PUT or POST)

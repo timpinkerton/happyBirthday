@@ -1,6 +1,6 @@
 module.exports = {
   appName: 'Happy Birthday',
-  port: 3030,
+  port: 3838,
 
   //including the mongo configuration
   db: {
