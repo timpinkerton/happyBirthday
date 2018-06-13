@@ -1,10 +1,10 @@
 // the jQuery template to render the list of names and birthdays
-function listItemTemplate(data) {
+function listTemplate(data) {
   var compiled = '';
   data.forEach(item => {
     compiled += `<li class="list-group-item">
-      ${item.name} - ${item.birthday}
-      <button type="button" class="btn btn-warning" onclick="updateReservation('${item._id}')">Update</button>
+      <span id="reservationItem">${item.name} - ${item.birthday}</span>
+      <button type="button" class="btn btn-warning" onclick="updateReservation('${item._id}')">Edit</button>
       <button type="button" class="btn btn-danger" onclick="deleteReservation('${item._id}')">Delete</button>
     </li> `;
   });
@@ -31,7 +31,7 @@ function refreshReservationList() {
       const data = {
         reservations: reservations
       };
-      $('#list-container').html(listItemTemplate(data.reservations));
+      $('#reservation-list').html(listTemplate(data.reservations));
     })
 }
 
@@ -76,7 +76,7 @@ function submitNewReservation() {
 }
 
 function updateReservation(_id) {
-  console.log("the Update button was clicked " + _id);
+  console.log(_id + "is being updated");
 }
 
 //to delete an existing post
