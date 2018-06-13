@@ -20,33 +20,58 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
 
+    <!-- this will collapse the mobile menu icon when a link is clicked -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.navbar-collapse a').click(function () {
+                // $('.navbar-collapse').css('height', '0');
+                $('.navbar-collapse').removeClass('show');
+            });
+        });
+    </script>
+
 </head>
 
 <body>
 
     <!-- Navagation -->
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <a class="navbar-brand" href="#">HB from A and D</a>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Home
-                    <span class="sr-only">(current)</span>
-                </a>
-                <a class="nav-item nav-link" href="#about">What's This All About?</a>
-                <a class="nav-item nav-link" href="#">See the Current List</a>
-                <a class="nav-item nav-link" href="#inputForm">Send a Card!</a>
+
+            <div class="navbar-nav ml-auto">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-item nav-link active" href="#homePage">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-item nav-link" href="#about">What's This All About?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-item nav-link" href="#currentList">See the Current List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-item nav-link" href="#inputForm">Send a Card!</a>
+                    </li>
+
             </div>
+
         </div>
     </nav>
     <!-- Navigations End -->
 
+
     <!-- Home Page -->
-    <div class="container-fluid homePage">
-        <div class="row justify-content-center">
+    <div class="container-fluid homePage-wrapper">
+        <div class="row justify-content-center" id="homePage">
             <div class="col-10 greeting-img bubble">
                 <h1></h1>
                 <img src="images/bubble.png" class="img-fluid bubble-img" alt="Happy Birthday bubble">
@@ -73,39 +98,38 @@
 
     <!-- About Section -->
 
-        <div class="about-wrapper">
-            <h4 id="about">Whats this all about?</h4>
+    <div class="container-fluid about-wrapper" id="about">
+        <h4>Whats this all about?</h4>
 
-            <p>This is about sending birthday cards from Arnold and Dusty....Lorem ipsum dolor sit amet, his simul elitr assueverit
-                an, ne audiam molestiae adipiscing eum. Has id prompta maiorum delectus. Et est mentitum torquatos, est integre
-                aliquando cotidieque in, vix te melius fabellas. Pro at ullum interesset, per dolore ocurreret at. Nullam
-                utamur iracundia eos ut, te alia petentium eum.</p>
+        <p>This is about sending birthday cards from Arnold and Dusty....Lorem ipsum dolor sit amet, his simul elitr assueverit
+            an, ne audiam molestiae adipiscing eum. Has id prompta maiorum delectus. Et est mentitum torquatos, est integre
+            aliquando cotidieque in, vix te melius fabellas. Pro at ullum interesset, per dolore ocurreret at. Nullam utamur
+            iracundia eos ut, te alia petentium eum.</p>
 
-            <p>Ad has eros mollis persius, ad veniam suscipiantur vim. Eu ignota appareat quo, an elit duis docendi eum. Vel
-                quis paulo partem ea. At nec nisl ferri periculis. Ius at homero postea. Est dictas commodo eu, ipsum possim
-                nominavi ne qui.</p>
+        <p>Ad has eros mollis persius, ad veniam suscipiantur vim. Eu ignota appareat quo, an elit duis docendi eum. Vel quis
+            paulo partem ea. At nec nisl ferri periculis. Ius at homero postea. Est dictas commodo eu, ipsum possim nominavi
+            ne qui.</p>
 
-            <h4>Here's how it works</h4>
+        <h4>Here's how it works</h4>
 
-            <p>It's a very simple process. Follow the steps below:</p>
-            <ol>
-                <li>Complete the sign in form</li>
-                <li>Sit back</li>
-            </ol>
-        </div>
-
+        <p>It's a very simple process. Follow the steps below:</p>
+        <ol>
+            <li>Complete the sign in form</li>
+            <li>Sit back</li>
+        </ol>
+    </div>
     <!-- About Section End -->
 
 
     <!-- Current list section-->
-    <div class="container-fluid currentList">
+    <div class="container-fluid currentList-wrapper" id="currentList">
         <h4>Here's the current list of cards being sent out.</h4>
         <div id="reservation-list">This will be the list</div>
     </div>
 
     <!-- Send a card section -->
-    <div class="container-fluid">
-        <h4 id="inputForm">Send a card</h4>
+    <div class="container-fluid inputForm-wrapper" id="inputForm">
+        <h4>Send a card</h4>
         <form>
             <input type="hidden" id="postId" value="" />
 
@@ -141,8 +165,6 @@
 
         });
     </script>
-
-
 
 
 </body>

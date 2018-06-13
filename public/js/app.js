@@ -1,3 +1,4 @@
+
 // the jQuery template to render the list of names and birthdays
 function listTemplate(data) {
   var compiled = '';
@@ -82,18 +83,18 @@ function updateReservation(_id) {
 //to delete an existing post
 function deleteReservation(_id) {
   console.log(_id + " is being deleted");
-      //creates a DELETE method 
-     return $.ajax({
+  //creates a DELETE method 
+  return $.ajax({
       type: 'DELETE',
       url: '/reservations/' + _id,
       dataType: 'json',
-      contentType : 'application/json',
-      })
-      .done(function(response) {
-          console.log(_id, " has been deleted.");
-          refreshReservationList();
-      })
-      .fail(function(error) {
-          console.log("This delete did not work.", error);
-      })
+      contentType: 'application/json',
+    })
+    .done(function (response) {
+      console.log(_id, " has been deleted.");
+      refreshReservationList();
+    })
+    .fail(function (error) {
+      console.log("This delete did not work.", error);
+    })
 }

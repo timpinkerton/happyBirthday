@@ -2,11 +2,24 @@ body {
     background-color: #d2e6fa;
 }
 
+
+/***********  NAVIGATION  ***********/
 nav {
     background-color: #c7b29a;
 }
 
-.homePage {
+
+.homePage-wrapper,
+.about-wrapper,
+.currentList-wrapper,
+.inputForm-wrapper { 
+    max-width: 991px;
+    padding: 40px;
+}
+
+
+/***********  HOME PAGE  ***********/
+.homePage-wrapper {
     margin-bottom: 20px; 
 }
 
@@ -22,12 +35,23 @@ nav {
     transform: translate(-50%, -50%);
 }
 
+
+/***********  ABOUT PAGE  ***********/
 .about-wrapper {
     background-color: moccasin;
-    padding: 40px; 
+    padding-top: 60px;
+
 }
 
-.currentList {
+
+/***********  CURRENT LIST  ***********/
+.currentList-wrapper {
     background-color: tomato;
-    padding: 40px;
+
+}
+
+
+/***********  FORM  ***********/
+.inputForm-wrapper {
+    background-color: darkseagreen;
 }
