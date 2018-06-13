@@ -1,3 +1,6 @@
+// *********************************************************************
+// Functions for the Current List section on the MAIN page
+// *********************************************************************
 
 // the jQuery template to render the list of names and birthdays
 function listTemplate(data) {
@@ -5,12 +8,11 @@ function listTemplate(data) {
   data.forEach(item => {
     compiled += `<li class="list-group-item">
       <span id="reservationItem">${item.name} - ${item.birthday}</span>
-      <button type="button" class="btn btn-warning" onclick="updateReservation('${item._id}')">Edit</button>
-      <button type="button" class="btn btn-danger" onclick="deleteReservation('${item._id}')">Delete</button>
     </li> `;
   });
   return compiled;
 }
+
 
 // getReservations function will get the full list. 
 function getReservations() {
@@ -76,6 +78,40 @@ function submitNewReservation() {
 
 }
 
+
+// *********************************************************************
+// Functions for the Current List section on the EDIT page
+// *********************************************************************
+function editListTemplate(data) {
+  var compiled = '';
+  data.forEach(item => {
+    compiled += `<li class="list-group-item">
+ 
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="" value="${item.name}">
+
+      <label for="birthday">Birthday</label>
+      <input type="text" class="form-control" id="birthday" placeholder="" value="${item.birthday}">
+
+      <button type="button" class="btn btn-warning" onclick="updateReservation('${item._id}')">Edit</button>
+      <button type="button" class="btn btn-danger" onclick="deleteReservation('${item._id}')">Delete</button>
+    </li> `;
+
+  });
+  return compiled;
+}
+
+// Refresh the reservation list on the edit page
+function refreshEditReservationList() {
+  getReservations()
+    .then(reservations => {
+      const data = {
+        reservations: reservations
+      };
+      $('#edit-reservation-list').html(editListTemplate(data.reservations));
+    })
+}
+
 function updateReservation(_id) {
   console.log(_id + "is being updated");
 }
@@ -93,6 +129,7 @@ function deleteReservation(_id) {
     .done(function (response) {
       console.log(_id, " has been deleted.");
       refreshReservationList();
+      refreshEditReservationList();
     })
     .fail(function (error) {
       console.log("This delete did not work.", error);
