@@ -1,5 +1,6 @@
 body {
     background-color: #d2e6fa;
+    background-image: url(./images/bgPattern5.png);
 }
 
 
@@ -20,7 +21,8 @@ nav {
 
 /***********  HOME PAGE  ***********/
 .homePage-wrapper {
-    margin-bottom: 20px; 
+    background-color: azure;
+    padding-bottom: 50px; 
 }
 
 .greeting-img {
@@ -35,6 +37,10 @@ nav {
     transform: translate(-50%, -50%);
 }
 
+.homeFaces {
+    margin-bottom: 20px;  
+}
+
 
 /***********  ABOUT PAGE  ***********/
 .about-wrapper {
@@ -46,7 +52,7 @@ nav {
 
 /***********  CURRENT LIST  ***********/
 .currentList-wrapper {
-    background-color: tomato;
+    background-color: rgb(214, 200, 228);
 
 }
 
