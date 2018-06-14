@@ -13,7 +13,6 @@ function listTemplate(data) {
   return compiled;
 }
 
-
 // getReservations function will get the full list. 
 function getReservations() {
   return $.ajax('/reservations')
@@ -27,10 +26,13 @@ function getReservations() {
     });
 }
 
-
 function refreshReservationList() {
   getReservations()
     .then(reservations => {
+
+      // saving the reservations array to a global window object
+      window.reservationList = reservations;
+
       const data = {
         reservations: reservations
       };
@@ -43,25 +45,14 @@ function submitNewReservation() {
 
   //getting the values from the input form and creating an object literal
   const newReservationData = {
-    // _id: $('#postId').val(),
     name: $('#name').val(),
     birthday: $('#birthday').val()
   };
 
-  //If id (a reservation) already exist, method will be PUT and id is appended to the url. If not, it's a new POST
-  let method, url;
-  if (newReservationData._id) {
-    method = 'PUT',
-      url = '/reservations/' + newReservationData._id;
-  } else {
-    method = 'POST',
-      url = '/reservations'
-  }
-
   //.ajax() based on the method decided above (PUT or POST)
   $.ajax({
-      type: method,
-      url: url,
+      type: 'POST',
+      url: '/reservations',
       data: JSON.stringify(newReservationData),
       dataType: 'json',
       contentType: 'application/json',
@@ -73,9 +64,7 @@ function submitNewReservation() {
     .fail(function (error) {
       console.log("did not work!", error);
     });
-
-  console.log('post data for the new post', newReservationData);
-
+  console.log('Reservation data for the new reservation', newReservationData);
 }
 
 
@@ -83,28 +72,31 @@ function submitNewReservation() {
 // Functions for the Current List section on the EDIT page
 // *********************************************************************
 function editListTemplate(data) {
-  var compiled = '';
+  var editItems = '';
   data.forEach(item => {
-    compiled += `<li class="list-group-item">
- 
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" placeholder="" value="${item.name}">
+    editItems += `
+      <li class="list-group-item">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name-${item._id}" placeholder="" value="${item.name}">
 
-      <label for="birthday">Birthday</label>
-      <input type="text" class="form-control" id="birthday" placeholder="" value="${item.birthday}">
+          <label for="birthday">Birthday</label>
+          <input type="text" class="form-control" id="birthday-${item._id}" placeholder="" value="${item.birthday}">
 
-      <button type="button" class="btn btn-warning" onclick="updateReservation('${item._id}')">Edit</button>
-      <button type="button" class="btn btn-danger" onclick="deleteReservation('${item._id}')">Delete</button>
-    </li> `;
-
+        <button type="button" class="btn btn-warning" onclick="updateReservation('${item._id}')">Edit</button>
+        <button type="button" class="btn btn-danger" onclick="deleteReservation('${item._id}')">Delete</button>
+      </li>
+  `;
   });
-  return compiled;
+  return editItems;
 }
 
 // Refresh the reservation list on the edit page
 function refreshEditReservationList() {
   getReservations()
     .then(reservations => {
+
+      // saving the reservations array to a global window object to be accessed in the updateReservation() function
+      window.reservationList = reservations;
       const data = {
         reservations: reservations
       };
@@ -113,13 +105,42 @@ function refreshEditReservationList() {
 }
 
 function updateReservation(_id) {
-  console.log(_id + "is being updated");
+  const reservation = window.reservationList.find(reservation => reservation._id === _id);
+  let myId = _id; 
+  console.log(reservation);
+  console.log(myId); 
+
+    const updatedReservation = {
+      _id: _id, 
+      //jQuery selector to update current reservation w/ value in the input field
+      name:  $("#name-" + myId).val(),
+      birthday: $("#birthday-" + myId).val()
+    };
+
+  // .ajax() call for the PUT
+  $.ajax({
+      type: 'PUT',
+      url: '/reservations/' + _id,
+      data: JSON.stringify(updatedReservation),
+      dataType: 'json',
+      contentType: 'application/json',
+    })
+    .done(function (response) {
+      console.log("Reservation w/ id: " + _id + " has been updated.");
+      refreshReservationList();
+      refreshEditReservationList();
+    })
+    .fail(function (error) {
+      console.log(_id + " could not be updated", error);
+    });
+  console.log('Reservation data for the new reservation', updatedReservation);
 }
 
-//to delete an existing post
+
+// DELETE: to delete an existing post
 function deleteReservation(_id) {
   console.log(_id + " is being deleted");
-  //creates a DELETE method 
+  //$.ajax() w/ type DELETE creates a DELETE method 
   return $.ajax({
       type: 'DELETE',
       url: '/reservations/' + _id,
