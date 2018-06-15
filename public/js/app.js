@@ -7,7 +7,7 @@ function listTemplate(data) {
   var compiled = '';
   data.forEach(item => {
     compiled += `<li class="list-group-item">
-      <span id="reservationItem">${item.name} - ${item.birthday}</span>
+      <span id="reservationItem">${item.name} ---  ${item.birthday}</span>
     </li> `;
   });
   return compiled;
@@ -36,17 +36,36 @@ function refreshReservationList() {
       const data = {
         reservations: reservations
       };
+      //jQuery selector getting the id# reservation-list and add the listTemplate
       $('#reservation-list').html(listTemplate(data.reservations));
     })
+}
+
+
+function dateFormatting() {
+  var inputBday = $('#birthday').val();
+  console.log(inputBday);
+
+  // replacin "-" with "/" to prevent issues with timezone and day being off by 1
+  var d = new Date(inputBday.replace(/-/g, '\/'));
+  console.log(d);
+
+  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+  inputBday = months[d.getMonth()] + " " + d.getDate();
+
+  return inputBday;
 }
 
 function submitNewReservation() {
   console.log('the submitNewReservation function has been called!');
 
+  var birthday = dateFormatting();
+
   //getting the values from the input form and creating an object literal
   const newReservationData = {
     name: $('#name').val(),
-    birthday: $('#birthday').val()
+    birthday: birthday
   };
 
   //.ajax() based on the method decided above (PUT or POST)
@@ -76,12 +95,13 @@ function editListTemplate(data) {
   data.forEach(item => {
     editItems += `
       <li class="list-group-item">
-          <label for="name">Name</label>
-          <input type="text" class="form-control" id="name-${item._id}" placeholder="" value="${item.name}">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name-${item._id}" placeholder="" value="${item.name}">
 
-          <label for="birthday">Birthday</label>
-          <input type="text" class="form-control" id="birthday-${item._id}" placeholder="" value="${item.birthday}">
+        <label for="birthday">Birthday</label>
 
+        <input type="date" class="form-control" id="birthday-${item._id}" value="${item.birthday}" min="2018-06-22" max="2019-06-22">
+        
         <button type="button" class="btn btn-warning" onclick="updateReservation('${item._id}')">Edit</button>
         <button type="button" class="btn btn-danger" onclick="deleteReservation('${item._id}')">Delete</button>
       </li>
@@ -89,6 +109,10 @@ function editListTemplate(data) {
   });
   return editItems;
 }
+
+// old input for birthday
+// <input type="text" class="form-control" id="birthday-${item._id}" placeholder="" value="${item.birthday}">
+
 
 // Refresh the reservation list on the edit page
 function refreshEditReservationList() {
@@ -106,16 +130,16 @@ function refreshEditReservationList() {
 
 function updateReservation(_id) {
   const reservation = window.reservationList.find(reservation => reservation._id === _id);
-  let myId = _id; 
+  let myId = _id;
   console.log(reservation);
-  console.log(myId); 
+  console.log(myId);
 
-    const updatedReservation = {
-      _id: _id, 
-      //jQuery selector to update current reservation w/ value in the input field
-      name:  $("#name-" + myId).val(),
-      birthday: $("#birthday-" + myId).val()
-    };
+  const updatedReservation = {
+    _id: _id,
+    //jQuery selector to update current reservation w/ value in the input field
+    name: $("#name-" + myId).val(),
+    birthday: $("#birthday-" + myId).val()
+  };
 
   // .ajax() call for the PUT
   $.ajax({
