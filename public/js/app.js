@@ -68,7 +68,7 @@ function submitNewReservation() {
     birthday: birthday
   };
 
-  //.ajax() based on the method decided above (PUT or POST)
+
   $.ajax({
       type: 'POST',
       url: '/reservations',
@@ -100,7 +100,7 @@ function editListTemplate(data) {
 
         <label for="birthday">Birthday</label>
 
-        <input type="date" class="form-control" id="birthday-${item._id}" value="${item.birthday}" min="2018-06-22" max="2019-06-22">
+        <input type="text" class="form-control" id="birthday-${item._id}" value="${item.birthday}">
         
         <button type="button" class="btn btn-warning" onclick="updateReservation('${item._id}')">Edit</button>
         <button type="button" class="btn btn-danger" onclick="deleteReservation('${item._id}')">Delete</button>
