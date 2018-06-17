@@ -6,9 +6,10 @@
 function listTemplate(data) {
   var compiled = '';
   data.forEach(item => {
-    compiled += `<li class="list-group-item">
-      <span id="reservationItem">${item.name} ---  ${item.birthday}</span>
-    </li> `;
+    compiled += `<tr>
+                  <td>${item.name}</td>
+                  <td>${item.birthday}</td>
+                </tr> `;
   });
   return compiled;
 }

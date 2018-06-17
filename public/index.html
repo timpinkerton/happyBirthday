@@ -142,8 +142,19 @@
 
     <!-- Current list section-->
     <div class="container-fluid currentList-wrapper" id="currentList">
-        <h4>Here's the current list of cards being sent out:</h4>
-        <div id="reservation-list">This will be the list</div>
+        <h4>Here's the current list of names and birthdays:</h4>
+        <table class="table table-striped table-bordered">
+            <caption>List of names and birthday's</caption>
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Birthday</th>
+                </tr>
+            </thead>
+            <tbody id="reservation-list">
+
+            </tbody>
+        </table>
     </div>
 
     <!-- Send a card section -->
