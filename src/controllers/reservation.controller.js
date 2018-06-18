@@ -13,6 +13,7 @@ exports.create = (req, res) => {
     const reservation = new Reservation({
         name: req.body.name,
         birthday: req.body.birthday,
+        formattedBirthday: req.body.birthday
     });
 
     //Saving the reservation to the database

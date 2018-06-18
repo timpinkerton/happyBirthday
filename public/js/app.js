@@ -8,7 +8,7 @@ function listTemplate(data) {
   data.forEach(item => {
     compiled += `<tr>
                   <td>${item.name}</td>
-                  <td>${item.birthday}</td>
+                  <td>${item.formattedBirthday}</td>
                 </tr> `;
   });
   return compiled;
@@ -27,6 +27,9 @@ function getReservations() {
     });
 }
 
+// sorting the reservations by birthday
+
+
 function refreshReservationList() {
   getReservations()
     .then(reservations => {
@@ -37,25 +40,33 @@ function refreshReservationList() {
       const data = {
         reservations: reservations
       };
-      //jQuery selector getting the id# reservation-list and add the listTemplate
+
+      // sorting the reservations array by birthday
+      reservations.sort(function(a,b){
+        var c = new Date(a.birthday);
+        var d = new Date(b.birthday);
+        return c-d;
+        });
+
+      //jQuery selector getting the id# reservation-list and adding the listTemplate
       $('#reservation-list').html(listTemplate(data.reservations));
     })
 }
 
 
 function dateFormatting() {
-  var inputBday = $('#birthday').val();
-  console.log(inputBday);
+  var formattedBirthday = $('#birthday').val();
+  console.log(formattedBirthday);
 
   // replacin "-" with "/" to prevent issues with timezone and day being off by 1
-  var d = new Date(inputBday.replace(/-/g, '\/'));
+  var d = new Date(formattedBirthday.replace(/-/g, '\/'));
   console.log(d);
 
   var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-  inputBday = months[d.getMonth()] + " " + d.getDate();
+  formattedBirthday = months[d.getMonth()] + " " + d.getDate();
 
-  return inputBday;
+  return formattedBirthday;
 }
 
 function submitNewReservation() {
@@ -86,7 +97,7 @@ function submitNewReservation() {
     });
   console.log('Reservation data for the new reservation', newReservationData);
 
-  clearForm(); 
+  clearForm();
 }
 
 // this is to clear the input fields
@@ -110,7 +121,7 @@ function editListTemplate(data) {
 
         <label for="birthday" class="mr-2">Birthday</label>
 
-        <input type="text" class="form-control mr-2 mb-2" id="birthday-${item._id}" value="${item.birthday}">
+        <input type="text" class="form-control mr-2 mb-2" id="birthday-${item._id}" value="${item.formattedBirthday}">
         
         <button type="button" class="btn btn-warning mr-2" onclick="updateReservation('${item._id}')">Edit</button>
         <button type="button" class="btn btn-danger" onclick="deleteReservation('${item._id}')">Delete</button>
