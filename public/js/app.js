@@ -85,6 +85,14 @@ function submitNewReservation() {
       console.log("did not work!", error);
     });
   console.log('Reservation data for the new reservation', newReservationData);
+
+  clearForm(); 
+}
+
+// this is to clear the input fields
+function clearForm() {
+  document.getElementById("name").value = '';
+  document.getElementById("birthday").value = '';
 }
 
 
@@ -112,9 +120,6 @@ function editListTemplate(data) {
   });
   return editItems;
 }
-
-// old input for birthday
-// <input type="text" class="form-control" id="birthday-${item._id}" placeholder="" value="${item.birthday}">
 
 
 // Refresh the reservation list on the edit page
