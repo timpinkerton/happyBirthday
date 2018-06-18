@@ -96,15 +96,17 @@ function editListTemplate(data) {
   data.forEach(item => {
     editItems += `
       <li class="list-group-item">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name-${item._id}" placeholder="" value="${item.name}">
+      <form class="form-inline">
+        <label for="name" class="mr-2">Name</label>
+        <input type="text" class="form-control mr-2 mb-2" id="name-${item._id}" placeholder="" value="${item.name}">
 
-        <label for="birthday">Birthday</label>
+        <label for="birthday" class="mr-2">Birthday</label>
 
-        <input type="text" class="form-control" id="birthday-${item._id}" value="${item.birthday}">
+        <input type="text" class="form-control mr-2 mb-2" id="birthday-${item._id}" value="${item.birthday}">
         
-        <button type="button" class="btn btn-warning" onclick="updateReservation('${item._id}')">Edit</button>
+        <button type="button" class="btn btn-warning mr-2" onclick="updateReservation('${item._id}')">Edit</button>
         <button type="button" class="btn btn-danger" onclick="deleteReservation('${item._id}')">Delete</button>
+      </form>  
       </li>
   `;
   });
