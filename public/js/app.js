@@ -38,7 +38,7 @@ function refreshReservationList() {
         var d = new Date(b.birthday);
         return c - d;
       })
-      
+
       // saving the reservations array to a global window object
       window.reservationList = reservations;
 
@@ -118,7 +118,7 @@ function editListTemplate(data) {
 
         <label for="birthday" class="mr-2">Birthday</label>
 
-        <input type="text" class="form-control mr-2 mb-2" id="birthday-${item._id}" value="${item.birthday}">
+        <input type="text" class="form-control mr-2 mb-2" id="birthday-${item._id}" value="${moment(item.birthday).format("MMMM D, YYYY")}">
         
         <button type="button" class="btn btn-warning mr-2" onclick="updateReservation('${item._id}')">Edit</button>
         <button type="button" class="btn btn-danger" onclick="deleteReservation('${item._id}')">Delete</button>
