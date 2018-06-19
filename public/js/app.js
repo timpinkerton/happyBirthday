@@ -2,6 +2,45 @@
 // Functions for the Current List section on the MAIN page
 // *********************************************************************
 
+
+function getTodaysName() {
+  //to get the current date and time
+  const today = moment().format("YYYY-MM-DD");
+
+  let todaysName = '';
+
+  getReservations()
+    .then(reservations => {
+
+      for (var i = 0; i < reservations.length; i++) {
+        console.log(reservations[i].name + ": " + moment(reservations[i].birthday).format("YYYY-MM-DD"));
+        if (moment(reservations[i].birthday).format("YYYY-MM-DD") === today) {
+          console.log("match!");
+          todaysName = reservations[i].name;
+          console.log(todaysName);
+          break;
+        } else {
+          console.log("nope!!");
+          todaysName = "No One";
+          console.log(todaysName);
+        }
+      }
+
+      console.log("Today is: " + today);
+
+      //jQuery selector getting the id# greeting and add the greetingTemplate defined below
+      $('#greeting').html(greetingTemplate(todaysName));
+    })
+}
+
+function greetingTemplate(todaysName) {
+  // jQuery template string
+  const greetingTemplate = `<p id="greeting">Happy Birthday, ${todaysName}!</p>`;
+  // put the template data into the actual page
+  $('body .bubble-img').first().after(greetingTemplate);
+}
+
+
 // the jQuery template to render the list of names and birthdays
 function listTemplate(data) {
 
@@ -9,7 +48,7 @@ function listTemplate(data) {
   data.forEach(item => {
     compiled += `<tr>
                   <td>${item.name}</td>
-                  <td>${moment(item.birthday).format("MMMM, D")}</td>
+                  <td>${moment(item.birthday).format("MMMM, DD")}</td>
                 </tr> `;
   });
   return compiled;

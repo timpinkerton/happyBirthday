@@ -134,8 +134,10 @@
             <li>You must submit your request at least one week before the date. I need time to get these done.</li>
         </ol>
 
-        <p><strong>Alright!</strong>  As the great Mr. T once said <q>the jibba jabba stops here!</q> Think about who you want to send a birthday greeting to and check out the list below.
-            If their birthday is not availble, then think about someone else you want to make happy.</p>
+        <p>
+            <strong>Alright!</strong> As the great Mr. T once said
+            <q>the jibba jabba stops here!</q> Think about who you want to send a birthday greeting to and check out the list
+            below. If their birthday is not availble, then think about someone else you want to make happy.</p>
     </div>
     <!-- About Section End -->
 
@@ -188,20 +190,13 @@
 
     <script>
         $(document).ready(function () {
-            // Home page greeting
-            const welcome = {
-                name: "YOU"
-            }
-            // jquery template string
-            const greetingTemplate = `<p class="greeting">Happy Birthday ${welcome.name}!<p>`;
-            // put the template data into the actual page
-            $('body .bubble-img').first().after(greetingTemplate);
 
             refreshReservationList();
 
+            getTodaysName();
+
         });
     </script>
-
 
 </body>
 

@@ -29,7 +29,7 @@ nav {
     text-align: center;
 }
 
-.greeting {
+#greeting {
     color: red; 
     position: absolute;
     top: 35%;
