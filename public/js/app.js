@@ -32,6 +32,13 @@ function refreshReservationList() {
   getReservations()
     .then(reservations => {
 
+      // sorting the reservations array by birthday
+      reservations.sort(function (a, b) {
+        var c = new Date(a.birthday);
+        var d = new Date(b.birthday);
+        return c - d;
+      })
+      
       // saving the reservations array to a global window object
       window.reservationList = reservations;
 
@@ -48,7 +55,7 @@ function refreshReservationList() {
 //   var inputBday = $('#birthday').val();
 //   console.log(inputBday);
 
-  // replacin "-" with "/" to prevent issues with timezone and day being off by 1
+// replacin "-" with "/" to prevent issues with timezone and day being off by 1
 //   var d = new Date(inputBday.replace(/-/g, '\/'));
 //   console.log(d);
 
@@ -87,7 +94,7 @@ function submitNewReservation() {
     });
   console.log('Reservation data for the new reservation', newReservationData);
 
-  clearForm(); 
+  clearForm();
 }
 
 // this is to clear the input fields
