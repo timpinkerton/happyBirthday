@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const ReservationSchema = mongoose.Schema({
     name: String,
-    birthday: String,
+    birthday: { type: Date },
   },
   // timestamps option, mongoose automatically adds createdAt and updatedAt fields to the schema.
   {

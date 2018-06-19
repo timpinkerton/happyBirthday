@@ -4,11 +4,12 @@
 
 // the jQuery template to render the list of names and birthdays
 function listTemplate(data) {
+
   var compiled = '';
   data.forEach(item => {
     compiled += `<tr>
                   <td>${item.name}</td>
-                  <td>${item.birthday}</td>
+                  <td>${moment(item.birthday).format("MMMM, D")}</td>
                 </tr> `;
   });
   return compiled;
@@ -43,30 +44,30 @@ function refreshReservationList() {
 }
 
 
-function dateFormatting() {
-  var inputBday = $('#birthday').val();
-  console.log(inputBday);
+// function dateFormatting() {
+//   var inputBday = $('#birthday').val();
+//   console.log(inputBday);
 
   // replacin "-" with "/" to prevent issues with timezone and day being off by 1
-  var d = new Date(inputBday.replace(/-/g, '\/'));
-  console.log(d);
+//   var d = new Date(inputBday.replace(/-/g, '\/'));
+//   console.log(d);
 
-  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+//   var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-  inputBday = months[d.getMonth()] + " " + d.getDate();
+//   inputBday = months[d.getMonth()] + " " + d.getDate();
 
-  return inputBday;
-}
+//   return inputBday;
+// }
 
 function submitNewReservation() {
   console.log('the submitNewReservation function has been called!');
 
-  var birthday = dateFormatting();
+  // var birthday = dateFormatting();
 
   //getting the values from the input form and creating an object literal
   const newReservationData = {
     name: $('#name').val(),
-    birthday: birthday
+    birthday: $('#birthday').val()
   };
 
 
