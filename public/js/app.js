@@ -90,32 +90,14 @@ function refreshReservationList() {
 }
 
 
-// function dateFormatting() {
-//   var inputBday = $('#birthday').val();
-//   console.log(inputBday);
-
-// replacin "-" with "/" to prevent issues with timezone and day being off by 1
-//   var d = new Date(inputBday.replace(/-/g, '\/'));
-//   console.log(d);
-
-//   var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-//   inputBday = months[d.getMonth()] + " " + d.getDate();
-
-//   return inputBday;
-// }
-
 function submitNewReservation() {
   console.log('the submitNewReservation function has been called!');
-
-  // var birthday = dateFormatting();
 
   //getting the values from the input form and creating an object literal
   const newReservationData = {
     name: $('#name').val(),
     birthday: $('#birthday').val()
   };
-
 
   $.ajax({
       type: 'POST',
@@ -136,7 +118,7 @@ function submitNewReservation() {
   clearForm();
 }
 
-// this is to clear the input fields
+// this is to clear the input fields after the submit button is clicked
 function clearForm() {
   document.getElementById("name").value = '';
   document.getElementById("birthday").value = '';

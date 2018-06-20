@@ -98,7 +98,6 @@
 
 
     <!-- About Section -->
-
     <div class="container-fluid about-wrapper" id="about">
         <h4>Whats this all about?</h4>
 
@@ -160,12 +159,13 @@
             </tbody>
         </table>
     </div>
+    <!-- Current list section End-->
+
 
     <!-- Send a card section -->
     <div class="container-fluid inputForm-wrapper" id="inputForm">
         <h4>Send a card</h4>
         <form>
-            <!-- <input type="hidden" id="postId" value="" /> -->
 
             <div class="form-group">
                 <label for="name">Name</label>
@@ -178,13 +178,10 @@
                 <input type="date" class="form-control" id="birthday" min="2018-06-22" max="2019-06-22">
             </div>
 
-
-
             <button type="button" class="btn btn-primary" onclick="submitNewReservation()">Submit</button>
         </form>
     </div>
     <!-- Send a card section end -->
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
@@ -194,12 +191,10 @@
         $(document).ready(function () {
 
             refreshReservationList();
-
             getTodaysName();
 
         });
     </script>
 
 </body>
-
 </html>

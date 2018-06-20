@@ -1,12 +1,14 @@
+require('dotenv').config();
+
 module.exports = {
   appName: 'Happy Birthday',
   port: 3838,
 
-  //including the mongo configuration
+  //including the mongo configuration from .env
   db: {
-    username: 'Tim',
-    password: 'userDB1',
-    host: 'ds255767.mlab.com:55767',
-    dbName: 'fsjs-db1'
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    host:     process.env.DB_HOST,
+    dbName:   process.env.DB_NAME,
   }
 };
