@@ -2,7 +2,6 @@
 // Functions for the Current List section on the MAIN page
 // *********************************************************************
 
-
 function getTodaysName() {
   //to get the current date and time
   const today = moment().format("YYYY-MM-DD");
@@ -13,8 +12,8 @@ function getTodaysName() {
     .then(reservations => {
 
       for (var i = 0; i < reservations.length; i++) {
-        console.log(reservations[i].name + ": " + moment(reservations[i].birthday).format("YYYY-MM-DD"));
-        if (moment(reservations[i].birthday).format("YYYY-MM-DD") === today) {
+        console.log(reservations[i].name + ": " + moment.utc(reservations[i].birthday).format("YYYY-MM-DD"));
+        if (moment.utc(reservations[i].birthday).format("YYYY-MM-DD") === today) {
           console.log("match!");
           todaysName = reservations[i].name;
           console.log(todaysName);
@@ -42,13 +41,13 @@ function greetingTemplate(todaysName) {
 
 
 // the jQuery template to render the list of names and birthdays
-function listTemplate(data) {
+function listTemplate(reservations) {
 
   var compiled = '';
-  data.forEach(item => {
+  reservations.forEach(item => {
     compiled += `<tr>
                   <td>${item.name}</td>
-                  <td>${moment(item.birthday).format("MMMM, DD")}</td>
+                  <td>${moment.utc(item.birthday).format("MMMM, DD")}</td>
                 </tr> `;
   });
   return compiled;
@@ -81,11 +80,8 @@ function refreshReservationList() {
       // saving the reservations array to a global window object
       window.reservationList = reservations;
 
-      const data = {
-        reservations: reservations
-      };
       //jQuery selector getting the id# reservation-list and add the listTemplate
-      $('#reservation-list').html(listTemplate(data.reservations));
+      $('#reservation-list').html(listTemplate(reservations));
     })
 }
 
@@ -128,9 +124,9 @@ function clearForm() {
 // *********************************************************************
 // Functions for the Current List section on the EDIT page
 // *********************************************************************
-function editListTemplate(data) {
+function editListTemplate(reservations) {
   var editItems = '';
-  data.forEach(item => {
+  reservations.forEach(item => {
     editItems += `
       <li class="list-group-item">
       <form class="form-inline">
@@ -139,7 +135,7 @@ function editListTemplate(data) {
 
         <label for="birthday" class="mr-2">Birthday</label>
 
-        <input type="text" class="form-control mr-2 mb-2" id="birthday-${item._id}" value="${moment(item.birthday).format("MMMM D, YYYY")}">
+        <input type="text" class="form-control mr-2 mb-2" id="birthday-${item._id}" value="${moment.utc(item.birthday).format("MMMM D, YYYY")}">
         
         <button type="button" class="btn btn-warning mr-2" onclick="updateReservation('${item._id}')">Edit</button>
         <button type="button" class="btn btn-danger" onclick="deleteReservation('${item._id}')">Delete</button>
@@ -158,24 +154,22 @@ function refreshEditReservationList() {
 
       // saving the reservations array to a global window object to be accessed in the updateReservation() function
       window.reservationList = reservations;
-      const data = {
-        reservations: reservations
-      };
-      $('#edit-reservation-list').html(editListTemplate(data.reservations));
+
+      $('#edit-reservation-list').html(editListTemplate(reservations));
     })
 }
 
 function updateReservation(_id) {
   const reservation = window.reservationList.find(reservation => reservation._id === _id);
-  let myId = _id;
+  let updateId = _id;
   console.log(reservation);
-  console.log(myId);
+  console.log(updateId);
 
   const updatedReservation = {
     _id: _id,
     //jQuery selector to update current reservation w/ value in the input field
-    name: $("#name-" + myId).val(),
-    birthday: $("#birthday-" + myId).val()
+    name: $("#name-" + updateId).val(),
+    birthday: $("#birthday-" + updateId).val()
   };
 
   // .ajax() call for the PUT
