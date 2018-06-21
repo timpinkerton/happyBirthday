@@ -105,9 +105,26 @@ function submitNewReservation() {
     .done(function (response) {
       console.log("new reservation!");
       refreshReservationList();
+
+      swal({
+        title: 'Good job!',
+        text: 'The name and birthday has been added to the list',
+        type: 'success',
+
+        backdrop: true,
+      })
     })
     .fail(function (error) {
       console.log("did not work!", error);
+
+      swal({
+        title: 'Dang it!',
+        text: 'That did not work',
+        type: 'error',
+
+        backdrop: true,
+        toast: true
+      })
     });
   console.log('Reservation data for the new reservation', newReservationData);
 
@@ -184,6 +201,14 @@ function updateReservation(_id) {
       console.log("Reservation w/ id: " + _id + " has been updated.");
       refreshReservationList();
       refreshEditReservationList();
+
+      swal({
+        title: 'Updated!',
+        type: 'success',
+
+        backdrop: true,
+        toast: true
+      })
     })
     .fail(function (error) {
       console.log(_id + " could not be updated", error);
@@ -195,19 +220,52 @@ function updateReservation(_id) {
 // DELETE: to delete an existing post
 function deleteReservation(_id) {
   console.log(_id + " is being deleted");
-  //$.ajax() w/ type DELETE creates a DELETE method 
-  return $.ajax({
-      type: 'DELETE',
-      url: '/reservations/' + _id,
-      dataType: 'json',
-      contentType: 'application/json',
-    })
-    .done(function (response) {
-      console.log(_id, " has been deleted.");
-      refreshReservationList();
-      refreshEditReservationList();
-    })
-    .fail(function (error) {
-      console.log("This delete did not work.", error);
-    })
+
+  swal({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.value) {
+
+      //$.ajax() w/ type DELETE creates a DELETE method 
+      return $.ajax({
+          type: 'DELETE',
+          url: '/reservations/' + _id,
+          dataType: 'json',
+          contentType: 'application/json',
+        })
+        .done(function (response) {
+          console.log(_id, " has been deleted.");
+
+          swal(
+            'Deleted!',
+            'This reservation has been deleted.',
+            'success'
+          )
+
+          refreshReservationList();
+          refreshEditReservationList();
+        })
+        .fail(function (error) {
+          console.log("This delete did not work.", error);
+        })
+    } else if (
+      // Read more about handling dismissals
+      result.dismiss === swal.DismissReason.cancel
+    ) {
+
+      console.log(_id, " has NOT been deleted.");
+      swal(
+        'Cancelled',
+        'Reservation has NOT been deleted.',
+        'error'
+      )
+    }
+
+  })
 }
