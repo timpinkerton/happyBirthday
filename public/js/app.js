@@ -179,41 +179,71 @@ function refreshEditReservationList() {
 function updateReservation(_id) {
   const reservation = window.reservationList.find(reservation => reservation._id === _id);
   let updateId = _id;
-  console.log(reservation);
-  console.log(updateId);
+  console.log(_id + " is being updated");
 
-  const updatedReservation = {
-    _id: _id,
-    //jQuery selector to update current reservation w/ value in the input field
-    name: $("#name-" + updateId).val(),
-    birthday: $("#birthday-" + updateId).val()
-  };
+  swal({
+    title: 'Are you sure you want to update this reservation?',
+    text: "please be careful",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, update it!'
+  }).then((result) => {
 
-  // .ajax() call for the PUT
-  $.ajax({
-      type: 'PUT',
-      url: '/reservations/' + _id,
-      data: JSON.stringify(updatedReservation),
-      dataType: 'json',
-      contentType: 'application/json',
-    })
-    .done(function (response) {
-      console.log("Reservation w/ id: " + _id + " has been updated.");
-      refreshReservationList();
-      refreshEditReservationList();
 
-      swal({
-        title: 'Updated!',
-        type: 'success',
+    if (result.value) {
 
-        backdrop: true,
-        toast: true
-      })
-    })
-    .fail(function (error) {
-      console.log(_id + " could not be updated", error);
-    });
-  console.log('Reservation data for the new reservation', updatedReservation);
+
+      const updatedReservation = {
+        _id: _id,
+        //jQuery selector to update current reservation w/ value in the input field
+        name: $("#name-" + updateId).val(),
+        birthday: $("#birthday-" + updateId).val()
+      }
+
+
+      // .ajax() call for the PUT
+      $.ajax({
+          type: 'PUT',
+          url: '/reservations/' + _id,
+          data: JSON.stringify(updatedReservation),
+          dataType: 'json',
+          contentType: 'application/json',
+        })
+        .done(function (response) {
+          console.log("Reservation w/ id: " + _id + " has been updated.");
+          console.log('Reservation data for the new reservation', updatedReservation);
+          refreshReservationList();
+          refreshEditReservationList();
+
+          swal({
+            title: 'Updated!',
+            type: 'success',
+
+            backdrop: true,
+            toast: true
+          })
+        })
+        .fail(function (error) {
+          console.log(_id + " could not be updated", error);
+        });
+
+
+    } else if (
+      // Read more about handling dismissals
+      result.dismiss === swal.DismissReason.cancel
+    ) {
+      console.log(_id, " has NOT been updated.");
+      swal(
+        'Cancelled',
+        'Reservation has NOT been updated.',
+        'error'
+      )
+    }
+
+  })
+
 }
 
 
@@ -222,8 +252,8 @@ function deleteReservation(_id) {
   console.log(_id + " is being deleted");
 
   swal({
-    title: 'Are you sure?',
-    text: "You won't be able to revert this!",
+    title: 'Are you sure you want to delete this reservation?',
+    text: "please be careful",
     type: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
