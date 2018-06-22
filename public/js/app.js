@@ -107,8 +107,8 @@ function submitNewReservation() {
       refreshReservationList();
 
       swal({
-        title: 'Good job!',
-        text: 'The name and birthday has been added to the list',
+        title: 'Done!',
+        text: newReservationData.name + ' has been added to the list',
         type: 'success',
 
         backdrop: true,
@@ -119,11 +119,10 @@ function submitNewReservation() {
 
       swal({
         title: 'Dang it!',
-        text: 'That did not work',
+        text: 'You must enter a name and a valid birthday.  Please try again.',
         type: 'error',
 
         backdrop: true,
-        toast: true
       })
     });
   console.log('Reservation data for the new reservation', newReservationData);

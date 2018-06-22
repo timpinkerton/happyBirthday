@@ -3,7 +3,7 @@ const Reservation = require('../models/reservation.model.js');
 //CREATE: creating and saving a new reservation
 exports.create = (req, res) => {
     //validating the name field is populated
-    if(!req.body.name) {
+    if(!req.body.name || !req.body.birthday) {
         return res.status(404).send({
             message: "Name cannot be empty"
         });
