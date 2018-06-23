@@ -138,15 +138,18 @@ function clearForm() {
 
 
 function openDates() {
-
+  const today = moment().format("MM-DD-YYYY");
   const startDate = moment().add(7, 'days').format("MM-DD-YYYY");
   const endDate = moment().add(372, 'days').format("MM-DD-YYYY");
 
   // document.getElementById("valid-dates").innerText = "Please enter a date between " + startDate + " and " + endDate;
 
-  const birthdayRules = ` (Please enter a date between ${startDate} and ${endDate})`; 
+  const birthdayRules = ` (Enter a date between ${startDate} and ${endDate})`;
+
+  const ruleTwo = `${today}.  So enter a date between ${startDate} and ${endDate}`;
 
   $("#valid-dates").html(birthdayRules); 
+  $("#ruleTwo").html(ruleTwo);
 }
 
 // date entered must be AFTER the min and BEFORE the max

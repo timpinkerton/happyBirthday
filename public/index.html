@@ -101,15 +101,15 @@
     <div class="container-fluid about-wrapper" id="about">
         <h4>Whats this all about?</h4>
 
-        <p>This is all about birthdays! Think about someone you like and how cool it would be if they came to this site
-            on their birthday and there's a special birthday card from Arnold and Dusty made out to them at the top of this
-            page. That would be awesome! ...Right? Yes. That
+        <p>This is all about birthdays! Think about someone you like and how cool it would be if they came to this site on their
+            birthday and there's a birthday card from Arnold and Dusty made out to them at the top of this page. That would
+            be awesome! ...Right? Yes. That
             <i>would</i> be awesome.
         </p>
 
         <h4>Here's how it works:</h4>
 
-        <p>It's a very simple process. Follow the steps below:</p>
+        <p>It's a very simple. Just follow these steps:</p>
         <ol>
             <li>Complete the form below</li>
             <li>Click the Submit button</li>
@@ -129,15 +129,16 @@
             someone else.</p>
 
         <h4>There are just two rules to follow...</h4>
+
         <ol>
-            <li>Only one birthday card per day. If someone has already submitted a request for you birthday (check the list below),
-                try again next year.</li>
-            <li>You must submit your request at least one week before the date. I need time to get these done.</li>
+            <li>Only one birthday card per day.</li>
+            <li>The date you enter should be the date of the persons next birthday, starting one week from today. Today is
+                <span id="ruleTwo"></span>
+            </li>
         </ol>
 
         <p>
-            <strong>Alright!</strong> As the great Mr. T once said
-            <q>the jibba jabba stops here!</q> Think about who you want to send a birthday greeting to and check out the list
+            <strong>Alright!</strong> Enough jibba jabba! Think about who you want to send a birthday greeting to and check out the list
             below. If their birthday is not availble, then think about someone else you want to make happy.</p>
     </div>
     <!-- About Section End -->
@@ -168,19 +169,19 @@
         <form>
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                <input type="text" class="form-control" id="name" placeholder="Enter a name" required>
             </div>
 
             <div class="form-group" id="birthdayInput">
-                    <label for="birthday">Birthday</label><span id="valid-dates"></span>
+                <label for="birthday">Birthday</label>
+                <span id="valid-dates"></span>
             </div>
-
-            
 
             <button type="button" class="btn btn-primary" onclick="submitNewReservation()">Submit</button>
         </form>
     </div>
     <!-- Send a card section end -->
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
@@ -193,7 +194,7 @@
 
             refreshReservationList();
             getTodaysName();
-            openDates(); 
+            openDates();
             birthdayInput();
 
         });
