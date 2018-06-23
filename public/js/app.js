@@ -137,6 +137,14 @@ function clearForm() {
 }
 
 
+function openDates() {
+
+  const startDate = moment().add(7, 'days').format("MM-DD-YYYY");
+  const endDate = moment().add(372, 'days').format("MM-DD-YYYY");
+
+  document.getElementById("valid-dates").innerText = "Please enter a date between " + startDate + " and " + endDate;
+}
+
 // *********************************************************************
 // Functions for the Current List section on the EDIT page
 // *********************************************************************
