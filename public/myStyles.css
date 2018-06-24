@@ -13,7 +13,8 @@ nav {
 .homePage-wrapper,
 .about-wrapper,
 .currentList-wrapper,
-.inputForm-wrapper { 
+.inputForm-wrapper,
+footer { 
     max-width: 991px;
     padding: 40px;
 }
@@ -64,4 +65,18 @@ nav {
 
 #valid-dates {
     font-size: .75em; 
+}
+
+
+/***********  FOOTER  ***********/
+
+footer {
+    background-color: lightgrey;
+    position: static; 
+}
+
+.footer-links {
+    list-style: none; 
+    padding: 0px; 
+    margin: 0; 
 }

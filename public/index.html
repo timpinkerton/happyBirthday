@@ -13,6 +13,46 @@
 
     <link rel="stylesheet" href="myStyles.css">
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+        crossorigin="anonymous">
+
+    <!-- Twitter for Websites JavaScript. for the tweet button -->
+    <script>
+        window.twttr = (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+
+            t._e = [];
+            t.ready = function (f) {
+                t._e.push(f);
+            };
+
+            return t;
+        }(document, "script", "twitter-wjs"));
+    </script>
+    <!-- End Twitter JavaScript -->
+
+
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- End Facebook SDK for JavaScript -->
+
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
 
@@ -138,8 +178,8 @@
         </ol>
 
         <p>
-            <strong>Alright!</strong> Enough jibba jabba! Think about who you want to send a birthday greeting to and check out the list
-            below. If their birthday is not availble, then think about someone else you want to make happy.</p>
+            <strong>Alright!</strong> Enough jibba jabba! Think about who you want to send a birthday greeting to and check out the
+            list below. If their birthday is not availble, then think about someone else you want to make happy.</p>
     </div>
     <!-- About Section End -->
 
@@ -181,6 +221,47 @@
         </form>
     </div>
     <!-- Send a card section end -->
+
+    <!-- Footer Section -->
+    <footer class="container-fluid">
+        <div>
+            <p class="text-center">Share this site with those people online that you call "friends"</p>
+            <ul class="d-flex justify-content-center footer-links">
+
+                <!-- Twitter share link -->
+                <li>
+                    <a class="nav-item nav-link" href="https://twitter.com/intent/tweet?text=check%20this%20out!%20http://arnoldanddusty.com/">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+
+                <!-- Facebook share link -->
+                <li>
+                    <!-- <i class="fab fa-facebook-f"></i> -->
+
+                    <div class="fb-share-button" data-href="http://arnoldanddusty.com/" data-layout="button" data-size="small" data-mobile-iframe="true">
+                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Farnoldanddusty.com%2F&amp;src=sdkpreparse"
+                            class="fb-xfbml-parse-ignore" data-mobile-iframe="true"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+
+                </li>
+
+                <!-- Instagram share link -->
+                <li>
+                    <a class="nav-item nav-link" href="#">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </li>
+
+                <!-- Pinterest share link -->
+                <li>
+                    <a class="nav-item nav-link" href="#">
+                        <i class="fab fa-pinterest-p"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
