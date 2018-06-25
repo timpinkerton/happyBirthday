@@ -162,7 +162,7 @@ function submitNewReservation() {
 
           }
         }
-
+        //if there is no match a POST request is created
         if (!isMatch) {
           $.ajax({
               type: 'POST',
@@ -194,10 +194,6 @@ function submitNewReservation() {
 }
 
 
-
-
-
-
 // .fail(function (error) {
 //   console.log("did not work!", error);
 
@@ -212,15 +208,13 @@ function submitNewReservation() {
 
 
 
-
-
 // this is to clear the input fields after the submit button is clicked
 function clearForm() {
   document.getElementById("name").value = '';
   document.getElementById("birthday").value = '';
 }
 
-
+//getting the start and end dates 
 function openDates() {
   const today = moment().format("MM-DD-YYYY");
   const startDate = moment().add(6, 'days').format("MM-DD-YYYY");
@@ -236,6 +230,7 @@ function openDates() {
   $("#ruleTwo").html(ruleTwo);
 }
 
+//template literal for dynamic min and max dates in the birthday input
 // date entered must be AFTER the min and BEFORE the max
 function birthdayInput() {
 
@@ -340,7 +335,7 @@ function updateReservation(_id) {
 
 
     } else if (
-      // Read more about handling dismissals
+
       result.dismiss === swal.DismissReason.cancel
     ) {
       console.log(_id, " has NOT been updated.");
