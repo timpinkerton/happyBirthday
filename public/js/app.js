@@ -89,7 +89,7 @@ function refreshReservationList() {
 function submitNewReservation() {
 
   const startDate = moment().add(6, 'days').format("MM-DD-YYYY");
-  const endDate = moment().add(373, 'days').format("MM-DD-YYYY");
+  const endDate = moment().add(371, 'days').format("MM-DD-YYYY");
 
   console.log('the submitNewReservation function has been called!');
 
@@ -118,57 +118,7 @@ function submitNewReservation() {
       backdrop: true,
     })
     //checking to see if the date entered is between the start and end dates
-  } else if (moment(newReservationData.birthday).isBetween(startDate, endDate)) {
-
-    console.log("Goood Date");
-    getReservations()
-      .then(reservations => {
-        //Checking if the date is already submitted
-        for (var i = 0; i < reservations.length; i++) {
-          console.log(moment.utc(reservations[i].birthday).format("YYYY-MM-DD"));
-          if (moment.utc(reservations[i].birthday).format("YYYY-MM-DD") === newReservationData.birthday) {
-            console.log("that date is already taken");
-
-            swal({
-              title: 'Dang it!',
-              text: 'That date is already taken.  Please try again.',
-              type: 'error',
-
-              backdrop: true,
-            })
-
-            break;
-
-          } else {
-            console.log("This is a unique birthday. yEAH!");
-
-            $.ajax({
-                type: 'POST',
-                url: '/reservations',
-                data: JSON.stringify(newReservationData),
-                dataType: 'json',
-                contentType: 'application/json',
-              })
-              .done(function (response) {
-                console.log("new reservation!");
-                refreshReservationList();
-
-                swal({
-                  title: 'Done!',
-                  text: newReservationData.name + ' has been added to the list',
-                  type: 'success',
-
-                  backdrop: true,
-                })
-              })
-
-            break;
-          }
-        }
-
-      })
-
-  } else {
+  } else if (moment(newReservationData.birthday).isSameOrBefore(startDate) || moment(newReservationData.birthday).isSameOrAfter(endDate)) {
 
     swal({
       title: 'Dang it!',
@@ -178,26 +128,91 @@ function submitNewReservation() {
       backdrop: true,
     })
 
+  } else {
+
+    let isMatch;
+
+    //Checking if the date is already submitted
+    getReservations()
+      .then(reservations => {
+
+        for (var i = 0; i < reservations.length; i++) {
+
+          console.log("bday already in the list: " + moment.utc(reservations[i].birthday).format("YYYY-MM-DD"));
+          console.log("new birthday to add to list: " + newReservationData.birthday);
+
+          if (moment.utc(reservations[i].birthday).format("YYYY-MM-DD") === newReservationData.birthday) {
+            console.log("Match!!!!  that date is already taken");
+            isMatch = true;
+
+            swal({
+              title: 'Dang it!',
+              text: 'That date is already taken.  Please try again.',
+              type: 'error',
+            
+              backdrop: true,
+            })
+
+            break;
+
+          } else {
+
+            console.log("No match. ");
+            isMatch = false;
+
+          }
+        }
+
+        if (!isMatch) {
+          $.ajax({
+              type: 'POST',
+              url: '/reservations',
+              data: JSON.stringify(newReservationData),
+              dataType: 'json',
+              contentType: 'application/json',
+            })
+            .done(function (response) {
+              console.log("new reservation!");
+              refreshReservationList();
+
+              swal({
+                title: 'Done!',
+                text: newReservationData.name + ' has been added to the list',
+                type: 'success',
+
+                backdrop: true,
+              })
+
+            })
+        }
+      })
+
+    console.log('Reservation data for the new reservation', newReservationData);
+
+    clearForm();
   }
-
-
-  // $.fail(function (error) {
-  //   console.log("did not work!", error);
-
-  //   swal({
-  //     title: 'Dang it!',
-  //     text: 'You must enter a name and a valid birthday.  Please try again.',
-  //     type: 'error',
-
-  //     backdrop: true,
-  //   })
-  // });
-
-
-  console.log('Reservation data for the new reservation', newReservationData);
-
-  clearForm();
 }
+
+
+
+
+
+
+// .fail(function (error) {
+//   console.log("did not work!", error);
+
+//   swal({
+//     title: 'Dang it!',
+//     text: 'You must enter a name and a valid birthday.  Please try again.',
+//     type: 'error',
+
+//     backdrop: true,
+//   })
+// });
+
+
+
+
 
 // this is to clear the input fields after the submit button is clicked
 function clearForm() {
@@ -209,7 +224,7 @@ function clearForm() {
 function openDates() {
   const today = moment().format("MM-DD-YYYY");
   const startDate = moment().add(6, 'days').format("MM-DD-YYYY");
-  const endDate = moment().add(373, 'days').format("MM-DD-YYYY");
+  const endDate = moment().add(371, 'days').format("MM-DD-YYYY");
 
   // document.getElementById("valid-dates").innerText = "Please enter a date between " + startDate + " and " + endDate;
 
@@ -225,7 +240,7 @@ function openDates() {
 function birthdayInput() {
 
   const startDate = moment().add(6, 'days').format("YYYY-MM-DD");
-  const endDate = moment().add(373, 'days').format("YYYY-MM-DD");
+  const endDate = moment().add(371, 'days').format("YYYY-MM-DD");
 
   var birthdayInput = `<input type="date" class="form-control" id="birthday" min="${startDate}" max="${endDate}" required>`;
 
