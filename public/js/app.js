@@ -87,44 +87,113 @@ function refreshReservationList() {
 
 
 function submitNewReservation() {
+
+  const startDate = moment().add(6, 'days').format("MM-DD-YYYY");
+  const endDate = moment().add(373, 'days').format("MM-DD-YYYY");
+
   console.log('the submitNewReservation function has been called!');
 
   //getting the values from the input form and creating an object literal
   const newReservationData = {
     name: $('#name').val(),
     birthday: $('#birthday').val()
-  };
+  }
 
-  $.ajax({
-      type: 'POST',
-      url: '/reservations',
-      data: JSON.stringify(newReservationData),
-      dataType: 'json',
-      contentType: 'application/json',
+  //checking for a name
+  if (!newReservationData.name) {
+    swal({
+      title: 'Dang it!',
+      text: 'You forgot to enter a name.  Please try again.',
+      type: 'error',
+
+      backdrop: true,
     })
-    .done(function (response) {
-      console.log("new reservation!");
-      refreshReservationList();
+    //checking for a birthday
+  } else if (!newReservationData.birthday) {
+    swal({
+      title: 'Dang it!',
+      text: 'You forgot to enter a birthday.  Please try again.',
+      type: 'error',
 
-      swal({
-        title: 'Done!',
-        text: newReservationData.name + ' has been added to the list',
-        type: 'success',
-
-        backdrop: true,
-      })
+      backdrop: true,
     })
-    .fail(function (error) {
-      console.log("did not work!", error);
+    //checking to see if the date entered is between the start and end dates
+  } else if (moment(newReservationData.birthday).isBetween(startDate, endDate)) {
 
-      swal({
-        title: 'Dang it!',
-        text: 'You must enter a name and a valid birthday.  Please try again.',
-        type: 'error',
+    console.log("Goood Date");
+    getReservations()
+      .then(reservations => {
+        //Checking if the date is already submitted
+        for (var i = 0; i < reservations.length; i++) {
+          console.log(moment.utc(reservations[i].birthday).format("YYYY-MM-DD"));
+          if (moment.utc(reservations[i].birthday).format("YYYY-MM-DD") === newReservationData.birthday) {
+            console.log("that date is already taken");
 
-        backdrop: true,
+            swal({
+              title: 'Dang it!',
+              text: 'That date is already taken.  Please try again.',
+              type: 'error',
+
+              backdrop: true,
+            })
+
+            break;
+
+          } else {
+            console.log("This is a unique birthday. yEAH!");
+
+            $.ajax({
+                type: 'POST',
+                url: '/reservations',
+                data: JSON.stringify(newReservationData),
+                dataType: 'json',
+                contentType: 'application/json',
+              })
+              .done(function (response) {
+                console.log("new reservation!");
+                refreshReservationList();
+
+                swal({
+                  title: 'Done!',
+                  text: newReservationData.name + ' has been added to the list',
+                  type: 'success',
+
+                  backdrop: true,
+                })
+              })
+
+            break;
+          }
+        }
+
       })
-    });
+
+  } else {
+
+    swal({
+      title: 'Dang it!',
+      text: 'Please enter a birthday between ' + startDate + ' and ' + endDate,
+      type: 'error',
+
+      backdrop: true,
+    })
+
+  }
+
+
+  // $.fail(function (error) {
+  //   console.log("did not work!", error);
+
+  //   swal({
+  //     title: 'Dang it!',
+  //     text: 'You must enter a name and a valid birthday.  Please try again.',
+  //     type: 'error',
+
+  //     backdrop: true,
+  //   })
+  // });
+
+
   console.log('Reservation data for the new reservation', newReservationData);
 
   clearForm();
@@ -139,8 +208,8 @@ function clearForm() {
 
 function openDates() {
   const today = moment().format("MM-DD-YYYY");
-  const startDate = moment().add(7, 'days').format("MM-DD-YYYY");
-  const endDate = moment().add(372, 'days').format("MM-DD-YYYY");
+  const startDate = moment().add(6, 'days').format("MM-DD-YYYY");
+  const endDate = moment().add(373, 'days').format("MM-DD-YYYY");
 
   // document.getElementById("valid-dates").innerText = "Please enter a date between " + startDate + " and " + endDate;
 
@@ -148,15 +217,15 @@ function openDates() {
 
   const ruleTwo = `${today}.  So enter a date between ${startDate} and ${endDate}`;
 
-  $("#valid-dates").html(birthdayRules); 
+  $("#valid-dates").html(birthdayRules);
   $("#ruleTwo").html(ruleTwo);
 }
 
 // date entered must be AFTER the min and BEFORE the max
 function birthdayInput() {
 
-  const startDate = moment().add(7, 'days').format("YYYY-MM-DD");
-  const endDate = moment().add(372, 'days').format("YYYY-MM-DD");
+  const startDate = moment().add(6, 'days').format("YYYY-MM-DD");
+  const endDate = moment().add(373, 'days').format("YYYY-MM-DD");
 
   var birthdayInput = `<input type="date" class="form-control" id="birthday" min="${startDate}" max="${endDate}" required>`;
 
