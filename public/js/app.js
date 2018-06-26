@@ -141,6 +141,7 @@ function submitNewReservation() {
           console.log("bday already in the list: " + moment.utc(reservations[i].birthday).format("YYYY-MM-DD"));
           console.log("new birthday to add to list: " + newReservationData.birthday);
 
+
           if (moment.utc(reservations[i].birthday).format("YYYY-MM-DD") === newReservationData.birthday) {
             console.log("Match!!!!  that date is already taken");
             isMatch = true;
