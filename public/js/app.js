@@ -43,12 +43,18 @@ function greetingTemplate(todaysName) {
 // the jQuery template to render the list of names and birthdays
 function listTemplate(reservations) {
 
+  const today = moment();
+
   var compiled = '';
   reservations.forEach(item => {
-    compiled += `<tr>
-                  <td>${item.name}</td>
-                  <td>${moment.utc(item.birthday).format("MMMM, DD")}</td>
-                </tr> `;
+    //this if statment will only add an item to list it the birthday is today or later
+    if (moment(item.birthday).isSameOrAfter(today)) {
+      compiled += `<tr>
+      <td>${item.name}</td>
+      <td>${moment.utc(item.birthday).format("MMMM, DD")}</td>
+    </tr> `;
+    }
+
   });
   return compiled;
 }
@@ -150,7 +156,7 @@ function submitNewReservation() {
               title: 'Dang it!',
               text: 'That date is already taken.  Please try again.',
               type: 'error',
-            
+
               backdrop: true,
             })
 
