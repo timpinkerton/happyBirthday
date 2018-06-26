@@ -89,7 +89,7 @@ function refreshReservationList() {
 function submitNewReservation() {
 
   const startDate = moment().add(6, 'days').format("MM-DD-YYYY");
-  const endDate = moment().add(371, 'days').format("MM-DD-YYYY");
+  const endDate = moment().add(372, 'days').format("MM-DD-YYYY");
 
   console.log('the submitNewReservation function has been called!');
 
@@ -219,7 +219,7 @@ function clearForm() {
 function openDates() {
   const today = moment().format("MM-DD-YYYY");
   const startDate = moment().add(6, 'days').format("MM-DD-YYYY");
-  const endDate = moment().add(371, 'days').format("MM-DD-YYYY");
+  const endDate = moment().add(372, 'days').format("MM-DD-YYYY");
 
   // document.getElementById("valid-dates").innerText = "Please enter a date between " + startDate + " and " + endDate;
 
@@ -236,7 +236,7 @@ function openDates() {
 function birthdayInput() {
 
   const startDate = moment().add(6, 'days').format("YYYY-MM-DD");
-  const endDate = moment().add(371, 'days').format("YYYY-MM-DD");
+  const endDate = moment().add(372, 'days').format("YYYY-MM-DD");
 
   var birthdayInput = `<input type="date" class="form-control" id="birthday" min="${startDate}" max="${endDate}" required>`;
 
