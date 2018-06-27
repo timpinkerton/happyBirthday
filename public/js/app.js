@@ -3,10 +3,14 @@
 // *******************************************************************
 // .format("MM-DD-YYYY");
 const today = moment().format("YYYY-MM-DD");
-const yesterday = moment(today).subtract(1, 'days');
+const yesterday = moment(today).subtract(1, 'days').format("YYYY-MM-DD");
 const startDate = moment().add(6, 'days').format("YYYY-MM-DD");
 const endDate = moment().add(372, 'days').format("YYYY-MM-DD");
 
+
+function windowRefresh () {
+  location.reload();
+}
 
 // *********************************************************************
 // Functions for the Current List section on the MAIN page
@@ -284,6 +288,7 @@ function birthdayInput() {
 // *********************************************************************
 // Functions for the Current List section on the EDIT page
 // *********************************************************************
+
 function editListTemplate(reservations) {
 
   //if I remove this line, there is a deprecation warning
@@ -346,60 +351,153 @@ function updateReservation(_id) {
     birthday: $("#birthday-" + updateId).val()
   }
 
-  swal({
-    title: 'Are you sure you want to update this reservation?',
-    text: "please be careful",
-    type: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, update it!'
-  }).then((result) => {
+  let updatedBirthdayFormatted = moment(updatedReservation.birthday).format("YYYY-MM-DD");
 
-    if (result.value) {
+  console.log("the updated birthday formatted: " + updatedBirthdayFormatted);
 
-      // .ajax() call for the PUT
-      $.ajax({
-          type: 'PUT',
-          url: '/reservations/' + _id,
-          data: JSON.stringify(updatedReservation),
-          dataType: 'json',
-          contentType: 'application/json',
-        })
-        .done(function (response) {
-          console.log("Reservation w/ id: " + _id + " has been updated.");
-          console.log('Reservation data for the new reservation', updatedReservation);
-          refreshReservationList();
-          refreshEditReservationList();
+  // checking if both fields are blank
+  if (!updatedReservation.name && !updatedReservation.birthday) {
+    swal({
+      title: 'Ummmm.....',
+      text: 'You can\'t leave those blank!',
+      type: 'error',
+
+      backdrop: true,
+    })
+  }
+  //checking for a name
+  else if (!updatedReservation.name) {
+    swal({
+      title: 'Dang it!',
+      text: 'You must enter a name.  Please try again.',
+      type: 'error',
+
+      backdrop: true,
+    })
+    //checking for a birthday
+  } else if (!updatedReservation.birthday) {
+    swal({
+      title: 'Dang it!',
+      text: 'You must enter a birthday.  Please try again.',
+      type: 'error',
+
+      backdrop: true,
+    })
+    // checking to see if the date entered is between the start and end dates
+    // Cannot change a birthday to today
+    // Date range for editing will be today through up to the endDate
+  } else if (moment(updatedBirthdayFormatted).isBefore(today) || moment(updatedBirthdayFormatted).isSameOrAfter(endDate)) {
+
+    swal({
+      title: 'Dang it!',
+      text: 'Please enter a birthday between ' + yesterday + ' and ' + endDate,
+      type: 'error',
+
+      backdrop: true,
+    })
+
+  } else {
+
+    let isMatch;
+    
+
+    //Checking if the date is already submitted
+    getReservations()
+      .then(reservations => {
+
+        for (var i = 0; i < reservations.length; i++) {
+          // moment.utc(reservations[i].birthday).format("YYYY-MM-DD")
+          console.log("bday already in the list: " + reservations[i].birthday);
+          console.log("Trying to change to this birthday: " + updatedBirthdayFormatted);
+
+
+          if (moment.utc(reservations[i].birthday).format("YYYY-MM-DD") === updatedBirthdayFormatted) {
+            console.log("Match!!!!  that date is already taken");
+            isMatch = true;
+
+            swal({
+              title: 'Dang it!',
+              text: 'That date is already taken. No updates made. Please try again.',
+              type: 'error',
+
+              backdrop: true,
+            })
+
+            break;
+
+          } else {
+
+            console.log("No match. ");
+            isMatch = false;
+
+          }
+        }
+
+
+        if (!isMatch) {
 
           swal({
-            title: 'Updated!',
-            type: 'success',
+            title: 'Are you sure you want to update this reservation?',
+            text: "please be careful",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, update it!'
+          }).then((result) => {
 
-            backdrop: true,
-            toast: true
+            if (result.value) {
+
+              // .ajax() call for the PUT
+              $.ajax({
+                  type: 'PUT',
+                  url: '/reservations/' + _id,
+                  data: JSON.stringify(updatedReservation),
+                  dataType: 'json',
+                  contentType: 'application/json',
+                })
+                .done(function (response) {
+                  console.log("Reservation w/ id: " + _id + " has been updated.");
+                  console.log('Reservation data for the new reservation', updatedReservation);
+                  refreshReservationList();
+                  refreshEditReservationList();
+
+                  swal({
+                    title: 'Updated!',
+                    type: 'success',
+
+                    backdrop: true,
+                    toast: true
+                  })
+                })
+                .fail(function (error) {
+                  console.log(_id + " could not be updated", error);
+                });
+
+
+            } else if (
+
+              result.dismiss === swal.DismissReason.cancel
+            ) {
+              console.log(_id, " has NOT been updated.");
+               
+              swal(
+                'Cancelled',
+                'Reservation has NOT been updated.',
+                'error'
+              )
+              
+            }
+            
           })
-        })
-        .fail(function (error) {
-          console.log(_id + " could not be updated", error);
-        });
 
-
-    } else if (
-
-      result.dismiss === swal.DismissReason.cancel
-    ) {
-      console.log(_id, " has NOT been updated.");
-      swal(
-        'Cancelled',
-        'Reservation has NOT been updated.',
-        'error'
-      )
-    }
-
-  })
-
+        }
+        
+      })
+  }
+  
 }
+// End of function updateReservation(_id)
 
 
 // DELETE: to delete an existing post
