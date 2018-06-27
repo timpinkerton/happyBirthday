@@ -3,6 +3,7 @@
 // *******************************************************************
 // .format("MM-DD-YYYY");
 const today = moment().format("YYYY-MM-DD");
+const yesterday = moment(today).subtract(1, 'days');
 const startDate = moment().add(6, 'days').format("YYYY-MM-DD");
 const endDate = moment().add(372, 'days').format("YYYY-MM-DD");
 
@@ -54,8 +55,7 @@ function listTemplate(reservations) {
 
   // const todayNew = moment();
   console.log("*** Today is: " + today);
-
-  const yesterday = moment(today).subtract(1, 'days');
+  // const yesterday = moment(today).subtract(1, 'days');
   console.log("*** Yesterday is: " + yesterday);
 
   var compiled = '';
@@ -189,7 +189,7 @@ function submitNewReservation() {
               backdrop: true,
             })
 
-            break;
+            // break;
 
           } else {
 
@@ -292,7 +292,7 @@ function editListTemplate(reservations) {
   var editItems = '';
   reservations.forEach(item => {
     //this if statment will only add an item to list it the birthday is today or later
-    if (moment(item.birthday).isSameOrAfter(today)) {
+    if (moment(item.birthday).isAfter(yesterday)) {
       editItems += `
       <li class="list-group-item">
       <form class="form-inline">
