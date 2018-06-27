@@ -3,8 +3,8 @@
 // *******************************************************************
 // .format("MM-DD-YYYY");
 const today = moment().format("YYYY-MM-DD");
-const startDate = moment().add(6, 'days').format("MM-DD-YYYY");
-const endDate = moment().add(372, 'days').format("MM-DD-YYYY");
+const startDate = moment().add(6, 'days').format("YYYY-MM-DD");
+const endDate = moment().add(372, 'days').format("YYYY-MM-DD");
 
 
 // *********************************************************************
@@ -53,14 +53,14 @@ function greetingTemplate(todaysName) {
 function listTemplate(reservations) {
 
   // const todayNew = moment();
-  console.log("****** Today is: " + today);
+  console.log("*** Today is: " + today);
 
   const yesterday = moment(today).subtract(1, 'days');
-  console.log("yesterday is: " + yesterday);
+  console.log("*** Yesterday is: " + yesterday);
 
   var compiled = '';
   reservations.forEach(item => {
-    //this if statment will only add an item to list it the birthday is today or later
+    //this if statment will only add an item to list it the birthday is after yesterday's date defined above
     if (moment(item.birthday).isAfter(yesterday)) {
       compiled += `<tr>
       <td>${item.name}</td>
@@ -255,11 +255,13 @@ function clearForm() {
 function openDates() {
 
   let todayFormatted = moment(today).format('MM/DD/YYYY');
+  let startDateFormatted = moment(startDate).format('MM/DD/YYYY');
+  let endDateFormatted = moment(endDate).format('MM/DD/YYYY');
   // document.getElementById("valid-dates").innerText = "Please enter a date between " + startDate + " and " + endDate;
 
-  const birthdayRules = ` (Enter a date between ${startDate} and ${endDate})`;
+  const birthdayRules = ` (Enter a date between ${startDateFormatted} and ${endDateFormatted})`;
 
-  const ruleTwo = `${todayFormatted}.  So enter a date between ${startDate} and ${endDate}`;
+  const ruleTwo = `Today is: ${todayFormatted}. <p> So enter a date between ${startDateFormatted} and ${endDateFormatted}</p>`;
 
   $("#valid-dates").html(birthdayRules);
   $("#ruleTwo").html(ruleTwo);
@@ -269,11 +271,12 @@ function openDates() {
 // date entered must be AFTER the min and BEFORE the max
 function birthdayInput() {
 
-  // changing the startDate and endDate format
-  // const inputStartDate = moment(startDate).format("YYYY-MM-DD");
-  // const inputEndDate = moment(endDate).format("YYYY-MM-DD");
+  // reformatting start and end dates for min and max values
+  // adding 1 day to startDate and subtracting 1 from endDate to restrict calendar dates available
+  const inputStartDate = moment(startDate).add(1, 'days').format("YYYY-MM-DD");
+  const inputEndDate = moment(endDate).subtract(1, 'days').format("YYYY-MM-DD");
 
-  var birthdayInput = `<input type="date" class="form-control" id="birthday" min="${startDate}" max="${endDate}" required>`;
+  var birthdayInput = `<input type="date" class="form-control" id="birthday" min="${inputStartDate}" max="${inputEndDate}" required>`;
 
   $('#valid-dates').after(birthdayInput);
 }
@@ -414,7 +417,7 @@ function deleteReservation(_id) {
   }).then((result) => {
     if (result.value) {
 
-      //$.ajax() w/ type DELETE creates a DELETE method 
+      //$.ajax() for the DELETE method 
       return $.ajax({
           type: 'DELETE',
           url: '/reservations/' + _id,
