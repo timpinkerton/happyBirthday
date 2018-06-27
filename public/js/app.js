@@ -1,10 +1,19 @@
+// *******************************************************************
+// Global variables: today, startDate, endDate
+// *******************************************************************
+// .format("MM-DD-YYYY");
+const today = moment().format("YYYY-MM-DD");
+const startDate = moment().add(6, 'days').format("MM-DD-YYYY");
+const endDate = moment().add(372, 'days').format("MM-DD-YYYY");
+
+
 // *********************************************************************
 // Functions for the Current List section on the MAIN page
 // *********************************************************************
 
 function getTodaysName() {
   //to get the current date and time
-  const today = moment().format("YYYY-MM-DD");
+  // const today = moment().format("YYYY-MM-DD");
 
   let todaysName = '';
 
@@ -43,17 +52,23 @@ function greetingTemplate(todaysName) {
 // the jQuery template to render the list of names and birthdays
 function listTemplate(reservations) {
 
-  const today = moment();
+  // const todayNew = moment();
+  console.log("****** Today is: " + today);
+
+  const yesterday = moment(today).subtract(1, 'days');
+  console.log("yesterday is: " + yesterday);
 
   var compiled = '';
   reservations.forEach(item => {
     //this if statment will only add an item to list it the birthday is today or later
-    if (moment(item.birthday).isSameOrAfter(today)) {
+    if (moment(item.birthday).isAfter(yesterday)) {
       compiled += `<tr>
       <td>${item.name}</td>
       <td>${moment.utc(item.birthday).format("MMMM, DD")}</td>
     </tr> `;
     }
+
+    // ********* If the utc above is removed, dates will show 1 day earlier in the table ************* 
 
   });
   return compiled;
@@ -94,8 +109,8 @@ function refreshReservationList() {
 
 function submitNewReservation() {
 
-  const startDate = moment().add(6, 'days').format("MM-DD-YYYY");
-  const endDate = moment().add(372, 'days').format("MM-DD-YYYY");
+  // const startDate = moment().add(6, 'days').format("MM-DD-YYYY");
+  // const endDate = moment().add(372, 'days').format("MM-DD-YYYY");
 
   console.log('the submitNewReservation function has been called!');
 
@@ -105,8 +120,22 @@ function submitNewReservation() {
     birthday: $('#birthday').val()
   }
 
+  // console.log("new birthday before formatting: " + newReservationData.birthday); 
+  // newReservationData.birthday = moment(newReservationData.birthday).format("YYYY-MM-DD");
+
+  // console.log("This is the new data being entered: " + newReservationData.birthday);
+
+  if (!newReservationData.name && !newReservationData.birthday) {
+    swal({
+      title: 'Ummmm.....',
+      text: 'You didn\'t enter anything!',
+      type: 'error',
+
+      backdrop: true,
+    })
+  }
   //checking for a name
-  if (!newReservationData.name) {
+  else if (!newReservationData.name) {
     swal({
       title: 'Dang it!',
       text: 'You forgot to enter a name.  Please try again.',
@@ -128,7 +157,7 @@ function submitNewReservation() {
 
     swal({
       title: 'Dang it!',
-      text: 'Please enter a birthday between ' + startDate + ' and ' + endDate,
+      text: 'Please enter a birthday BETWEEN ' + startDate + ' and ' + endDate,
       type: 'error',
 
       backdrop: true,
@@ -143,8 +172,8 @@ function submitNewReservation() {
       .then(reservations => {
 
         for (var i = 0; i < reservations.length; i++) {
-
-          console.log("bday already in the list: " + moment.utc(reservations[i].birthday).format("YYYY-MM-DD"));
+          // moment.utc(reservations[i].birthday).format("YYYY-MM-DD")
+          console.log("bday already in the list: " + reservations[i].birthday);
           console.log("new birthday to add to list: " + newReservationData.birthday);
 
 
@@ -221,17 +250,16 @@ function clearForm() {
   document.getElementById("birthday").value = '';
 }
 
+
 //getting the start and end dates 
 function openDates() {
-  const today = moment().format("MM-DD-YYYY");
-  const startDate = moment().add(6, 'days').format("MM-DD-YYYY");
-  const endDate = moment().add(372, 'days').format("MM-DD-YYYY");
 
+  let todayFormatted = moment(today).format('MM/DD/YYYY');
   // document.getElementById("valid-dates").innerText = "Please enter a date between " + startDate + " and " + endDate;
 
   const birthdayRules = ` (Enter a date between ${startDate} and ${endDate})`;
 
-  const ruleTwo = `${today}.  So enter a date between ${startDate} and ${endDate}`;
+  const ruleTwo = `${todayFormatted}.  So enter a date between ${startDate} and ${endDate}`;
 
   $("#valid-dates").html(birthdayRules);
   $("#ruleTwo").html(ruleTwo);
@@ -241,8 +269,9 @@ function openDates() {
 // date entered must be AFTER the min and BEFORE the max
 function birthdayInput() {
 
-  const startDate = moment().add(6, 'days').format("YYYY-MM-DD");
-  const endDate = moment().add(372, 'days').format("YYYY-MM-DD");
+  // changing the startDate and endDate format
+  // const inputStartDate = moment(startDate).format("YYYY-MM-DD");
+  // const inputEndDate = moment(endDate).format("YYYY-MM-DD");
 
   var birthdayInput = `<input type="date" class="form-control" id="birthday" min="${startDate}" max="${endDate}" required>`;
 
@@ -253,9 +282,15 @@ function birthdayInput() {
 // Functions for the Current List section on the EDIT page
 // *********************************************************************
 function editListTemplate(reservations) {
+
+  //if I remove this line, there is a deprecation warning
+  // const today = moment();
+
   var editItems = '';
   reservations.forEach(item => {
-    editItems += `
+    //this if statment will only add an item to list it the birthday is today or later
+    if (moment(item.birthday).isSameOrAfter(today)) {
+      editItems += `
       <li class="list-group-item">
       <form class="form-inline">
         <label for="name" class="mr-2">Name</label>
@@ -270,6 +305,7 @@ function editListTemplate(reservations) {
       </form>  
       </li>
   `;
+    }
   });
   return editItems;
 }
@@ -280,6 +316,13 @@ function refreshEditReservationList() {
   getReservations()
     .then(reservations => {
 
+      // sorting the reservations array by birthday
+      reservations.sort(function (a, b) {
+        var c = new Date(a.birthday);
+        var d = new Date(b.birthday);
+        return c - d;
+      })
+
       // saving the reservations array to a global window object to be accessed in the updateReservation() function
       window.reservationList = reservations;
 
@@ -288,9 +331,17 @@ function refreshEditReservationList() {
 }
 
 function updateReservation(_id) {
-  const reservation = window.reservationList.find(reservation => reservation._id === _id);
+  // const reservation = window.reservationList.find(reservation => reservation._id === _id);
+
   let updateId = _id;
   console.log(_id + " is being updated");
+
+  const updatedReservation = {
+    _id: _id,
+    //jQuery selector to update current reservation w/ value in the input field
+    name: $("#name-" + updateId).val(),
+    birthday: $("#birthday-" + updateId).val()
+  }
 
   swal({
     title: 'Are you sure you want to update this reservation?',
@@ -302,17 +353,7 @@ function updateReservation(_id) {
     confirmButtonText: 'Yes, update it!'
   }).then((result) => {
 
-
     if (result.value) {
-
-
-      const updatedReservation = {
-        _id: _id,
-        //jQuery selector to update current reservation w/ value in the input field
-        name: $("#name-" + updateId).val(),
-        birthday: $("#birthday-" + updateId).val()
-      }
-
 
       // .ajax() call for the PUT
       $.ajax({
