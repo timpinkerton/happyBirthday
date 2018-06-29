@@ -4,6 +4,7 @@
 
 module.exports = (app) => {
     const reservations = require('../controllers/reservation.controller.js');
+    const passport = require('passport'); 
 
     //CREATE a new reservation
     app.post('/reservations', reservations.create);
@@ -19,6 +20,11 @@ module.exports = (app) => {
 
     //DELETE a reservation w/ the reservationID
     app.delete('/reservations/:reservationId', reservations.delete);
+
+
 }
+
+
+
 
 // module.exports = router;
