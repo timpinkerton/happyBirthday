@@ -5,16 +5,85 @@ const bodyParser = require('body-parser');
 // requiring and setting the path to use static files
 const path = require('path');
 
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const UserDB = require('./UserDB');
+
+const session = require('express-session');
+
+// configuring the local passport strategy
+// passport.use(new LocalStrategy(
+//     function(username, password, done) {
+//       UserDB.users.findByUsername(username, function(err, user) {
+//         if (err) { return done(err); }
+//         if (!user) {
+//           return done(null, false, { message: 'Incorrect username.' });
+//         }
+//         if (!user.password(password)) {
+//           return done(null, false, { message: 'Incorrect password.' });
+//         }
+//         return done(null, user);
+//       });
+//     }
+//   ));
+
+
+passport.use(new LocalStrategy(
+    function (username, password, cb) {
+        UserDB.users.findByUsername(username, function (err, user) {
+            if (err) {
+                return cb(err);
+            }
+            if (!user) {
+                return cb(null, false);
+            }
+            if (user.password != password) {
+                return cb(null, false);
+            }
+            return cb(null, user);
+        });
+    }));
+
+
+
+    passport.serializeUser(function(user, cb) {
+        cb(null, user.id);
+      });
+      
+      passport.deserializeUser(function(id, cb) {
+        UserDB.users.findById(id, function (err, user) {
+          if (err) { return cb(err); }
+          cb(null, user);
+        });
+      });
+      
+
+
+
 // creating the application object
 const app = express();
 
-// creating the router object to allow the server to get to the other routes
-// const router = require('./routes');
+app.use(session({
+    secret: "secrets",
+    resave: true,
+    saveUninitialized: true
+}));
 
 // parse the requests w/ content type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+
+// creating the router object to allow the server to get to the other routes
+// const router = require('./routes');
+
+
 
 // parse requests w/ content type - application/json
 app.use(bodyParser.json());
