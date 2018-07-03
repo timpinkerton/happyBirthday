@@ -29,6 +29,11 @@ module.exports = (app) => {
             failureRedirect: '/login.html'
         })
     );
+
+    app.get('/logout', function(req, res){
+        req.logout();
+        res.redirect('/');
+      });
 }
 
 // module.exports = router;

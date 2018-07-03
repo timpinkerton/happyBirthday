@@ -46,17 +46,19 @@ passport.use(new LocalStrategy(
 
 
 
-    passport.serializeUser(function(user, cb) {
-        cb(null, user.id);
-      });
-      
-      passport.deserializeUser(function(id, cb) {
-        UserDB.users.findById(id, function (err, user) {
-          if (err) { return cb(err); }
-          cb(null, user);
-        });
-      });
-      
+passport.serializeUser(function (user, cb) {
+    cb(null, user.id);
+});
+
+passport.deserializeUser(function (id, cb) {
+    UserDB.users.findById(id, function (err, user) {
+        if (err) {
+            return cb(err);
+        }
+        cb(null, user);
+    });
+});
+
 
 
 
