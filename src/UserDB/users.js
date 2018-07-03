@@ -1,6 +1,8 @@
+const config = require('../config');
+
+
 var records = [
-    { id: 1, username: 'tim', password: 'test'}
-//   , { id: 2, username: 'jill', password: 'birthday', displayName: 'Jill', emails: [ { value: 'jill@example.com' } ] }
+    { id: 1, username: `${config.passport.username}`, password: `${config.passport.password}`}
 ];
 
 exports.findById = function(id, cb) {
