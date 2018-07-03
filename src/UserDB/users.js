@@ -1,5 +1,5 @@
 var records = [
-    { id: 1, username: 'tim', password: 'passportTest'}
+    { id: 1, username: 'tim', password: 'test'}
 //   , { id: 2, username: 'jill', password: 'birthday', displayName: 'Jill', emails: [ { value: 'jill@example.com' } ] }
 ];
 

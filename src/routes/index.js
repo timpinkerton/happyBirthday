@@ -25,15 +25,27 @@ module.exports = (app) => {
 
     app.post('/login',
         passport.authenticate('local', {
-            successRedirect: '/edit.html',
+            successRedirect: '/edit',
             failureRedirect: '/login.html'
         })
     );
 
-    app.get('/logout', function(req, res){
+    app.get('/logout', function (req, res) {
         req.logout();
+        console.log('User logged out.')
         res.redirect('/');
+    });
+
+    app.get('/edit', function(req, res, next) {
+        if (req.user) {
+            console.log("User is logged in")
+            res.sendFile('/edit.html', {root: './views/'});
+            
+        } else {
+            res.send('You cannot view this page. Sorry.');
+        }
       });
+
 }
 
 // module.exports = router;
