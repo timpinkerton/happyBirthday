@@ -1,15 +1,14 @@
 const config = require('../config');
 
-
 var records = [
     { id: 1, username: `${config.passport.username}`, password: `${config.passport.password}`}
 ];
 
 exports.findById = function(id, cb) {
   process.nextTick(function() {
-    var idx = id - 1;
-    if (records[idx]) {
-      cb(null, records[idx]);
+    // var idx = id - 1;
+    if (records[0]) {
+      cb(null, records[0]);
     } else {
       cb(new Error('User ' + id + ' does not exist'));
     }

@@ -1,6 +1,5 @@
 // const router = require('express').Router();
 // const mongoose = require('mongoose');
-
 const passport = require('passport');
 
 
@@ -22,7 +21,7 @@ module.exports = (app) => {
     //DELETE a reservation w/ the reservationID
     app.delete('/reservations/:reservationId', reservations.delete);
 
-
+    // Calling authenticate method when submitting a username and password
     app.post('/login',
         passport.authenticate('local', {
             successRedirect: '/edit',
@@ -30,12 +29,14 @@ module.exports = (app) => {
         })
     );
 
+    // When the logout button is clicked, the user is logged out and redirected to the index page
     app.get('/logout', function (req, res) {
         req.logout();
         console.log('User logged out.')
         res.redirect('/');
     });
 
+    //Route for Edit page.  Check to see if user is logged in.  If not message is relayed.
     app.get('/edit', function(req, res, next) {
         if (req.user) {
             console.log("User is logged in")

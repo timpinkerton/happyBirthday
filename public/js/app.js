@@ -291,9 +291,6 @@ function birthdayInput() {
 
 function editListTemplate(reservations) {
 
-  //if I remove this line, there is a deprecation warning
-  // const today = moment();
-
   var editItems = '';
   reservations.forEach(item => {
     //this if statment will only add an item to list it the birthday is today or later
@@ -400,7 +397,6 @@ function updateReservation(_id) {
 
     let isMatch;
     
-
     //Checking if the date is already submitted
     getReservations()
       .then(reservations => {
@@ -410,8 +406,12 @@ function updateReservation(_id) {
           console.log("bday already in the list: " + reservations[i].birthday);
           console.log("Trying to change to this birthday: " + updatedBirthdayFormatted);
 
+          const beforeChange = moment.utc($("#birthday-" + updateId).val()).format("YYYY-MM-DD"); 
+          console.log(beforeChange);
 
-          if (moment.utc(reservations[i].birthday).format("YYYY-MM-DD") === updatedBirthdayFormatted) {
+          // checks to see if the updated birthday matches any birthday that is already in the list, except for the birthday in that entry.  
+          // This allows the user to edit the name and keep the birthday the same. 
+          if (moment.utc(reservations[i].birthday).format("YYYY-MM-DD") === updatedBirthdayFormatted && updatedBirthdayFormatted !=  beforeChange) {
             console.log("Match!!!!  that date is already taken");
             isMatch = true;
 
@@ -432,7 +432,6 @@ function updateReservation(_id) {
 
           }
         }
-
 
         if (!isMatch) {
 
@@ -473,7 +472,6 @@ function updateReservation(_id) {
                 .fail(function (error) {
                   console.log(_id + " could not be updated", error);
                 });
-
 
             } else if (
 
