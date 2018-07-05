@@ -1,7 +1,7 @@
 // *******************************************************************
 // Global variables: today, yesterday, startDate, endDate
 // *******************************************************************
-// .format("MM-DD-YYYY");
+
 const today = moment().format("YYYY-MM-DD");
 const yesterday = moment(today).subtract(1, 'days').format("YYYY-MM-DD");
 const startDate = moment().add(6, 'days').format("YYYY-MM-DD");
@@ -12,7 +12,7 @@ const startDateFormatted = moment(startDate).format('MM/DD/YYYY');
 const endDateFormatted = moment(endDate).format('MM/DD/YYYY');
 
 
-function windowRefresh () {
+function windowRefresh() {
   location.reload();
 }
 
@@ -21,8 +21,6 @@ function windowRefresh () {
 // *********************************************************************
 
 function getTodaysName() {
-  //to get the current date and time
-  // const today = moment().format("YYYY-MM-DD");
 
   let todaysName = '';
 
@@ -125,7 +123,7 @@ function submitNewReservation() {
     birthday: $('#birthday').val()
   }
 
-// if name and birthday inputs are both blank, user receive a pop up
+  // if name and birthday inputs are both blank, user receive a pop up
   if (!newReservationData.name && !newReservationData.birthday) {
     swal({
       title: 'Ummmm.....',
@@ -144,17 +142,19 @@ function submitNewReservation() {
 
       backdrop: true,
     })
-    //checking for a birthday
-  } else if (!newReservationData.birthday) {
+  }
+  //checking for a birthday
+  else if (!newReservationData.birthday) {
     swal({
       title: 'Dang it!',
       text: 'You forgot to enter a birthday.  Please try again.',
       type: 'error',
 
       backdrop: true,
-    })
-    //checking to see if the date entered is between the start and end dates
-  } else if (moment(newReservationData.birthday).isSameOrBefore(startDate) || moment(newReservationData.birthday).isSameOrAfter(endDate)) {
+    })  
+  } 
+  //checking to see if the date entered is between the start and end dates
+  else if (moment(newReservationData.birthday).isSameOrBefore(startDate) || moment(newReservationData.birthday).isSameOrAfter(endDate)) {
 
     swal({
       title: 'Dang it!',
@@ -163,8 +163,9 @@ function submitNewReservation() {
 
       backdrop: true,
     })
-
-  } else {
+  } 
+  
+  else {
 
     let isMatch;
 
@@ -176,7 +177,6 @@ function submitNewReservation() {
           // moment.utc(reservations[i].birthday).format("YYYY-MM-DD")
           console.log("bday already in the list: " + reservations[i].birthday);
           console.log("new birthday to add to list: " + newReservationData.birthday);
-
 
           if (moment.utc(reservations[i].birthday).format("YYYY-MM-DD") === newReservationData.birthday) {
             console.log("Match!!!!  that date is already taken");
@@ -244,7 +244,6 @@ function submitNewReservation() {
 // });
 
 
-
 // this is to clear the input fields after the submit button is clicked
 function clearForm() {
   document.getElementById("name").value = '';
@@ -262,6 +261,7 @@ function openDates() {
   $("#valid-dates").html(birthdayRules);
   $("#ruleTwo").html(ruleTwo);
 }
+
 
 //template literal for dynamic min and max dates in the birthday input
 // date entered must be AFTER the min and BEFORE the max
@@ -388,7 +388,7 @@ function updateReservation(_id) {
   } else {
 
     let isMatch;
-    
+
     //Checking if the date is already submitted
     getReservations()
       .then(reservations => {
@@ -398,12 +398,12 @@ function updateReservation(_id) {
           console.log("bday already in the list: " + reservations[i].birthday);
           console.log("Trying to change to this birthday: " + updatedBirthdayFormatted);
 
-          const beforeChange = moment.utc($("#birthday-" + updateId).val()).format("YYYY-MM-DD"); 
+          const beforeChange = moment.utc($("#birthday-" + updateId).val()).format("YYYY-MM-DD");
           console.log(beforeChange);
 
           // checks to see if the updated birthday matches any birthday that is already in the list, except for the birthday in that entry.  
           // This allows the user to edit the name and keep the birthday the same. 
-          if (moment.utc(reservations[i].birthday).format("YYYY-MM-DD") === updatedBirthdayFormatted && updatedBirthdayFormatted !=  beforeChange) {
+          if (moment.utc(reservations[i].birthday).format("YYYY-MM-DD") === updatedBirthdayFormatted && updatedBirthdayFormatted != beforeChange) {
             console.log("Match!!!!  that date is already taken");
             isMatch = true;
 
@@ -470,22 +470,17 @@ function updateReservation(_id) {
               result.dismiss === swal.DismissReason.cancel
             ) {
               console.log(_id, " has NOT been updated.");
-               
+
               swal(
                 'Cancelled',
                 'Reservation has NOT been updated.',
                 'error'
               )
-              
             }
-            
           })
-
         }
-        
       })
   }
-  
 }
 // End of function updateReservation(_id)
 
@@ -531,7 +526,6 @@ function deleteReservation(_id) {
       // Read more about handling dismissals
       result.dismiss === swal.DismissReason.cancel
     ) {
-
       console.log(_id, " has NOT been deleted.");
       swal(
         'Cancelled',
@@ -539,6 +533,5 @@ function deleteReservation(_id) {
         'error'
       )
     }
-
   })
 }

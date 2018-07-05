@@ -1,6 +1,12 @@
 body {
     background-color: #d2e6fa;
     background-image: url(./images/bgPattern5.png);
+    font-family: 'Lato 300', sans-serif;
+    font-weight: 300; 
+}
+
+h4 {
+    font-family: 'Boogaloo', cursive;
 }
 
 
@@ -36,6 +42,8 @@ footer {
     top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-family: 'Gaegu', cursive;
+    font-size: 1.2em; 
 }
 
 .homeFaces {
@@ -47,7 +55,6 @@ footer {
 .about-wrapper {
     background-color: moccasin;
     padding-top: 60px;
-
 }
 
 
