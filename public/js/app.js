@@ -1,11 +1,15 @@
 // *******************************************************************
-// Global variables: today, startDate, endDate
+// Global variables: today, yesterday, startDate, endDate
 // *******************************************************************
 // .format("MM-DD-YYYY");
 const today = moment().format("YYYY-MM-DD");
 const yesterday = moment(today).subtract(1, 'days').format("YYYY-MM-DD");
 const startDate = moment().add(6, 'days').format("YYYY-MM-DD");
 const endDate = moment().add(372, 'days').format("YYYY-MM-DD");
+
+const todayFormatted = moment(today).format('MM/DD/YYYY');
+const startDateFormatted = moment(startDate).format('MM/DD/YYYY');
+const endDateFormatted = moment(endDate).format('MM/DD/YYYY');
 
 
 function windowRefresh () {
@@ -113,10 +117,7 @@ function refreshReservationList() {
 
 function submitNewReservation() {
 
-  // const startDate = moment().add(6, 'days').format("MM-DD-YYYY");
-  // const endDate = moment().add(372, 'days').format("MM-DD-YYYY");
-
-  console.log('the submitNewReservation function has been called!');
+  console.log('the submitNewReservation function has been called');
 
   //getting the values from the input form and creating an object literal
   const newReservationData = {
@@ -124,11 +125,7 @@ function submitNewReservation() {
     birthday: $('#birthday').val()
   }
 
-  // console.log("new birthday before formatting: " + newReservationData.birthday); 
-  // newReservationData.birthday = moment(newReservationData.birthday).format("YYYY-MM-DD");
-
-  // console.log("This is the new data being entered: " + newReservationData.birthday);
-
+// if name and birthday inputs are both blank, user receive a pop up
   if (!newReservationData.name && !newReservationData.birthday) {
     swal({
       title: 'Ummmm.....',
@@ -161,7 +158,7 @@ function submitNewReservation() {
 
     swal({
       title: 'Dang it!',
-      text: 'Please enter a birthday BETWEEN ' + startDate + ' and ' + endDate,
+      text: 'Please enter a birthday BETWEEN ' + startDateFormatted + ' and ' + endDateFormatted,
       type: 'error',
 
       backdrop: true,
@@ -257,11 +254,6 @@ function clearForm() {
 
 //getting the start and end dates 
 function openDates() {
-
-  let todayFormatted = moment(today).format('MM/DD/YYYY');
-  let startDateFormatted = moment(startDate).format('MM/DD/YYYY');
-  let endDateFormatted = moment(endDate).format('MM/DD/YYYY');
-  // document.getElementById("valid-dates").innerText = "Please enter a date between " + startDate + " and " + endDate;
 
   const birthdayRules = ` (Enter a date between ${startDateFormatted} and ${endDateFormatted})`;
 

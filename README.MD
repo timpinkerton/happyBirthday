@@ -12,6 +12,7 @@ This is an CRUD application designed to track a list of names and birthdays.  Us
 * Moment.js
 * jQuery
 * Sweet Alert 2
+* PassportJS
 
 
 ## To run the application: 
