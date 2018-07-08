@@ -6,7 +6,7 @@ body {
 }
 
 h4 {
-    font-family: 'Boogaloo', cursive;
+    font-family: 'Boogaloo';
 }
 
 
@@ -106,4 +106,35 @@ footer {
 
 #loginForm button {
     margin-top: 20px; 
+}
+
+
+/***********  EDIT PAGE  ***********/
+
+.hover {
+    position: relative;
+    display: inline-block;
+    /* border-bottom: 1px dotted black; */
+}
+
+.hover .hoverText {
+    visibility: hidden;
+    width: 100px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 0;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -50px;
+    margin-bottom: 7px; 
+}
+
+.hover:hover .hoverText {
+    visibility: visible;
 }

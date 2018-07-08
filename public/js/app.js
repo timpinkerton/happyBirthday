@@ -297,8 +297,15 @@ function editListTemplate(reservations) {
 
         <input type="text" class="form-control mr-2 mb-2" id="birthday-${item._id}" value="${moment.utc(item.birthday).format("MMMM D, YYYY")}">
         
-        <button type="button" class="btn btn-warning mr-2" onclick="updateReservation('${item._id}')">Edit</button>
-        <button type="button" class="btn btn-danger" onclick="deleteReservation('${item._id}')">Delete</button>
+        <button type="button" class="btn btn-warning mr-2 hover" onclick="updateReservation('${item._id}')">
+          <span class="hoverText">Edit</span>
+          <i class="fas fa-edit" style="color: white"></i>
+        </button>
+
+        <button type="button" class="btn btn-danger hover" onclick="deleteReservation('${item._id}')">
+          <span class="hoverText">Delete</span>
+          <i class="far fa-trash-alt"></i>
+        </button>
       </form>  
       </li>
   `;
