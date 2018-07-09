@@ -177,20 +177,22 @@
 
     <!-- Send a card section -->
     <div class="container-fluid inputForm-wrapper" id="inputForm">
-        <h4>Send a card</h4>
-        <form>
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter a name" required>
-            </div>
+        <div class="formInnerWrapper">
+            <h4>Send a card</h4>
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter a name" required>
+                </div>
 
-            <div class="form-group" id="birthdayInput">
-                <label for="birthday">Birthday</label>
-                <span id="valid-dates"></span>
-            </div>
+                <div class="form-group" id="birthdayInput">
+                    <label for="birthday">Birthday</label>
+                    <span id="valid-dates"></span>
+                </div>
 
-            <button type="button" class="btn btn-primary" onclick="submitNewReservation()">Submit</button>
-        </form>
+                <button type="button" class="btn btn-primary" onclick="submitNewReservation()">Submit</button>
+            </form>
+        </div>
     </div>
     <!-- Send a card section end -->
 
