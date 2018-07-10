@@ -10,8 +10,11 @@ const todayFormatted = moment(today).format('MM/DD/YYYY');
 const startDateFormatted = moment(startDate).format('MM/DD/YYYY');
 const endDateFormatted = moment(endDate).format('MM/DD/YYYY');
 
-const cl  = new cloudinary.Cloudinary({cloud_name: "smoketron", secure: true});
-
+// configuring cloudinary and instantiating a new Cloudinary class
+const cl = new cloudinary.Cloudinary({
+  cloud_name: "smoketron",
+  secure: true
+});
 
 function windowRefresh() {
   location.reload();
@@ -44,21 +47,34 @@ function getTodaysName() {
 
       console.log("Today is: " + today);
 
-      //jQuery selector getting the id# greeting and add the greetingTemplate defined below
+      // jQuery selector getting the id# greeting and add the greetingTemplate defined below
       $('#greeting').html(greetingTemplate(todaysName));
+
+      getTodaysCard(todaysName);
     })
 }
 
+
 function greetingTemplate(todaysName) {
   // jQuery template string
+  console.log('********* today name is: ' + todaysName);
   const greetingTemplate = `<p id="greeting">Happy Birthday, ${todaysName}!</p>`;
   // put the template data into the actual page
   $('body .bubble-img').first().after(greetingTemplate);
 }
 
-function getTodaysCard(){
-  let todaysCard = cl.imageTag("noOne.png").toHtml(); 
-$('.cardPopup').prepend(todaysCard); 
+
+function getTodaysCard(todaysName) {
+
+  var todaysCard;
+
+  if (todaysName === 'No One') {
+    todaysCard = cl.imageTag('noOne.png').toHtml();
+  } else {
+    todaysCard = cl.imageTag(`${today}.png`).toHtml();
+  }
+
+  $('.cardPopup').prepend(todaysCard);
 }
 
 
@@ -157,8 +173,8 @@ function submitNewReservation() {
       type: 'error',
 
       backdrop: true,
-    })  
-  } 
+    })
+  }
   //checking to see if the date entered is between the start and end dates
   else if (moment(newReservationData.birthday).isSameOrBefore(startDate) || moment(newReservationData.birthday).isSameOrAfter(endDate)) {
 
@@ -169,9 +185,7 @@ function submitNewReservation() {
 
       backdrop: true,
     })
-  } 
-  
-  else {
+  } else {
 
     let isMatch;
 
