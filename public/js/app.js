@@ -16,6 +16,8 @@ const cl = new cloudinary.Cloudinary({
   secure: true
 });
 
+cl.responsive();
+
 function windowRefresh() {
   location.reload();
 }
@@ -69,13 +71,19 @@ function getTodaysCard(todaysName) {
   var todaysCard;
 
   if (todaysName === 'No One') {
-    todaysCard = cl.imageTag('noOne.png').toHtml();
+    todaysCard = cl.imageTag(`happyBirthday/${today}.png`).toHtml();
+    
   } else {
-    todaysCard = cl.imageTag(`${today}.png`).toHtml();
+    todaysCard = cl.imageTag('happyBirthday/noOne.png').toHtml();
   }
 
-  $('.cardPopup').prepend(todaysCard);
+  $('.cardImage').prepend(todaysCard);
+  $('span.cardImage > img').addClass('img-fluid');
 }
+
+
+
+
 
 
 // the jQuery template to render the list of names and birthdays

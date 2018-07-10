@@ -97,10 +97,10 @@
         </div>
 
         <div class="row justify-content-center">
-            <div class="col-12 greeting-img">
-                <a class="cardPopup" href="images/sampleCard-2.png" title="">
-                    <!-- <img src="https://res.cloudinary.com/smoketron/image/upload/v1530903248/happyBirthday/2018-07-07.png" alt="Sample birthday card" class="img-fluid"> -->
-                </a>
+            <div class="col-12 greeting-img cardContainer">
+                <!-- <a class="cardPopup" href="images/sampleCard-2.png" title=""> -->
+                    <span class="cardImage" alt=""></span>
+                <!-- </a> -->
             </div>
         </div>
     </div>
@@ -338,26 +338,26 @@
             openDates();
             birthdayInput();
 
-            $('.cardPopup').magnificPopup({
-                type: 'image',
-                closeOnContentClick: true,
-                closeBtnInside: false,
-                showCloseBtn: false,
-                mainClass: 'mfp-with-zoom mfp-img-mobile',
-                image: {
-                    verticalFit: true,
-                    // titleSrc: function (item) {
-                    //     return item.el.attr('title') +
-                    //         ' &middot; <a class="image-source-link" href="' + item.el.attr(
-                    //             'data-source') + '" target="_blank">image source</a>';
-                    // }
-                },
-                zoom: {
-                    enabled: true,
-                    duration: 300,
-                    easing: 'ease-in-out'
-                }
-            });
+            // $('.cardPopup').magnificPopup({
+            //     type: 'image',
+            //     closeOnContentClick: true,
+            //     closeBtnInside: false,
+            //     showCloseBtn: false,
+            //     mainClass: 'mfp-with-zoom mfp-img-mobile',
+            //     image: {
+            //         verticalFit: true,
+            //         titleSrc: function (item) {
+            //             return item.el.attr('title') +
+            //                 ' &middot; <a class="image-source-link" href="' + item.el.attr(
+            //                     'data-source') + '" target="_blank">image source</a>';
+            //         }
+            //     },
+            //     zoom: {
+            //         enabled: true,
+            //         duration: 300,
+            //         easing: 'ease-in-out'
+            //     }
+            // });
 
         });
     </script>
