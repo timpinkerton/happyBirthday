@@ -71,10 +71,9 @@ function getTodaysCard(todaysName) {
   var todaysCard;
 
   if (todaysName === 'No One') {
-    todaysCard = cl.imageTag(`happyBirthday/${today}.png`).toHtml();
-    
-  } else {
     todaysCard = cl.imageTag('happyBirthday/noOne.png').toHtml();
+  } else {
+    todaysCard = cl.imageTag(`happyBirthday/${today}.png`).toHtml();
   }
 
   $('.cardImage').prepend(todaysCard);
