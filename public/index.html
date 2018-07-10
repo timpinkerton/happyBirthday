@@ -99,7 +99,7 @@
         <div class="row justify-content-center">
             <div class="col-12 greeting-img">
                 <a class="cardPopup" href="images/sampleCard-2.png" title="">
-                    <img src="images/sampleCard.png" alt="Sample birthday card" class="img-fluid">
+                    <!-- <img src="https://res.cloudinary.com/smoketron/image/upload/v1530903248/happyBirthday/2018-07-07.png" alt="Sample birthday card" class="img-fluid"> -->
                 </a>
             </div>
         </div>
@@ -319,6 +319,12 @@
 
     <!-- <script src="https://unpkg.com/sweetalert2@7.24.0" type='text/javascript'></script> -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2"></script>
+
+
+    <script src="/js/lodash.min.js" type="text/javascript"></script>
+    <script src="/js/cloudinary-core.min.js" type="text/javascript"></script>
+
+
     <script src="/js/app.js"></script>
 
     <!-- Magnific Popup core JS file -->
@@ -331,6 +337,7 @@
             getTodaysName();
             openDates();
             birthdayInput();
+            getTodaysCard();
 
             $('.cardPopup').magnificPopup({
                 type: 'image',

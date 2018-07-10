@@ -1,7 +1,6 @@
 // *******************************************************************
 // Global variables: today, yesterday, startDate, endDate
 // *******************************************************************
-
 const today = moment().format("YYYY-MM-DD");
 const yesterday = moment(today).subtract(1, 'days').format("YYYY-MM-DD");
 const startDate = moment().add(6, 'days').format("YYYY-MM-DD");
@@ -10,6 +9,8 @@ const endDate = moment().add(372, 'days').format("YYYY-MM-DD");
 const todayFormatted = moment(today).format('MM/DD/YYYY');
 const startDateFormatted = moment(startDate).format('MM/DD/YYYY');
 const endDateFormatted = moment(endDate).format('MM/DD/YYYY');
+
+const cl  = new cloudinary.Cloudinary({cloud_name: "smoketron", secure: true});
 
 
 function windowRefresh() {
@@ -53,6 +54,11 @@ function greetingTemplate(todaysName) {
   const greetingTemplate = `<p id="greeting">Happy Birthday, ${todaysName}!</p>`;
   // put the template data into the actual page
   $('body .bubble-img').first().after(greetingTemplate);
+}
+
+function getTodaysCard(){
+  let todaysCard = cl.imageTag("noOne.png").toHtml(); 
+$('.cardPopup').prepend(todaysCard); 
 }
 
 
