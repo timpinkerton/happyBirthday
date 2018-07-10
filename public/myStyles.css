@@ -28,7 +28,7 @@ footer {
 
 /***********  HOME PAGE  ***********/
 .homePage-wrapper {
-    background-color: azure;
+    background-color: whitesmoke;
     padding-bottom: 50px; 
 }
 
@@ -73,7 +73,7 @@ footer {
     
 }
 
-.formInnerWrapper {
+.innerWrapper {
     max-width: 500px;
     margin: 0px auto; 
 }

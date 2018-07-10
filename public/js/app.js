@@ -81,10 +81,6 @@ function getTodaysCard(todaysName) {
 }
 
 
-
-
-
-
 // the jQuery template to render the list of names and birthdays
 function listTemplate(reservations) {
 
@@ -109,6 +105,7 @@ function listTemplate(reservations) {
   return compiled;
 }
 
+
 // getReservations function will get the full list. 
 function getReservations() {
   return $.ajax('/reservations')
@@ -121,6 +118,7 @@ function getReservations() {
       throw err;
     });
 }
+
 
 function refreshReservationList() {
   getReservations()
@@ -157,8 +155,11 @@ function submitNewReservation() {
     swal({
       title: 'Ummmm.....',
       text: 'You didn\'t enter anything!',
-      type: 'error',
-
+      // type: 'error',
+      // imageUrl: '../images/alert1.png',
+      animation: false,
+      imageWidth: 100,
+      imageHeight: 100,
       backdrop: true,
     })
   }
@@ -283,7 +284,7 @@ function openDates() {
 
   const birthdayRules = ` (Enter a date between ${startDateFormatted} and ${endDateFormatted})`;
 
-  const ruleTwo = `Today is: ${todayFormatted}. <p> So enter a date between ${startDateFormatted} and ${endDateFormatted}</p>`;
+  const ruleTwo = `Today is: ${todayFormatted}.<p> So enter a date between ${startDateFormatted} and ${endDateFormatted}</p>`;
 
   $("#valid-dates").html(birthdayRules);
   $("#ruleTwo").html(ruleTwo);

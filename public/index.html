@@ -81,26 +81,28 @@
 
     <!-- Home Page -->
     <div class="container-fluid homePage-wrapper">
-        <div class="row justify-content-center" id="homePage">
-            <div class="col-10 greeting-img bubble">
-                <img src="images/bubble.png" class="img-fluid bubble-img" alt="Happy Birthday bubble">
+        <div class="innerWrapper">
+            <div class="row justify-content-center" id="homePage">
+                <div class="col-10 greeting-img bubble">
+                    <img src="images/bubble.png" class="img-fluid bubble-img" alt="Happy Birthday bubble">
+                </div>
             </div>
-        </div>
 
-        <div class="row justify-content-center homeFaces">
-            <div class="col-4 greeting-img">
-                <img src="images/arnold.png" class="img-fluid" alt="Arnold's face">
+            <div class="row justify-content-center homeFaces">
+                <div class="col-4 greeting-img">
+                    <img src="images/arnold.png" class="img-fluid" alt="Arnold's face">
+                </div>
+                <div class="col-4 greeting-img">
+                    <img src="images/dusty.png" class="img-fluid" alt="Dusty's face">
+                </div>
             </div>
-            <div class="col-4 greeting-img">
-                <img src="images/dusty.png" class="img-fluid" alt="Dusty's face">
-            </div>
-        </div>
 
-        <div class="row justify-content-center">
-            <div class="col-12 greeting-img cardContainer">
-                <!-- <a class="cardPopup" href="images/sampleCard-2.png" title=""> -->
+            <div class="row justify-content-center">
+                <div class="col-12 greeting-img cardContainer">
+                    <!-- <a class="cardPopup" href="images/sampleCard-2.png" title=""> -->
                     <span class="cardImage" alt=""></span>
-                <!-- </a> -->
+                    <!-- </a> -->
+                </div>
             </div>
         </div>
     </div>
@@ -109,75 +111,82 @@
 
     <!-- About Section -->
     <div class="container-fluid about-wrapper" id="about">
-        <h4>What's this all about?</h4>
+        <div class="innerWrapper">
+            <h4>What's this all about?</h4>
 
-        <p>This is all about birthdays! Think about someone you like and how cool it would be if they came to this site on their
-            birthday and there's a birthday card from Arnold and Dusty made out to them at the top of this page. That would
-            be awesome! ...Right? Yes. That
-            <i>would</i> be awesome.
-        </p>
+            <p>This is all about birthdays! Think about someone you like and how cool it would be if they came to this site
+                on their birthday and there's a birthday card from Arnold and Dusty made out to them at the top of this page.
+                That would be awesome! ...Right? Yes. That
+                <i>would</i> be awesome.
+            </p>
 
-        <h4>Here's how it works:</h4>
+            <h4>Here's how it works:</h4>
 
-        <p>It's a very simple. Just follow these steps:</p>
-        <ol>
-            <li>Complete the form below</li>
-            <li>Click the Submit button</li>
-        </ol>
+            <p>It's a very simple. Just follow these steps:</p>
+            <ol>
+                <li>Complete the form below</li>
+                <li>Click the Submit button</li>
+            </ol>
 
-        <p>That's it!</p>
+            <p>That's it!</p>
 
-        <p>You can send a card to your parent, favorite sibling, child, cousin, grandparent, brother-in-law, step-parent, family
-            friend, uncle, co-worker, teammate, boss, bartender, teacher, downstairs neighbor, barista, landlord, mailperson,
-            dog, buddy, homeboy, compadre, bro, mate, pal, companion, amigo, brother from another mother, wingman, significant
-            other, girlfriend, boyfriend, boo, better half, domestic partner, life partner, soul mate, lover, fiance, spouse,
-            ex-spouse .... you get the idea. Basically, you can send a card to just about anyone, as long as you know their
-            birthday.
-        </p>
+            <p>You can send a card to your parent, favorite sibling, child, cousin, grandparent, brother-in-law, step-parent,
+                family friend, uncle, co-worker, teammate, boss, bartender, teacher, downstairs neighbor, barista, landlord,
+                mailperson, dog, buddy, homeboy, compadre, bro, mate, pal, companion, amigo, brother from another mother,
+                wingman, significant other, girlfriend, boyfriend, boo, better half, domestic partner, life partner, soul
+                mate, lover, fiance, spouse, ex-spouse .... you get the idea. Basically, you can send a card to just about
+                anyone, as long as you know their birthday.
+            </p>
 
-        <p>I guess you could submit your own name and birthday, but think about how good you'll feel by submitting a card for
-            someone else.</p>
+            <p>I guess you could submit your own name and birthday, but think about how good you'll feel by submitting a card
+                for someone else.</p>
 
-        <h4>There are just two rules to follow...</h4>
+            <h4>There are just two rules to follow...</h4>
 
-        <ol>
-            <li>Only one birthday card per day.</li>
-            <li>The date you enter should be the date of the persons next birthday, starting one week from today.
-                <p>
-                    <span id="ruleTwo"></span>
-                </p>
-            </li>
-        </ol>
+            <ol>
+                <br>
+                <li>Only one birthday card per day.</li>
+                <br>
+                <li>The date you enter should be the date of the persons next birthday, starting one week from today.
+                    <p>
+                        <br>
+                        <span id="ruleTwo"></span>
+                    </p>
+                </li>
+            </ol>
 
-        <p>
-            <strong>Alright!</strong> Enough jibba jabba! Think about who you want to send a birthday greeting to and check out the
-            list below. If their birthday is not availble, then think about someone else you want to make happy.</p>
+            <p>
+                <strong>Alright!</strong> Enough jibba jabba! Think about who you want to send a birthday greeting to and check out
+                the list below. If their birthday is not availble, then think about someone else you want to make happy.</p>
+        </div>
     </div>
     <!-- About Section End -->
 
 
     <!-- Current list section-->
     <div class="container-fluid currentList-wrapper" id="currentList">
-        <h4>Here's the current list of names and birthdays:</h4>
-        <table class="table table-striped table-bordered">
-            <caption>List of names and birthday's</caption>
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Birthday</th>
-                </tr>
-            </thead>
-            <tbody id="reservation-list">
+        <div class="innerWrapper">
+            <h4>Here's the current list of names and birthdays:</h4>
+            <table class="table table-striped table-bordered">
+                <caption>List of names and birthday's</caption>
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Birthday</th>
+                    </tr>
+                </thead>
+                <tbody id="reservation-list">
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
     <!-- Current list section End-->
 
 
     <!-- Send a card section -->
     <div class="container-fluid inputForm-wrapper" id="inputForm">
-        <div class="formInnerWrapper">
+        <div class="innerWrapper">
             <h4>Send a card</h4>
             <form>
                 <div class="form-group">
