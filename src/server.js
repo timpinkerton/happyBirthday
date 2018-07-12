@@ -5,9 +5,6 @@ const bodyParser = require('body-parser');
 
 // requiring and setting the path to use static files
 const path = require('path');
- 
-// process.env.PORT is added since Heroku dynamically assigns the app to a port
-const PORT = process.env.PORT || 5000; 
 
 // modules needed for passportJS
 const passport = require('passport');
@@ -108,6 +105,8 @@ app.use(express.static(publicPath));
 require('./routes/index.js')(app);
 
 // Starting the server
-app.listen(PORT, () => {
+// process.env.PORT is added since Heroku dynamically assigns the app to a port
+
+app.listen(process.env.PORT || config.port, () => {
     console.log(`${config.appName} is listening on port ${config.port}`);
 });
