@@ -105,6 +105,7 @@ app.use(express.static(publicPath));
 require('./routes/index.js')(app);
 
 // Starting the server
-app.listen(config.port, () => {
+// process.env.PORT is added since Heroku dynamically assigns the app to a port
+app.listen(process.env.PORT ||config.port, () => {
     console.log(`${config.appName} is listening on port ${config.port}`);
 });
