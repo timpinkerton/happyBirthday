@@ -6,6 +6,10 @@ const bodyParser = require('body-parser');
 // requiring and setting the path to use static files
 const path = require('path');
 
+
+var port = process.env.PORT || 8080;
+
+
 // modules needed for passportJS
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
@@ -107,6 +111,10 @@ require('./routes/index.js')(app);
 // Starting the server
 // process.env.PORT is added since Heroku dynamically assigns the app to a port
 
-app.listen(process.env.PORT || config.port, () => {
-    console.log(`${config.appName} is listening on port ${config.port}`);
+// app.listen(process.env.PORT || config.port, () => {
+//     console.log(`${config.appName} is listening on port ${config.port}`);
+// });
+
+app.listen(port, function() {
+	console.log('The app is running on http://localhost:' + port);
 });
