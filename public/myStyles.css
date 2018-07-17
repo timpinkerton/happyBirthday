@@ -12,11 +12,19 @@ h4 {
 
 /***********  NAVIGATION  ***********/
 nav {
-    background-color: #c7b29a;
+    background-color: #c7b29a00;
+}
+
+.nav-item {
+    margin: 0px 9px; 
 }
 
 
-.homePage-wrapper,
+.homePage-wrapper {
+    padding: 0px 40px 40px 40px; 
+    max-width: 991px;
+}
+
 .about-wrapper,
 .currentList-wrapper,
 .inputForm-wrapper,
@@ -43,7 +51,7 @@ footer {
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: 'Gaegu', cursive;
-    font-size: 1.2em; 
+    /* font-size: 1.2em;  */
 }
 
 .homeFaces {
