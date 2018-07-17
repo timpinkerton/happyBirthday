@@ -14,8 +14,12 @@ This is an CRUD application designed to track a list of names and birthdays.  Us
 * Sweet Alert 2
 * PassportJS
 
+## View the application here: 
 
-## To run the application: 
+https://hbfromaandd.herokuapp.com/
+
+
+## To run the application locally: 
 
 1. Download the root directory of the project
 2. Run 'npm install' to install required packages
