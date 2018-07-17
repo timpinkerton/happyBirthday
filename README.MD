@@ -13,7 +13,7 @@ This is an CRUD application designed to track a list of names and birthdays.  Us
 * jQuery
 * Sweet Alert 2
 * PassportJS
-* Boostrap
+* Bootstrap
 
 ## View the application here: 
 
