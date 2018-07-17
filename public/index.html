@@ -44,61 +44,72 @@
 
 <body>
 
-    <div class="container-fluid homePage-wrapper">
 
-    <!-- Navagation -->
-    <nav class="navbar navbar-expand-lg navbar-light ">
-        <!-- <a class="navbar-brand" href="#">HB from A and D</a> -->
-        <!-- sticky-top -->
-        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <!-- homepage-wrapper section is the left side on large screen and includes: nagivation, bubble greeting and dog images -->
+    <div class="split split-left">
+        <div class="container-fluid homePage-wrapper">
 
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+            <!-- Navagation -->
+            <nav class="navbar navbar-expand-lg navbar-light ">
+                <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="navbar-nav">
-                <ul class="navbar-nav text-center">
-                    <!-- <li class="nav-item active">
-                        <a class="nav-item nav-link active" href="#">Home
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li> -->
-                    <li class="nav-item">
-                        <a class="nav-item nav-link" href="#about">What's This All About?</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-item nav-link" href="#currentList">See the Current List</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-item nav-link" href="#inputForm">Send a Card!</a>
-                    </li>
-                </ul>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+
+                    <div class="navbar-nav">
+                        <ul class="navbar-nav text-center">
+                            <li class="nav-item">
+                                <a class="nav-item nav-link" href="#about">What's This All About?</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-item nav-link" href="#currentList">See the Current List</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-item nav-link" href="#inputForm">Send a Card!</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </nav>
+            <!-- Navigations End -->
+
+
+            <div class="innerWrapper">
+                <div class="row justify-content-center" id="homePage">
+                    <div class="col-10 greeting-img bubble">
+                        <img src="images/bubble.png" class="img-fluid bubble-img" alt="Happy Birthday bubble">
+                    </div>
+                </div>
+
+                <div class="row justify-content-center homeFaces">
+                    <div class="col-4 greeting-img">
+                        <img src="images/arnold.png" class="img-fluid" alt="Arnold's face">
+                    </div>
+                    <div class="col-4 greeting-img">
+                        <img src="images/dusty.png" class="img-fluid" alt="Dusty's face">
+                    </div>
+                </div>
+
+                <div class="row fullDogs">
+                    <div class="col-10 greeting-img">
+                        <img src="images/dogsFullBody.png" class="img-fluid" alt="puppies!">
+                    </div>
+                </div>
             </div>
-
         </div>
-    </nav>
-    <!-- Navigations End -->
+    </div>
+    <!-- End homepage-wrapper -->
 
 
-    <!-- Home Page -->
-
-        <div class="innerWrapper">
-            <div class="row justify-content-center" id="homePage">
-                <div class="col-10 greeting-img bubble">
-                    <img src="images/bubble.png" class="img-fluid bubble-img" alt="Happy Birthday bubble">
-                </div>
-            </div>
-
-            <div class="row justify-content-center homeFaces">
-                <div class="col-4 greeting-img">
-                    <img src="images/arnold.png" class="img-fluid" alt="Arnold's face">
-                </div>
-                <div class="col-4 greeting-img">
-                    <img src="images/dusty.png" class="img-fluid" alt="Dusty's face">
-                </div>
-            </div>
-
+    <!-- Right side includes: .mainImage-Wrapper, #about, #currentList, #inputForm, and footer  -->
+    <div class="split split-right">
+    
+        
+        <!-- mainImage-Wrapper includes the main card image -->
+        <div class="container-fluid mainImage-Wrapper">
             <div class="row justify-content-center">
                 <div class="col-12 greeting-img cardContainer">
                     <!-- <a class="cardPopup" href="images/sampleCard-2.png" title=""> -->
@@ -107,179 +118,181 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Home Page End -->
+        <!-- End mainImage-Wrapper -->
 
 
-    <!-- About Section -->
-    <div class="container-fluid about-wrapper" id="about">
-        <div class="innerWrapper">
-            <h4>What's this all about?</h4>
+        <!-- About Section -->
+        <div class="container-fluid about-wrapper" id="about">
+            <div class="innerWrapper">
+                <h4>What's this all about?</h4>
 
-            <p>This is all about birthdays! Think about someone you like and how cool it would be if they came to this site
-                on their birthday and there's a birthday card from Arnold and Dusty made out to them at the top of this page.
-                That would be awesome! ...Right? Yes. That
-                <i>would</i> be awesome.
-            </p>
+                <p>This is all about birthdays! Think about someone you like and how cool it would be if they came to this site
+                    on their birthday and there's a birthday card from Arnold and Dusty made out to them at the top of this
+                    page. That would be awesome! ...Right? Yes. That
+                    <i>would</i> be awesome.
+                </p>
 
-            <h4>Here's how it works:</h4>
+                <h4>Here's how it works:</h4>
 
-            <p>It's a very simple. Just follow these steps:</p>
-            <ol>
-                <li>Complete the form below</li>
-                <li>Click the Submit button</li>
-            </ol>
+                <p>It's a very simple. Just follow these steps:</p>
+                <ol>
+                    <li>Complete the form below</li>
+                    <li>Click the Submit button</li>
+                </ol>
 
-            <p>That's it!</p>
+                <p>That's it!</p>
 
-            <p>You can send a card to your parent, favorite sibling, child, cousin, grandparent, brother-in-law, step-parent,
-                family friend, uncle, co-worker, teammate, boss, bartender, teacher, downstairs neighbor, barista, landlord,
-                mailperson, dog, buddy, homeboy, compadre, bro, mate, pal, companion, amigo, brother from another mother,
-                wingman, significant other, girlfriend, boyfriend, boo, better half, domestic partner, life partner, soul
-                mate, lover, fiance, spouse, ex-spouse .... you get the idea. Basically, you can send a card to just about
-                anyone, as long as you know their birthday.
-            </p>
+                <p>You can send a card to your parent, favorite sibling, child, cousin, grandparent, brother-in-law, step-parent,
+                    family friend, uncle, co-worker, teammate, boss, bartender, teacher, downstairs neighbor, barista, landlord,
+                    mailperson, dog, buddy, homeboy, compadre, bro, mate, pal, companion, amigo, brother from another mother,
+                    wingman, significant other, girlfriend, boyfriend, boo, better half, domestic partner, life partner,
+                    soul mate, lover, fiance, spouse, ex-spouse .... you get the idea. Basically, you can send a card to
+                    just about anyone, as long as you know their birthday.
+                </p>
 
-            <p>I guess you could submit your own name and birthday, but think about how good you'll feel by submitting a card
-                for someone else.</p>
+                <p>I guess you could submit your own name and birthday, but think about how good you'll feel by submitting a
+                    card for someone else.</p>
 
-            <h4>There are just two rules to follow...</h4>
+                <h4>There are just two rules to follow...</h4>
 
-            <ol>
-                <br>
-                <li>Only one birthday card per day.</li>
-                <br>
-                <li>The date you enter should be the date of the persons next birthday, starting one week from today.
-                    <p>
-                        <br>
-                        <span id="ruleTwo"></span>
-                    </p>
-                </li>
-            </ol>
+                <ol>
+                    <br>
+                    <li>Only one birthday card per day.</li>
+                    <br>
+                    <li>The date you enter should be the date of the persons next birthday, starting one week from today.
+                        <p>
+                            <br>
+                            <span id="ruleTwo"></span>
+                        </p>
+                    </li>
+                </ol>
 
-            <p>
-                <strong>Alright!</strong> Enough jibba jabba! Think about who you want to send a birthday greeting to and check out
-                the list below. If their birthday is not availble, then think about someone else you want to make happy.</p>
+                <p>
+                    <strong>Alright!</strong> Enough jibba jabba! Think about who you want to send a birthday greeting to and check
+                    out the list below. If their birthday is not availble, then think about someone else you want to make
+                    happy.
+                </p>
+            </div>
         </div>
-    </div>
-    <!-- About Section End -->
+        <!-- About Section End -->
 
 
-    <!-- Current list section-->
-    <div class="container-fluid currentList-wrapper" id="currentList">
-        <div class="innerWrapper">
-            <h4>Here's the current list of names and birthdays:</h4>
-            <table class="table table-striped table-bordered">
-                <caption>List of names and birthday's</caption>
-                <thead class="thead-light">
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Birthday</th>
-                    </tr>
-                </thead>
-                <tbody id="reservation-list">
+        <!-- Current list section-->
+        <div class="container-fluid currentList-wrapper" id="currentList">
+            <div class="innerWrapper">
+                <h4>Here's the current list of names and birthdays:</h4>
+                <table class="table table-striped table-bordered">
+                    <caption>List of names and birthday's</caption>
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Birthday</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reservation-list">
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
-    <!-- Current list section End-->
+        <!-- Current list section End-->
 
 
-    <!-- Send a card section -->
-    <div class="container-fluid inputForm-wrapper" id="inputForm">
-        <div class="innerWrapper">
-            <h4>Send a card</h4>
-            <form>
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter a name" required>
-                </div>
+        <!-- Send a card section -->
+        <div class="container-fluid inputForm-wrapper" id="inputForm">
+            <div class="innerWrapper">
+                <h4>Send a card</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter a name" required>
+                    </div>
 
-                <div class="form-group" id="birthdayInput">
-                    <label for="birthday">Birthday</label>
-                    <span id="valid-dates"></span>
-                </div>
+                    <div class="form-group" id="birthdayInput">
+                        <label for="birthday">Birthday</label>
+                        <span id="valid-dates"></span>
+                    </div>
 
-                <button type="button" class="btn btn-primary" onclick="submitNewReservation()">Submit</button>
-            </form>
+                    <button type="button" class="btn btn-primary" onclick="submitNewReservation()">Submit</button>
+                </form>
+            </div>
         </div>
-    </div>
-    <!-- Send a card section end -->
-
-    <!-- Footer Section -->
-    <footer class="container-fluid">
-        <div>
-            <p class="text-center">Share this site with those people on the internet that you call "friends"
-                <i class="far fa-grin"></i>
-            </p>
-            <ul class="d-flex justify-content-center footer-links">
-
-                <!-- Twitter share link -->
-                <li>
-                    <a class="nav-item nav-link" href="https://twitter.com/intent/tweet?text=check%20this%20out!%20http://arnoldanddusty.com/">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </li>
-
-                <!-- Facebook share link -->
-                <li>
-                    <!-- <i class="fab fa-facebook-f"></i> -->
-
-                    <a class="nav-item nav-link" href="https://www.facebook.com/dialog/share?display=popup&href=http://arnoldanddusty.com/">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
+        <!-- Send a card section end -->
 
 
-                    <!-- <div class="fb-share-button" data-href="http://arnoldanddusty.com/" data-layout="button" data-size="small" data-mobile-iframe="true">
+        <!-- Footer Section -->
+        <footer class="container-fluid">
+            <div>
+                <p class="text-center">Share this site with those people on the internet that you call "friends"
+                    <i class="far fa-grin"></i>
+                </p>
+                <ul class="d-flex justify-content-center footer-links">
+
+                    <!-- Twitter share link -->
+                    <li>
+                        <a class="nav-item nav-link" href="https://twitter.com/intent/tweet?text=check%20this%20out!%20http://arnoldanddusty.com/">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+
+                    <!-- Facebook share link -->
+                    <li>
+                        <!-- <i class="fab fa-facebook-f"></i> -->
+
+                        <a class="nav-item nav-link" href="https://www.facebook.com/dialog/share?display=popup&href=http://arnoldanddusty.com/">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+
+
+                        <!-- <div class="fb-share-button" data-href="http://arnoldanddusty.com/" data-layout="button" data-size="small" data-mobile-iframe="true">
                         <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Farnoldanddusty.com%2F&amp;src=sdkpreparse"
                             class="fb-xfbml-parse-ignore" data-mobile-iframe="true">
                             <i class="fab fa-facebook-f"></i>
                         </a>
                     </div> -->
 
-                </li>
+                    </li>
 
-                <!-- Google + share link -->
-                <li>
-                    <!-- Place this tag where you want the share button to render. -->
-                    <!-- <div class="g-plus" data-action="share"></div> -->
+                    <!-- Google + share link -->
+                    <li>
+                        <!-- Place this tag where you want the share button to render. -->
+                        <!-- <div class="g-plus" data-action="share"></div> -->
 
-                    <a class="nav-item nav-link" href="https://plus.google.com/share?url=http://arnoldanddusty.com/&text=check%20it%20out!&hl=en">
-                        <i class="fab fa-google-plus-g"></i>
-                    </a>
-                </li>
+                        <a class="nav-item nav-link" href="https://plus.google.com/share?url=http://arnoldanddusty.com/&text=check%20it%20out!&hl=en">
+                            <i class="fab fa-google-plus-g"></i>
+                        </a>
+                    </li>
 
 
-                <!-- Email share link -->
-                <li>
-                    <a class="nav-item nav-link" href="mailto:yourfriend@arealemailaddress.com?Subject=Check%20this%20out!!!&body=Go%20here:%20http://arnoldanddusty.com/"
-                        target="_top">
-                        <i class="far fa-envelope"></i>
-                    </a>
-                </li>
+                    <!-- Email share link -->
+                    <li>
+                        <a class="nav-item nav-link" href="mailto:yourfriend@arealemailaddress.com?Subject=Check%20this%20out!!!&body=Go%20here:%20http://arnoldanddusty.com/"
+                            target="_top">
+                            <i class="far fa-envelope"></i>
+                        </a>
+                    </li>
 
-                <!-- Pinterest share link -->
-                <li>
-                    <!-- <a data-pin-do="buttonBookmark" data-pin-round="true" href="https://www.pinterest.com/pin/create/button/">
+                    <!-- Pinterest share link -->
+                    <li>
+                        <!-- <a data-pin-do="buttonBookmark" data-pin-round="true" href="https://www.pinterest.com/pin/create/button/">
                         <img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_round_red_16.png" />
                     </a> -->
 
-                    <a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Farnoldanddusty.com%2F">
-                        <i class="fab fa-pinterest-p"></i>
-                    </a>
-                </li>
+                        <a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Farnoldanddusty.com%2F">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                    </li>
 
-                <!-- Reddit share link -->
-                <li>
-                    <a class="nav-item nav-link" href="https://reddit.com/submit?url=http://arnoldanddusty.com/&title=check%20this%20out!">
-                        <i class="fab fa-reddit-alien"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </footer>
-
+                    <!-- Reddit share link -->
+                    <li>
+                        <a class="nav-item nav-link" href="https://reddit.com/submit?url=http://arnoldanddusty.com/&title=check%20this%20out!">
+                            <i class="fab fa-reddit-alien"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </div>
 
     <!-- Twitter for Websites JavaScript. for the tweet button -->
     <script>

@@ -1,44 +1,45 @@
 body {
-    background-color: #d2e6fa;
-    background-image: url(./images/bgPattern5.png);
+    /* background-image: url(./images/bgPattern5.png); */
+    background-color: whitesmoke; 
     font-family: 'Lato 300', sans-serif;
-    font-weight: 300; 
+    font-weight: 300;
 }
 
 h4 {
     font-family: 'Boogaloo';
 }
 
-
 /***********  NAVIGATION  ***********/
+
 nav {
     background-color: #c7b29a00;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
 }
 
 .nav-item {
-    margin: 0px 9px; 
+    margin: 0px 9px;
 }
 
-
 .homePage-wrapper {
-    padding: 0px 40px 40px 40px; 
+    padding: 0px 40px 40px 40px;
     max-width: 991px;
 }
 
 .about-wrapper,
 .currentList-wrapper,
 .inputForm-wrapper,
-footer { 
+footer {
     max-width: 991px;
     padding: 40px;
 }
 
-
 /***********  HOME PAGE  ***********/
-.homePage-wrapper {
+
+.homePage-wrapper,
+.mainImage-Wrapper {
     background-color: whitesmoke;
-    padding-bottom: 50px;  
+    padding-bottom: 50px;
+    max-width: 991px;
 }
 
 .greeting-img {
@@ -46,7 +47,7 @@ footer {
 }
 
 #greeting {
-    color: red; 
+    color: red;
     position: absolute;
     top: 35%;
     left: 50%;
@@ -56,75 +57,71 @@ footer {
 }
 
 .homeFaces {
-    margin-bottom: 20px;  
+    margin-bottom: 20px;
 }
 
-
 /***********  ABOUT PAGE  ***********/
+
 .about-wrapper {
     background-color: moccasin;
     padding-top: 60px;
 }
 
-
 /***********  CURRENT LIST  ***********/
+
 .currentList-wrapper {
     background-color: rgb(214, 200, 228);
     padding-top: 60px;
 }
 
-
 /***********  FORM  ***********/
+
 .inputForm-wrapper {
     background-color: darkseagreen;
-    padding-top: 200px; 
-    padding-bottom: 150px; 
-    
+    padding-top: 200px;
+    padding-bottom: 150px;
 }
 
 .innerWrapper {
     max-width: 500px;
-    margin: 0px auto; 
+    margin: 0px auto;
 }
 
 #valid-dates {
-    font-size: .75em; 
+    font-size: .75em;
 }
-
 
 /***********  FOOTER  ***********/
 
 footer {
     background-color: lightgrey;
-    position: static; 
+    position: static;
 }
 
 .footer-links {
-    list-style: none; 
-    padding: 0px; 
-    margin: 0; 
+    list-style: none;
+    padding: 0px;
+    margin: 0;
 }
-
 
 /***********  LOGIN FORM  ***********/
 
 #loginFormWrapper {
-    border: 1px solid darkslateblue; 
+    border: 1px solid darkslateblue;
     max-width: 70%;
-    border-radius: 5px; 
-    margin: 40px auto; 
-    text-align: center; 
-    background-color: whitesmoke; 
+    border-radius: 5px;
+    margin: 40px auto;
+    text-align: center;
+    background-color: whitesmoke;
 }
 
 #loginForm {
-    margin: 40px; 
+    margin: 40px;
 }
 
 #loginForm button {
-    margin-top: 20px; 
+    margin-top: 20px;
 }
-
 
 /***********  EDIT PAGE  ***********/
 
@@ -142,16 +139,62 @@ footer {
     text-align: center;
     border-radius: 5px;
     padding: 5px 0;
-    
     /* Position the tooltip */
     position: absolute;
     z-index: 1;
     bottom: 100%;
     left: 50%;
     margin-left: -50px;
-    margin-bottom: 7px; 
+    margin-bottom: 7px;
 }
 
 .hover:hover .hoverText {
     visibility: visible;
+}
+
+/***********  MEDIA QUERIES ***********/
+
+
+@media (min-width: 991px) {
+    .split {
+        height: 100%;
+        width: 50%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        overflow-x: hidden;
+    }
+
+    .split-left {
+        left: 0;
+        border-right: 2px solid rgb(119, 113, 113); 
+
+    }
+
+    .split-right {
+        right: 0;
+    }
+
+    .homeFaces {
+        display: none; 
+    }
+
+    .fullDogs {
+        display: block;
+        margin-left: 60px; 
+    }
+
+    .mainImage-Wrapper {
+        background-color: rgb(205, 209, 255); 
+    }
+
+    .cardContainer {
+        margin-top: 40px; 
+    }
+}
+
+@media (max-width: 991px) {
+    .fullDogs {
+        display: none; 
+    }
 }
