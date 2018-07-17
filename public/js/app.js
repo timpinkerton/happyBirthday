@@ -69,16 +69,36 @@ function greetingTemplate(todaysName) {
 function getTodaysCard(todaysName) {
 
   var todaysCard;
+  var popupImage; 
 
   if (todaysName === 'No One') {
     todaysCard = cl.imageTag('happyBirthday/noOne.png').toHtml();
+    popupImage = 'http://res.cloudinary.com/smoketron/image/upload/v1530904016/happyBirthday/noOne.png';
   } else {
     todaysCard = cl.imageTag(`happyBirthday/${today}.png`).toHtml();
+    popupImage = 'https://res.cloudinary.com/smoketron/image/upload/v1531779582/happyBirthday/2018-07-16.png';
+
   }
 
-  $('.cardImage').prepend(todaysCard);
-  $('span.cardImage > img').addClass('img-fluid');
+  const cardContainerTemplate =    `<a class="cardPopup" href=${popupImage} title="">
+                                    <span class="cardImage img-fluid" alt="">${todaysCard}</span>
+                                    </a>`
+  
+  return cardContainerTemplate; 
+
+
+
+  // $('.cardContainer').html(cardContainerTemplate); 
+
+  // $('.cardImage').prepend(todaysCard);
+  // $('span.cardImage > img').addClass('img-fluid');
+
 }
+
+function showTodaysCard() {
+  $('.cardContainer').html(getTodaysCard()); 
+}
+
 
 
 // the jQuery template to render the list of names and birthdays
