@@ -13,6 +13,7 @@ h4 {
 /***********  NAVIGATION  ***********/
 nav {
     background-color: #c7b29a00;
+    margin-bottom: 20px; 
 }
 
 .nav-item {
@@ -37,7 +38,7 @@ footer {
 /***********  HOME PAGE  ***********/
 .homePage-wrapper {
     background-color: whitesmoke;
-    padding-bottom: 50px; 
+    padding-bottom: 50px;  
 }
 
 .greeting-img {
