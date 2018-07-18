@@ -70,21 +70,21 @@ a.nav-item.nav-link {
 /***********  ABOUT PAGE  ***********/
 
 .about-wrapper {
-    background-color: moccasin;
+    background-color: rgba(255, 174, 0, 0.1);
     padding-top: 60px;
 }
 
 /***********  CURRENT LIST  ***********/
 
 .currentList-wrapper {
-    background-color: rgb(214, 200, 228);
+    background-color: rgba(72, 0, 114, 0.1);
     padding-top: 60px;
 }
 
 /***********  FORM  ***********/
 
 .inputForm-wrapper {
-    background-color: darkseagreen;
+    background-color: rgba(24, 121, 0, 0.1);
     padding-top: 200px;
     padding-bottom: 150px;
 }
@@ -101,7 +101,7 @@ a.nav-item.nav-link {
 /***********  FOOTER  ***********/
 
 footer {
-    background-color: lightgrey;
+    background-color: rgba(128, 128, 128, 0.1);
     position: static;
 }
 
@@ -161,14 +161,14 @@ footer {
 
 
 #scrollToTop {
-    display: none; /* Hidden by default */
-    position: fixed; /* Fixed/sticky position */
-    bottom: 20px; /* Place the button at the bottom of the page */
-    right: 20px; /* Place the button 20px from the right */
-    z-index: 99; /* Make sure it does not overlap */
+    display: none; 
+    position: fixed;
+    bottom: 20px;
+    right: 20px; 
+    z-index: 99; 
 
     border: 0px;
-    cursor: pointer; /* Add a mouse pointer on hover */
+    cursor: pointer;
     font-size: 30px; 
     background-color: transparent; 
 }
@@ -192,7 +192,7 @@ footer {
 
     .split-left {
         left: 0;
-        border-right: 2px solid rgb(119, 113, 113); 
+        border-right: 1px solid rgb(119, 113, 113);  
     }
 
     .split-right {
@@ -209,7 +209,7 @@ footer {
     }
 
     .mainImage-Wrapper {
-        background-color: rgb(205, 209, 255); 
+        background-color: rgba(0, 119, 255, 0.1); 
     }
 
     .cardContainer {
