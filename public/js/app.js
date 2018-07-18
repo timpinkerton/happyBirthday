@@ -95,7 +95,7 @@ function listTemplate(reservations) {
     if (moment(item.birthday).isAfter(yesterday)) {
       compiled += `<tr>
       <td>${item.name}</td>
-      <td>${moment.utc(item.birthday).format("MMMM, DD")}</td>
+      <td>${moment.utc(item.birthday).format("MMMM DD, YYYY")}</td>
     </tr> `;
     }
 
