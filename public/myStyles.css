@@ -17,7 +17,7 @@ nav {
 }
 
 .nav-item {
-    margin: 0px 9px;
+    margin: 0px 6px;
 }
 
 .homePage-wrapper {
@@ -32,6 +32,13 @@ footer {
     max-width: 991px;
     padding: 40px;
 }
+
+a.nav-item.nav-link {
+    font-size: .75em; 
+    margin: 0px; 
+}
+
+
 
 /***********  HOME PAGE  ***********/
 
@@ -168,7 +175,6 @@ footer {
     .split-left {
         left: 0;
         border-right: 2px solid rgb(119, 113, 113); 
-
     }
 
     .split-right {
@@ -190,6 +196,10 @@ footer {
 
     .cardContainer {
         margin-top: 40px; 
+    }
+
+    #greeting {
+        font-size: 1.8em; 
     }
 }
 
