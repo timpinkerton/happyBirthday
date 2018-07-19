@@ -176,13 +176,15 @@ footer {
 /***********  MEDIA QUERIES ***********/
 
 @media (min-width: 576px) {
-    #greeting {
+    #greeting,
+    .navText {
         font-size: 1.2em;
     }
 }
 
 @media (min-width: 768px) {
-    #greeting {
+    #greeting,
+    .navText {
         font-size: 1.4em;
     }
 }
