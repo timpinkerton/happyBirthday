@@ -38,6 +38,10 @@ footer {
     margin: 0px;
 }
 
+a.nav-item.nav-link.navText:hover {
+    color: rgba(136, 0, 0, 0.589); 
+}
+
 /***********  HOME PAGE  ***********/
 
 .homepageWrapper,
