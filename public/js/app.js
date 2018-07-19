@@ -218,8 +218,6 @@ function submitNewReservation() {
               backdrop: true,
             })
 
-            // break;
-
           } else {
 
             console.log("No match. ");

@@ -1,6 +1,6 @@
 body {
     /* background-image: url(./images/bgPattern5.png); */
-    background-color: whitesmoke; 
+    background-color: whitesmoke;
     font-family: 'Lato 300', sans-serif;
     font-weight: 300;
 }
@@ -33,12 +33,10 @@ footer {
     padding: 40px;
 }
 
-a.nav-item.nav-link {
-    font-size: .75em; 
-    margin: 0px; 
+.navText {
+    font-size: 1.1em;
+    margin: 0px;
 }
-
-
 
 /***********  HOME PAGE  ***********/
 
@@ -60,7 +58,6 @@ a.nav-item.nav-link {
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: 'Gaegu', cursive;
-    /* font-size: 1.2em;  */
 }
 
 .homeFaces {
@@ -103,7 +100,7 @@ a.nav-item.nav-link {
 footer {
     background-color: rgba(128, 128, 128, 0.1);
     position: static;
-    padding-bottom: 80px; 
+    padding-bottom: 80px;
 }
 
 .footer-links {
@@ -160,26 +157,35 @@ footer {
     visibility: visible;
 }
 
-
 #scrollToTop {
-    display: none; 
+    display: none;
     position: fixed;
     bottom: 20px;
-    right: 15px; 
-    z-index: 99; 
-
+    right: 15px;
+    z-index: 99;
     border: 0px;
     cursor: pointer;
-    font-size: 40px; 
-    background-color: transparent; 
+    font-size: 40px;
+    background-color: transparent;
 }
 
 .fa-arrow-circle-up {
-    color: rgba(0, 0, 0, 0.137); 
+    color: rgba(0, 0, 0, 0.137);
 }
 
 /***********  MEDIA QUERIES ***********/
 
+@media (min-width: 576px) {
+    #greeting {
+        font-size: 1.2em;
+    }
+}
+
+@media (min-width: 768px) {
+    #greeting {
+        font-size: 1.4em;
+    }
+}
 
 @media (min-width: 991px) {
     .split {
@@ -190,40 +196,36 @@ footer {
         top: 0;
         overflow-x: hidden;
     }
-
     .split-left {
         left: 0;
-        border-right: 1px solid rgb(119, 113, 113);  
+        border-right: 1px solid rgb(119, 113, 113);
     }
-
     .split-right {
         right: 0;
     }
-
-    .homeFaces {
-        display: none; 
+    .navText {
+        font-size: .75em;
     }
-
+    .homeFaces {
+        display: none;
+    }
     .fullDogs {
         display: block;
-        margin-left: 60px; 
+        margin-left: 60px;
     }
-
     .mainImageWrapper {
-        background-color: rgba(0, 119, 255, 0.1); 
+        background-color: rgba(0, 119, 255, 0.1);
     }
-
     .cardContainer {
-        margin-top: 40px; 
+        margin-top: 40px;
     }
-
     #greeting {
-        font-size: 1.8em; 
+        font-size: 1.6em;
     }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 990px) {
     .fullDogs {
-        display: none; 
+        display: none;
     }
 }
