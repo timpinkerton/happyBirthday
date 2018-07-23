@@ -321,7 +321,7 @@ function editListTemplate(reservations) {
 
         <label for="birthday" class="mr-2">Birthday</label>
 
-        <input type="text" class="form-control mr-2 mb-2" id="birthday-${item._id}" value="${moment.utc(item.birthday).format("MMMM D, YYYY")}">
+        <input type="date" class="form-control mr-2 mb-2" id="birthday-${item._id}" value="${moment.utc(item.birthday).format("YYYY-MM-DD")}">
         
         <button type="button" class="btn btn-warning mr-2 hover" onclick="updateReservation('${item._id}')">
           <span class="hoverText">Edit</span>
