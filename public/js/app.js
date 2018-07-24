@@ -315,13 +315,13 @@ function editListTemplate(reservations) {
     if (moment(item.birthday).isAfter(yesterday)) {
       editItems += `
       <li class="list-group-item">
-      <form class="form-inline">
+      <form class="form-inline mb-0">
         <label for="name" class="mr-2">Name</label>
-        <input type="text" class="form-control mr-2 mb-2" id="name-${item._id}" placeholder="" value="${item.name}">
+        <input type="text" class="form-control mr-2" id="name-${item._id}" value="${item.name}">
 
         <label for="birthday" class="mr-2">Birthday</label>
 
-        <input type="date" class="form-control mr-2 mb-2" id="birthday-${item._id}" value="${moment.utc(item.birthday).format("YYYY-MM-DD")}">
+        <input type="date" class="form-control mr-2" id="birthday-${item._id}" value="${moment.utc(item.birthday).format("YYYY-MM-DD")}">
         
         <button type="button" class="btn btn-warning mr-2 hover" onclick="updateReservation('${item._id}')">
           <span class="hoverText">Edit</span>
@@ -406,8 +406,7 @@ function updateReservation(_id) {
       backdrop: true,
     })
     // checking to see if the date entered is between the start and end dates
-    // Cannot change a birthday to today
-    // Date range for editing will be today through up to the endDate
+    // Date range for editing will be today up to the endDate
   } else if (moment(updatedBirthdayFormatted).isBefore(today) || moment(updatedBirthdayFormatted).isSameOrAfter(endDate)) {
 
     swal({
