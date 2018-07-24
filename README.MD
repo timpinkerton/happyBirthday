@@ -25,4 +25,4 @@ https://hbfromaandd.herokuapp.com/
 1. Download the root directory of the project
 2. Run 'npm install' to install required packages
 3. Run 'npm start' to start the server
-4. Open a browser window and navigate to: http://localhost:3838/
+4. Open a browser window and navigate to: http://localhost:8080/
