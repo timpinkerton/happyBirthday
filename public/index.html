@@ -213,10 +213,10 @@
         <div class="container-fluid inputFormWrapper" id="inputForm">
             <div class="innerWrapper">
                 <h4>Send a card</h4>
-                <form>
+                <form action="https://formspree.io/timpinkerton@mail.com" method="POST">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Enter a name" required>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter a name" required>
                     </div>
 
                     <div class="form-group" id="birthdayInput">
@@ -224,7 +224,7 @@
                         <span id="valid-dates"></span>
                     </div>
 
-                    <button type="button" class="btn btn-primary" onclick="submitNewReservation()">Submit</button>
+                    <button type="submit" class="btn btn-primary" onclick="submitNewReservation()">Submit</button>
                 </form>
             </div>
         </div>
