@@ -215,19 +215,17 @@
                 <h4>Send a card</h4>
                 
                 <!-- adding method and action  -->
-                <!-- method="POST" action="send" -->
-                <form>
+                <form method="POST" action="send">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Enter a name">
+                        <input type="text" class="form-control" id="name" placeholder="Enter a name" required>
                     </div>
 
                     <div class="form-group" id="birthdayInput">
                         <label for="birthday">Birthday</label>
                         <span id="valid-dates"></span>
                     </div>
-
-                    <!-- changy type from button to submit -->
+                    <!-- changing type from button to submit -->
                     <button type="submit" class="btn btn-primary" onclick="submitNewReservation()">Submit</button>
                 </form>
             </div>
