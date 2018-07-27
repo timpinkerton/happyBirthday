@@ -2,7 +2,6 @@
 const express = require('express');
 const config = require('./config');
 const bodyParser = require('body-parser');
-const nodemailer = require('nodemailer'); 
 
 // requiring and setting the path to use static files
 const path = require('path');

@@ -15,5 +15,10 @@ module.exports = {
   passport: {
     username: process.env.username,
     password: process.env.password,
+  },
+
+  nodemailer: {
+    username: process.env.username,
+    pass: process.env.pass,
   }
 };
