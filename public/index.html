@@ -213,7 +213,9 @@
         <div class="container-fluid inputFormWrapper" id="inputForm">
             <div class="innerWrapper">
                 <h4>Send a card</h4>
-                <form>
+                
+                <!-- adding method and action  -->
+                <form method="POST" action="send">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" class="form-control" id="name" placeholder="Enter a name" required>
@@ -224,7 +226,8 @@
                         <span id="valid-dates"></span>
                     </div>
 
-                    <button type="button" class="btn btn-primary" onclick="submitNewReservation()">Submit</button>
+                    <!-- changy type from button to submit -->
+                    <button type="submit" class="btn btn-primary" onclick="submitNewReservation()">Submit</button>
                 </form>
             </div>
         </div>
