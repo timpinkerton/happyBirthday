@@ -238,13 +238,13 @@ function submitNewReservation() {
               console.log("new reservation!");
               refreshReservationList();
 
-              // swal({
-              //   title: 'Done!',
-              //   text: newReservationData.name + ' has been added to the list',
-              //   type: 'success',
+              swal({
+                title: 'Done!',
+                text: newReservationData.name + ' has been added to the list',
+                type: 'success',
 
-              //   backdrop: true,
-              // })
+                backdrop: true,
+              })
 
             })
         }
@@ -298,7 +298,7 @@ function birthdayInput() {
   const inputStartDate = moment(startDate).add(1, 'days').format("YYYY-MM-DD");
   const inputEndDate = moment(endDate).subtract(1, 'days').format("YYYY-MM-DD");
 
-  var birthdayInput = `<input type="date" class="form-control" name="birthday" id="birthday" min="${inputStartDate}" max="${inputEndDate}" required>`;
+  var birthdayInput = `<input type="date" class="form-control" name="birthday" id="birthday" min="${inputStartDate}" max="${inputEndDate}">`;
 
   $('#valid-dates').after(birthdayInput);
 }
