@@ -155,6 +155,7 @@ function submitNewReservation() {
     swal({
       title: 'Ummmm.....',
       text: 'You didn\'t enter anything!',
+      confirmButtonText: 'Try Again',
       // type: 'error',
       // imageUrl: '../images/alert1.png',
       animation: false,
