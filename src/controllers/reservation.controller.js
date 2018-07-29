@@ -46,9 +46,9 @@ exports.create = (req, res) => {
             user: 'timpinkerton@mail.com',
             pass: `${config.nodemailer.pass}`
         },
-        tls: {
-            rejectUnauthorized: false
-        }
+        // tls: {
+        //     rejectUnauthorized: false
+        // }
     });
 
     // setup email data with unicode symbols
