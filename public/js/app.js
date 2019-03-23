@@ -152,7 +152,7 @@ function submitNewReservation() {
 
   // if name and birthday inputs are both blank, user receive a pop up
   if (!newReservationData.name && !newReservationData.birthday) {
-    swal({
+    swal.fire({
       title: 'Ummmm.....',
       text: 'You didn\'t enter anything!',
       confirmButtonText: 'Try Again',
@@ -166,7 +166,7 @@ function submitNewReservation() {
   }
   //checking for a name
   else if (!newReservationData.name) {
-    swal({
+    swal.fire({
       title: 'Dang it!',
       text: 'You forgot to enter a name.  Please try again.',
       type: 'error',
@@ -176,7 +176,7 @@ function submitNewReservation() {
   }
   //checking for a birthday
   else if (!newReservationData.birthday) {
-    swal({
+    swal.fire({
       title: 'Dang it!',
       text: 'You forgot to enter a birthday.  Please try again.',
       type: 'error',
@@ -187,7 +187,7 @@ function submitNewReservation() {
   //checking to see if the date entered is between the start and end dates
   else if (moment(newReservationData.birthday).isSameOrBefore(startDate) || moment(newReservationData.birthday).isSameOrAfter(endDate)) {
 
-    swal({
+    swal.fire({
       title: 'Dang it!',
       text: 'Please enter a birthday BETWEEN ' + startDateFormatted + ' and ' + endDateFormatted,
       type: 'error',
@@ -211,7 +211,7 @@ function submitNewReservation() {
             console.log("Match!!!!  that date is already taken");
             isMatch = true;
 
-            swal({
+            swal.fire({
               title: 'Dang it!',
               text: 'That date is already taken.  Please try again.',
               type: 'error',
@@ -239,7 +239,7 @@ function submitNewReservation() {
               console.log("new reservation!");
               refreshReservationList();
 
-              swal({
+              swal.fire({
                 title: 'Done!',
                 text: newReservationData.name + ' has been added to the list',
                 type: 'success',
@@ -261,7 +261,7 @@ function submitNewReservation() {
 // .fail(function (error) {
 //   console.log("did not work!", error);
 
-//   swal({
+//   swal.fire({
 //     title: 'Dang it!',
 //     text: 'You must enter a name and a valid birthday.  Please try again.',
 //     type: 'error',
@@ -380,7 +380,7 @@ function updateReservation(_id) {
 
   // checking if both fields are blank
   if (!updatedReservation.name && !updatedReservation.birthday) {
-    swal({
+    swal.fire({
       title: 'Ummmm.....',
       text: 'You can\'t leave those blank!',
       type: 'error',
@@ -390,7 +390,7 @@ function updateReservation(_id) {
   }
   //checking for a name
   else if (!updatedReservation.name) {
-    swal({
+    swal.fire({
       title: 'Dang it!',
       text: 'You must enter a name.  Please try again.',
       type: 'error',
@@ -399,7 +399,7 @@ function updateReservation(_id) {
     })
     //checking for a birthday
   } else if (!updatedReservation.birthday) {
-    swal({
+    swal.fire({
       title: 'Dang it!',
       text: 'You must enter a birthday.  Please try again.',
       type: 'error',
@@ -410,7 +410,7 @@ function updateReservation(_id) {
     // Date range for editing will be today up to the endDate
   } else if (moment(updatedBirthdayFormatted).isBefore(today) || moment(updatedBirthdayFormatted).isSameOrAfter(endDate)) {
 
-    swal({
+    swal.fire({
       title: 'Dang it!',
       text: 'Please enter a birthday between ' + yesterday + ' and ' + endDate,
       type: 'error',
@@ -440,7 +440,7 @@ function updateReservation(_id) {
             console.log("Match!!!!  that date is already taken");
             isMatch = true;
 
-            swal({
+            swal.fire({
               title: 'Dang it!',
               text: 'That date is already taken. No updates made. Please try again.',
               type: 'error',
@@ -460,7 +460,7 @@ function updateReservation(_id) {
 
         if (!isMatch) {
 
-          swal({
+          swal.fire({
             title: 'Are you sure you want to update this reservation?',
             text: "please be careful",
             type: 'warning',
@@ -486,7 +486,7 @@ function updateReservation(_id) {
                   refreshReservationList();
                   refreshEditReservationList();
 
-                  swal({
+                  swal.fire({
                     title: 'Updated!',
                     type: 'success',
 
@@ -504,7 +504,7 @@ function updateReservation(_id) {
             ) {
               console.log(_id, " has NOT been updated.");
 
-              swal(
+              swal.fire(
                 'Cancelled',
                 'Reservation has NOT been updated.',
                 'error'
@@ -522,7 +522,7 @@ function updateReservation(_id) {
 function deleteReservation(_id) {
   console.log(_id + " is being deleted");
 
-  swal({
+  swal.fire({
     title: 'Are you sure you want to delete this reservation?',
     text: "please be careful",
     type: 'warning',
@@ -543,7 +543,7 @@ function deleteReservation(_id) {
         .done(function (response) {
           console.log(_id, " has been deleted.");
 
-          swal(
+          swal.fire(
             'Deleted!',
             'This reservation has been deleted.',
             'success'
@@ -560,7 +560,7 @@ function deleteReservation(_id) {
       result.dismiss === swal.DismissReason.cancel
     ) {
       console.log(_id, " has NOT been deleted.");
-      swal(
+      swal.fire(
         'Cancelled',
         'Reservation has NOT been deleted.',
         'error'
