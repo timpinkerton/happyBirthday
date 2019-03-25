@@ -225,6 +225,12 @@ function submitNewReservation() {
             isMatch = false;
 
           }
+
+          //if a match is found the program will stop checking the rest of the reservations
+          if (isMatch === true) {
+            break;
+          }
+
         }
         //if there is no match a POST request is created
         if (!isMatch) {
@@ -574,14 +580,16 @@ function deleteReservation(_id) {
 // *********************************************************************
 
 // When the user scrolls down 200px from the top of the document, the button will become visible
-window.onscroll = function() {topScroll()};
+window.onscroll = function () {
+  topScroll()
+};
 
 function topScroll() {
-    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-        document.getElementById("scrollToTop").style.display = "block";
-    } else {
-        document.getElementById("scrollToTop").style.display = "none";
-    }
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    document.getElementById("scrollToTop").style.display = "block";
+  } else {
+    document.getElementById("scrollToTop").style.display = "none";
+  }
 }
 
 // scrolls to the top of the document. 
