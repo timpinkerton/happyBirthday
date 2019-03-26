@@ -10,8 +10,8 @@
     <link rel="shortcut icon" href="./images/dustyFavicon.ico" />
 
     <!-- bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
     <link rel="stylesheet" href="myStyles.css">
 
@@ -19,22 +19,25 @@
     <link rel="stylesheet" href="./magnific.css">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+        integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Boogaloo|Gaegu|Lato:300,400" rel="stylesheet">
 
     <!-- jQuery CDN -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
 
     <!-- bootstrap JS CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+    </script>
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous">
+    </script>
 
     <!-- this will collapse the mobile menu icon when a link is clicked -->
     <script type="text/javascript">
@@ -56,13 +59,39 @@
 
 
     <!-- homepage-wrapper section is the left side on large screen and includes: nagivation, bubble greeting and dog images -->
-    <div class="split split-left">
+    <div class="bg-primary split split-left">
         <div class="container-fluid homePageWrapper">
+
+            <header>
+
+                <nav class="navbar">
+                    <button class="navbar-toggler m-auto" type="button" data-toggle="collapse"
+                        data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"><img id="links-button"
+                                src="./images/linksButton-min.png"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link m-auto" href="http://arnoldanddusty.com/index.html"><img
+                                    class="nav-image" src="./images/homeLink-min.png"></a>
+                            <a class="nav-item nav-link m-auto" href="http://arnoldanddusty.com/livingRoom.html"><img class="nav-image"
+                                    src="./images/galleryLink-min.png"></a>
+                            <a class="nav-item nav-link m-auto" href="http://arnoldanddusty.com/adpod.html"><img class="nav-image"
+                                    src="./images/spaceLink-min.png"></a>
+                            <a class="nav-item nav-link m-auto" href="http://arnoldanddusty.com/psop.html"><img class="nav-image"
+                                    src="./images/pospLink-min.png"></a>
+                        </div>
+                    </div>
+                </nav>
+
+            </header>
 
             <!-- Navagation -->
             <nav class="navbar navbar-expand-lg navbar-light ">
-                <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+                    data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -137,8 +166,10 @@
             <div class="innerWrapper">
                 <h4>What's this all about?</h4>
 
-                <p>This is all about birthdays! Think about someone you like and how cool it would be if they came to this site
-                    on their birthday and there's a birthday card from Arnold and Dusty made out to them at the top of this
+                <p>This is all about birthdays! Think about someone you like and how cool it would be if they came to
+                    this site
+                    on their birthday and there's a birthday card from Arnold and Dusty made out to them at the top of
+                    this
                     page. That would be awesome! ...Right? Yes. That
                     <i>would</i> be awesome.
                 </p>
@@ -153,15 +184,19 @@
 
                 <p>That's it!</p>
 
-                <p>You can send a card to your parent, favorite sibling, child, cousin, grandparent, brother-in-law, step-parent,
-                    family friend, uncle, co-worker, teammate, boss, bartender, teacher, downstairs neighbor, barista, landlord,
-                    mailperson, dog, buddy, homeboy, compadre, bro, mate, pal, companion, amigo, brother from another mother,
+                <p>You can send a card to your parent, favorite sibling, child, cousin, grandparent, brother-in-law,
+                    step-parent,
+                    family friend, uncle, co-worker, teammate, boss, bartender, teacher, downstairs neighbor, barista,
+                    landlord,
+                    mailperson, dog, buddy, homeboy, compadre, bro, mate, pal, companion, amigo, brother from another
+                    mother,
                     wingman, significant other, girlfriend, boyfriend, boo, better half, domestic partner, life partner,
                     soul mate, lover, fiance, spouse, ex-spouse .... you get the idea. Basically, you can send a card to
                     just about anyone, as long as you know their birthday.
                 </p>
 
-                <p>I guess you could submit your own name and birthday, but think about how good you'll feel by submitting a
+                <p>I guess you could submit your own name and birthday, but think about how good you'll feel by
+                    submitting a
                     card for someone else.</p>
 
                 <h4>There are just two rules to follow...</h4>
@@ -170,7 +205,8 @@
                     <br>
                     <li>Only one birthday card per day.</li>
                     <br>
-                    <li>The date you enter should be the date of the persons next birthday, starting one week from today.
+                    <li>The date you enter should be the date of the persons next birthday, starting one week from
+                        today.
                         <p>
                             <br>
                             <span id="ruleTwo"></span>
@@ -179,8 +215,10 @@
                 </ol>
 
                 <p>
-                    <strong>Alright!</strong> Enough jibba jabba! Think about who you want to send a birthday greeting to and check
-                    out the list below. If their birthday is not availble, then think about someone else you want to make
+                    <strong>Alright!</strong> Enough jibba jabba! Think about who you want to send a birthday greeting
+                    to and check
+                    out the list below. If their birthday is not availble, then think about someone else you want to
+                    make
                     happy.
                 </p>
             </div>
@@ -213,7 +251,7 @@
         <div class="container-fluid inputFormWrapper" id="inputForm">
             <div class="innerWrapper">
                 <h4>Send a card</h4>
-                
+
                 <!-- adding method and action  -->
                 <!-- method="POST" action="send" -->
                 <form>
@@ -244,7 +282,8 @@
 
                     <!-- Twitter share link -->
                     <li>
-                        <a class="nav-item nav-link" href="https://twitter.com/intent/tweet?text=check%20this%20out!%20https://hbfromaandd.herokuapp.com/">
+                        <a class="nav-item nav-link"
+                            href="https://twitter.com/intent/tweet?text=check%20this%20out!%20https://hbfromaandd.herokuapp.com/">
                             <i class="fab fa-twitter"></i>
                         </a>
                     </li>
@@ -253,7 +292,8 @@
                     <li>
                         <!-- <i class="fab fa-facebook-f"></i> -->
 
-                        <a class="nav-item nav-link" href="https://www.facebook.com/dialog/share?display=popup&href=https://hbfromaandd.herokuapp.com/">
+                        <a class="nav-item nav-link"
+                            href="https://www.facebook.com/dialog/share?display=popup&href=https://hbfromaandd.herokuapp.com/">
                             <i class="fab fa-facebook-f"></i>
                         </a>
 
@@ -271,7 +311,8 @@
                         <!-- Place this tag where you want the share button to render. -->
                         <!-- <div class="g-plus" data-action="share"></div> -->
 
-                        <a class="nav-item nav-link" href="https://plus.google.com/share?url=https://hbfromaandd.herokuapp.com/&text=check%20it%20out!&hl=en">
+                        <a class="nav-item nav-link"
+                            href="https://plus.google.com/share?url=https://hbfromaandd.herokuapp.com/&text=check%20it%20out!&hl=en">
                             <i class="fab fa-google-plus-g"></i>
                         </a>
                     </li>
@@ -279,7 +320,8 @@
 
                     <!-- Email share link -->
                     <li>
-                        <a class="nav-item nav-link" href="mailto:yourfriend@arealemailaddress.com?Subject=Check%20this%20out!!!&body=Go%20here:%20https://hbfromaandd.herokuapp.com/"
+                        <a class="nav-item nav-link"
+                            href="mailto:yourfriend@arealemailaddress.com?Subject=Check%20this%20out!!!&body=Go%20here:%20https://hbfromaandd.herokuapp.com/"
                             target="_top">
                             <i class="far fa-envelope"></i>
                         </a>
@@ -298,7 +340,8 @@
 
                     <!-- Reddit share link -->
                     <li>
-                        <a class="nav-item nav-link" href="https://reddit.com/submit?url=https://hbfromaandd.herokuapp.com/&title=check%20this%20out!">
+                        <a class="nav-item nav-link"
+                            href="https://reddit.com/submit?url=https://hbfromaandd.herokuapp.com/&title=check%20this%20out!">
                             <i class="fab fa-reddit-alien"></i>
                         </a>
                     </li>

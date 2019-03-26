@@ -9,7 +9,28 @@ h4 {
     font-family: 'Boogaloo';
 }
 
-/***********  NAVIGATION  ***********/
+
+/******** MAIN  NAVIGATION ***********/
+
+.navbar-toggler {
+    border: none; 
+}
+
+.navbar-toggler-icon {
+    width: 60px; 
+    height: 60px;
+}
+
+.nav-image {
+    width: 200px;
+}
+
+#links-button {
+    width: 100%;
+}
+
+
+/*********** HBD NAVIGATION  ***********/
 
 nav {
     background-color: #c7b29a00;
@@ -46,7 +67,6 @@ a.nav-item.nav-link.navText:hover {
 
 .homepageWrapper,
 .mainImageWrapper {
-    background-color: whitesmoke;
     padding-bottom: 30px;
     max-width: 991px;
 }
@@ -71,7 +91,7 @@ a.nav-item.nav-link.navText:hover {
 /***********  ABOUT PAGE  ***********/
 
 .aboutWrapper {
-    background-color: rgba(255, 174, 0, 0.1);
+    background-color: whitesmoke; 
     padding-top: 60px;
 }
 
