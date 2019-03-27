@@ -30,38 +30,17 @@ h4 {
 }
 
 
-/*********** HBD NAVIGATION  ***********/
+/*********** HBD LINKS  ***********/
 
-nav {
-    background-color: #c7b29a00;
-    margin-bottom: 20px;
-}
-
-.nav-item {
-    margin: 0px 6px;
-}
-
-.homepageWrapper {
-    padding: 0px 40px 40px 40px;
-    max-width: 991px;
-}
-
-.aboutWrapper,
-.currentListWrapper,
-.inputFormWrapper,
-footer {
-    max-width: 991px;
-    padding: 40px;
-}
-
-.navText {
-    font-size: 1.1em;
+a.navText {
+    font-size: .68em;
     margin: 0px;
+    color: yellow; 
 }
 
 a.nav-item.nav-link.navText:hover {
     color: rgba(136, 0, 0, 0.589); 
-}
+} 
 
 /***********  HOME PAGE  ***********/
 
