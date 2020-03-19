@@ -65,7 +65,7 @@ function greetingTemplate(todaysName) {
   // const greetingTemplate = `<p id="greeting">Happy Birthday, ${todaysName}!</p>`;
 
   // **************   This is the temporary greeting
-  const greetingTemplate = `<p id="greeting">Hey KellyAnn, we got a super special request, so here's your (late) birthday card. </p>`;
+  const greetingTemplate = `<p id="greeting">Happy (late) Birthday KellyAnn !!! </p>`;
   
   // put the template data into the actual page
   $('body .bubble-img').first().after(greetingTemplate);
