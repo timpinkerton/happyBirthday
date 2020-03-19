@@ -60,7 +60,13 @@ function getTodaysName() {
 function greetingTemplate(todaysName) {
   // jQuery template string
   console.log('********* today name is: ' + todaysName);
-  const greetingTemplate = `<p id="greeting">Happy Birthday, ${todaysName}!</p>`;
+
+  // **************   This is the old greeting that needs to be put back
+  // const greetingTemplate = `<p id="greeting">Happy Birthday, ${todaysName}!</p>`;
+
+  // **************   This is the temporary greeting
+  const greetingTemplate = `<p id="greeting">Hey KellyAnn, we got a super special request, so here's your (late) birthday card. </p>`;
+  
   // put the template data into the actual page
   $('body .bubble-img').first().after(greetingTemplate);
 }
@@ -71,7 +77,9 @@ function getTodaysCard(todaysName) {
   var todaysCard;
 
   if (todaysName === 'No One') {
-    todaysCard = cl.imageTag('happyBirthday/noOne.png').toHtml();
+
+    // **************   Change this back to noOne.png *************************************
+    todaysCard = cl.imageTag('happyBirthday/kellyann.png').toHtml();
   } else {
     todaysCard = cl.imageTag(`happyBirthday/${today}.png`).toHtml();
   }
