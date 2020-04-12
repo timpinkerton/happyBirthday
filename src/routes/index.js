@@ -47,6 +47,12 @@ module.exports = (app) => {
         }
       });
 
+
+    const visitors = require('../controllers/visitors.controller.js');
+
+    //CREATE a visitor post
+    app.post('/visitors', visitors.create);
+
 }
 
 // module.exports = router;

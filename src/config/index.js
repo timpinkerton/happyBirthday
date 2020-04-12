@@ -20,5 +20,9 @@ module.exports = {
   nodemailer: {
     username: process.env.username,
     pass: process.env.pass,
+  },
+
+  ipstack: {
+    access_key: process.env.access_key
   }
 };

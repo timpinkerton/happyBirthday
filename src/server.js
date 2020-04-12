@@ -93,6 +93,7 @@ mongoose.connection.openUri(`mongodb://${config.db.username}:${config.db.passwor
 
 // Importing models
 require('./models/reservation.model.js');
+require('./models/visitor.model.js');
 
 // path.resolve() resolves path segments into an absolute path
 const publicPath = path.resolve(__dirname, '../public');

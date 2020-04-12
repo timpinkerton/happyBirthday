@@ -166,4 +166,4 @@ exports.delete = (req, res) => {
                 message: "Could not delete not with id " + req.params.reservationId
             });
         });
-};
+    }
