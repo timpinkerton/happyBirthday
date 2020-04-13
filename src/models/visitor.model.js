@@ -34,5 +34,5 @@ const VisitorSchema = mongoose.Schema({
 // turning the schema created above into a mongoose model
 // an instance of a model is a document
 // dbVisitors is the collection in mLab
-const Visitor = mongoose.model('dbvisitors', ReservationSchema);
+const Visitor = mongoose.model('dbvisitors', VisitorSchema);
 module.exports = Visitor;
