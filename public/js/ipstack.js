@@ -14,7 +14,7 @@ function getVisitorInfo() {
 
     // get the API result via jQuery.ajax
     return $.ajax({
-        url: 'https://api.ipstack.com/check?access_key=' + access_key,   
+        url: 'http://api.ipstack.com/check?access_key=' + access_key,   
         dataType: 'jsonp',
         success: function(json) {
 
