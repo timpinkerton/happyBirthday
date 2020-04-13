@@ -48,7 +48,7 @@ module.exports = (app) => {
       });
 
 
-    const visitors = require('../controllers/visitors.controller.js');
+    const visitors = require('../controllers/visitor.controller.js');
 
     //CREATE a visitor post
     app.post('/visitors', visitors.create);
