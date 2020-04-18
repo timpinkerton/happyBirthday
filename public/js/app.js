@@ -65,7 +65,7 @@ function greetingTemplate(todaysName) {
   // const greetingTemplate = `<p id="greeting">Happy Birthday, ${todaysName}!</p>`;
 
   // **************   This is the temporary greeting
-  const greetingTemplate = `<p id="greeting">Happy (late) Birthday Chico !!! </p>`;
+  const greetingTemplate = `<p id="greeting">Happy Birthday Denny !!! </p>`;
   
   // put the template data into the actual page
   $('body .bubble-img').first().after(greetingTemplate);
@@ -79,7 +79,7 @@ function getTodaysCard(todaysName) {
   if (todaysName === 'No One') {
 
     // **************   Change this back to noOne.png *************************************
-    todaysCard = cl.imageTag('happyBirthday/chico2020.png').toHtml();
+    todaysCard = cl.imageTag('happyBirthday/denny2020.png').toHtml();
   } else {
     todaysCard = cl.imageTag(`happyBirthday/${today}.png`).toHtml();
   }
