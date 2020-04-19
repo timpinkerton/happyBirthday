@@ -4,13 +4,25 @@ let visitorData;
 
 $(document).ready(function () {
 
-    getVisitorInfo(); 
-    
-    submitVisitorInfo(); 
-
+    getVisitorInfo()
+    .then(visitorData => {
+        $.ajax({
+            type: 'POST',
+            url: '/visitors',
+            data: JSON.stringify(visitorData),
+            dataType: 'json',
+            contentType: 'application/json',
+        })
+        .done(function (response) {
+            console.log("visitor data added", response);
+        })
+        // console.log('submitVisitorInfo function ran')
+    })
 });
 
 function getVisitorInfo() {
+
+    console.log('getVisitorInfo function called')
 
     // get the API result via jQuery.ajax
     return $.ajax({
@@ -30,39 +42,29 @@ function getVisitorInfo() {
                 city: (json.city),
                 zip: (json.zip), 
                 latitude: (json.latitude), 
-                longitude: (json.longitude) 
-                // location_geoname_id: (json.location.geoname_id), 
-                // location_capital: (json.location.capital),
-                // location_languages_code: (json.location.languages[0].code),
-                // location_languages_name: (json.location.languages[0].name),
-                // location_languages_native: (json.location.languages[0].native),
-                // location_country_flag: (json.location.country_flag),
-                // location_county_flag_emoji: (json.location.country_flag_emoji),
-                // location_country_flag_emoji_unicode: (json.location_country_flag_emoji_unicode),
-                // location_calling_code: (json.location.calling_code), 
-                // location_is_eu: (json.location.is_eu)            
+                longitude: (json.longitude), 
+                location_geoname_id: (json.location.geoname_id), 
+                location_capital: (json.location.capital),
+                location_languages_code: (json.location.languages[0].code),
+                location_languages_name: (json.location.languages[0].name),
+                location_languages_native: (json.location.languages[0].native),
+                location_country_flag: (json.location.country_flag),
+                location_county_flag_emoji: (json.location.country_flag_emoji),
+                location_country_flag_emoji_unicode: (json.location_country_flag_emoji_unicode),
+                location_calling_code: (json.location.calling_code), 
+                location_is_eu: (json.location.is_eu)           
             }
-            // output the "zip" object;
+            // output the "zip" object to test that the data was received;
             // alert(visitorData.zip);
         } 
-    });
-    
-}
-
-function submitVisitorInfo() {
-    
-    // POST request to write visitor data
-    $.ajax({
-        type: 'POST',
-        url: '/visitors',
-        data: JSON.stringify(visitorData),
-        dataType: 'json',
-        contentType: 'application/json',
     })
-    .done(function (response) {
-        console.log("visitor data added");
-    })
-    console.log('submitVisitorInfo function ran')
+    .then(res => {
+        console.log("here is the visitor data retrieved: ", res);
+        return res;
+      })
+      .fail(err => {
+        console.log("Error in getting visitor data", err);
+        throw err;
+      })
 
 }
-

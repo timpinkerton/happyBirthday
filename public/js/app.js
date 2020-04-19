@@ -34,16 +34,16 @@ function getTodaysName() {
     .then(reservations => {
 
       for (var i = 0; i < reservations.length; i++) {
-        console.log(reservations[i].name + ": " + moment.utc(reservations[i].birthday).format("YYYY-MM-DD"));
+        // console.log(reservations[i].name + ": " + moment.utc(reservations[i].birthday).format("YYYY-MM-DD"));
         if (moment.utc(reservations[i].birthday).format("YYYY-MM-DD") === today) {
           console.log("match!");
           todaysName = reservations[i].name;
-          console.log(todaysName);
+          // console.log(todaysName);
           break;
         } else {
-          console.log("nope!!");
+          // console.log("nope!!");
           todaysName = "No One";
-          console.log(todaysName);
+          // console.log(todaysName);
         }
       }
 
